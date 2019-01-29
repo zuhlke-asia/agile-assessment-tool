@@ -7,7 +7,7 @@
     "start": "node index.js",
     "start:dev": "nodemon index.js",
     "build:prod": "npm run build-client && npm install",
-    "build-client": "cd ../client && npm run build",
+    "build-client": "cd ../client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
