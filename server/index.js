@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 const config = require('./config');
 const { MongoClient } = require('mongodb');
@@ -8,8 +9,12 @@ const dbUri = config.db.uri;
 const dbName = config.db.dbName;
 const port = config.port;
 
-app.get('/', (req, res) => {
-    res.send('successfully connected to mongo')
+console.log('dirname: ' + __dirname);
+
+app.use('/static', express.static(path.join(__dirname, '../client/static')));
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../client/index.html'));
 });
 
 console.log('connecting to mongo...');
