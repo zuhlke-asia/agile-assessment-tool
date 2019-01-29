@@ -14,7 +14,6 @@ app.get('/', (req, res) => {
     res.send('successfully connected to mongo')
 });
 
-
 console.log('connecting to mongo...');
 client.connect(function(err) {
     if (err) {
