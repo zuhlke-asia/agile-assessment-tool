@@ -1,0 +1,20 @@
+version: '3'
+services:
+
+  server:
+    image: node
+    volumes:
+    - ./server:/usr/src/app
+    working_dir: /usr/src/app
+    command: sh -c "npm install && npm start"
+    depends_on:
+      - mongo
+    ports:
+    - "8080:8080"
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
