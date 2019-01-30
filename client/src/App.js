@@ -19,6 +19,7 @@ import "jquery-bar-rating";
 import json from './questionnaire/questionnaire';
 
 import * as widgets from "surveyjs-widgets";
+import axiosInstance from './api';
 
 widgets.icheck(Survey, $);
 widgets.select2(Survey, $);
@@ -44,13 +45,20 @@ class App extends Component {
     console.log("value changed!");
   }
 
-  onComplete(result) {
-    console.log("Complete! " + result);
+
+  onComplete = async (result) => {
+    const data = JSON.stringify(result.data);
+    try{
+      const response = await axiosInstance.post("/api/questions", {data});
+      console.log(response);
+    }catch(err){
+        console.log(err);
+    }
   }
 
   render() {
     Survey.Survey.cssType = "bootstrap";
-    var model = new Survey.Model(json);
+    const model = new Survey.Model(json);
     return (
       <div className="App">
         <div className="surveyjs">
