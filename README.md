@@ -1,5 +1,5 @@
 # agile-assessment-tool
-Agile Assessment Tool Zuhlke Singapore. This tool servers the purpose to assess the customer's knowledge
+Agile Assessment Tool Zuhlke Singapore. This tool serves the purpose to assess the customer's knowledge
 about the agile methodology and also provide an entry point for Zuhlke's business.
 
 ## Development Guide
@@ -12,9 +12,9 @@ For Docker, please refer to [Mac Install](https://docs.docker.com/docker-for-mac
 
 ### Development Workflow
 
-1. Clone the repository to you local and navigate to the project folder.
+1. Clone the repository to you local repository and navigate to the project folder.
 
-2. Start the docker images by typing `$ docker-compose up`  in the terminal. Use `Ctrl + c` to shutdown the docker container.
+2. Start the docker containers by typing `$ docker-compose up`  in the terminal. Use `Ctrl + c` to shutdown the docker containers.
 
 3. Go to a browser to look at *localhost:3000* to see the start page.
 
