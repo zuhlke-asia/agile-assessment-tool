@@ -1,15 +1,23 @@
 version: '3'
 services:
 
+  client:
+    image: node
+    volumes:
+    - ./client:/usr/src/app
+    working_dir: /usr/src/app
+    command: sh -c "npm install && npm start"
+    ports:
+    - "3000:3000"
+
   server:
     image: node
     volumes:
     - ./server:/usr/src/app/server
-    - ./client/build:/usr/src/app/client/build
     working_dir: /usr/src/app/server
     command: sh -c "npm install && npm run start:dev"
     depends_on:
-      - mongo
+    - mongo
     ports:
     - "8080:8080"
 
