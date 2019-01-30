@@ -53,7 +53,7 @@ class App extends Component {
     Survey.Survey.cssType = "bootstrap";
     var model = new Survey.Model(json);
     return (
-      <div className="App">
+      <div id="outer">
         <Header />
         <div className="surveyjs">
           <h1>SurveyJS library in action:</h1>
