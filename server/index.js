@@ -11,10 +11,10 @@ const port = config.port;
 
 console.log('dirname: ' + __dirname);
 
-app.use('/static', express.static(path.join(__dirname, '../client/static')));
+app.use('/static', express.static(path.join(__dirname, '../client/build/static')));
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/../client/index.html'));
+    res.sendFile(path.join(__dirname + '/../client/build/index.html'));
 });
 
 console.log('connecting to mongo...');

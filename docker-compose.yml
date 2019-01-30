@@ -4,9 +4,9 @@ services:
   server:
     image: node
     volumes:
-    - ./server:/usr/src/app
-    - ./client/build:/usr/src/client
-    working_dir: /usr/src/app
+    - ./server:/usr/src/app/server
+    - ./client/build:/usr/src/app/client/build
+    working_dir: /usr/src/app/server
     command: sh -c "npm install && npm run start:dev"
     depends_on:
       - mongo
