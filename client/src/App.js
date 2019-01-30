@@ -19,6 +19,7 @@ import "jquery-bar-rating";
 import json from './questionnaire/questionnaire';
 
 import * as widgets from "surveyjs-widgets";
+import Header from './Header';
 
 widgets.icheck(Survey, $);
 widgets.select2(Survey, $);
@@ -53,6 +54,7 @@ class App extends Component {
     var model = new Survey.Model(json);
     return (
       <div className="App">
+        <Header />
         <div className="surveyjs">
           <h1>SurveyJS library in action:</h1>
           <Survey.Survey
