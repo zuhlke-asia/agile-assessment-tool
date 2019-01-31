@@ -1,13 +1,12 @@
 module.exports = {
-    title: 'Product Feedback Survey Example',
     showProgressBar: 'top',
     pages: [
         {
             questions: [
                 {
                     type: 'radiogroup',
-                    name: 'Name_Is your organisation currently practicing plan-driven or agile software development?',
-                    title: 'Title_Is your organisation currently practicing plan-driven or agile software development?',
+                    name: 'Is your organisation currently practicing plan-driven or agile software development?',
+                    title: 'Is your organisation currently practicing plan-driven or agile software development?',
                     choices: [
                         'All Agile',
                         'Mostly Agile',
@@ -22,8 +21,8 @@ module.exports = {
             questions: [
                 {
                     type: 'radiogroup',
-                    name: 'Name_Which methodology does your organisation most closely follow?',
-                    title: 'Title_Which methodology does your organisation most closely follow?',
+                    name: 'Which methodology does your organisation most closely follow?',
+                    title: 'Which methodology does your organisation most closely follow?',
                     choices: [
                         'Scrum',
                         'Lean',
@@ -34,8 +33,8 @@ module.exports = {
                 },
                 {
                     type: 'radiogroup',
-                    name: 'Name_How satisfied are YOU with your current methodology?',
-                    title: 'Title_How satisfied are YOU with your current methodology?',
+                    name: 'How satisfied are YOU with your current methodology?',
+                    title: 'How satisfied are YOU with your current methodology?',
                     choices: [
                         'Unsatisfied',
                         'Somewhat satisfied',
