@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import config from '../questionnaire/questionnaire';
+import config from './surveyconfig/config';
+import { generateSurveyConfig } from './surveyconfig/configGenerator';
+import {evaluate} from './evaluation/scoreEvaluator';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -10,12 +12,19 @@ import AgileAssessment from './AgileAssessment';
 
 export default class App extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.surveyConfig = generateSurveyConfig(config);
+    }
+
     onValueChanged(result) {
         console.log('value changed!');
     }
 
     onComplete(result) {
-        console.log('Complete! ' + JSON.stringify(result));
+        const score = evaluate(result.data);
+        console.log('Complete! ' + JSON.stringify(score));
     }
 
     render() {
@@ -23,11 +32,11 @@ export default class App extends Component {
             <div id="outer">
                 <Header/>
                 <AgileAssessment
-                    config={config}
+                    config={this.surveyConfig}
                     onComplete={this.onComplete}
                     onValueChange={this.onValueChanged}
                 />
-                <FootNote />
+                <FootNote/>
                 <Footer/>
             </div>
         );
