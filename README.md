@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/enpayne/agile-assessment-tool.svg?token=XM7zo21DjfuY5wpehaVz&branch=develop)](https://travis-ci.com/enpayne/agile-assessment-tool)
+
 # agile-assessment-tool
 Agile Assessment Tool Zuhlke Singapore. This tool serves the purpose to assess the customer's knowledge
 about the agile methodology and also provide an entry point for Zuhlke's business.
