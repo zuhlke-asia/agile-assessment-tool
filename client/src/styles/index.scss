@@ -1,37 +1,7 @@
 $font-family-headline: "aa_zuehlke_otpsregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-sans-serif: 'Open Sans', sans-serif;
-
-//body {
-//  font-family: $font-family-sans-serif;
-//  line-height: 1.5;
-//  height: 100vh;
-//}
-//
-//.zue-meta-nav {
-//
-//  width: 100vw;
-//  text-align: right;
-//
-//  ul {
-//    display: flex;
-//    justify-content: flex-end;
-//    list-style-type: none;
-//
-//    li {
-//      padding-left: 15px;
-//    }
-//  }
-//}
-//
-//.zue-logo-head {
-//  width: 135px;
-//  height: 135px;
-//  background: url('../assets/images/sprite.png') no-repeat -2px -150px;
-//  display: block;
-//}
-
-
-/** header **/
+$c-primary: rgb(255, 130, 10);
+$c-brand: rgb(147, 95, 167);
 
 .zue-branding-image {
   background-image: url('../assets/images/wide/header_4_code.jpg');
@@ -41,6 +11,20 @@ footer {
   display: flex;
 }
 
+/* surveyjs-overrides */
 
+.sv_main {
+  font-family: $font-family-sans-serif;
+}
 
+.sv_custom_header {
+  height: auto !important;
+}
 
+.btn.sv_next_btn, .btn.sv_prev_btn, .btn.sv_complete_btn, .progress-bar {
+  background-color: $c-primary !important;
+}
+
+div.small {
+  margin-bottom: 15px;
+}

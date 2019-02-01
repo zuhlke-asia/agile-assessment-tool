@@ -1,5 +1,6 @@
 module.exports = {
     showProgressBar: 'top',
+    questionTitleTemplate: '{no}. {title}',
     pages: [
         {
             questions: [
@@ -13,7 +14,8 @@ module.exports = {
                         'Both Agile and plan-driven',
                         'Mostly plan-driven',
                         'All plan-driven'
-                    ]
+                    ],
+                    isRequired: true
                 }
             ]
         },
@@ -44,7 +46,49 @@ module.exports = {
                 }
 
             ]
+        },
+        {
+            questions: [
+                {
+                    type: 'dropdown',
+                    choices: [
+                        {
+                            text: 'Story Points',
+                            value: 10,
+                        },
+                        {
+                            text: 'Working Hours',
+                            value: 1
+                        },
+                        {
+                            text: 'T-Shirt Sizes',
+                            value: 8
+                        }
+                    ],
+                    name: 'estimation-unit',
+                    title: 'What units do you use for estimation?',
+                },
+            ]
+        },
+        {
+            questions: [
+                {
+                    type: 'rating',
+                    name: 'mood',
+                    title: 'How confident are you that your current project will be successful?',
+                    description: '1 means not confident at all, 5 means very confident'
+                },
+            ]
+        },
+        {
+            questions: [
+                {
+                    type: 'text',
+                    name: 'company',
+                    title: 'Optionally, you can leave your company name here.',
+                    description: 'We would love to work with you!'
+                },
+            ]
         }
-
     ]
 };

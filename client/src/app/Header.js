@@ -32,7 +32,7 @@ export default () => (
                     <nav id="zue-main-nav" role="navigation">
                         <ul>
                             <li className="child sibling">
-                                <a href="http://www.zuhlke.com.sg/">Zuhlke Singapore</a>
+                                <a href="http://www.zuhlke.com/">Zuhlke Singapore</a>
                             </li>
                         </ul>
                     </nav>
