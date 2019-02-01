@@ -4,7 +4,9 @@ $c-primary: rgb(255, 130, 10);
 $c-brand: rgb(147, 95, 167);
 
 .zue-branding-image {
-  background-image: url('../assets/images/wide/header_4_code.jpg');
+  //background-image: url('../assets/images/wide/header_4_code.jpg');
+  background-image: url('../assets/images/wide/banner-2.jpg');
+  background-position-y: -300px;
 }
 
 footer {
