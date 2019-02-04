@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/enpayne/agile-assessment-tool.svg?token=XM7zo21DjfuY5wpehaVz&branch=develop)](https://travis-ci.com/enpayne/agile-assessment-tool)
+
 # agile-assessment-tool
 Agile Assessment Tool Zuhlke Singapore. This tool serves the purpose to assess the customer's knowledge
 about the agile methodology and also provide an entry point for Zuhlke's business.
@@ -20,14 +22,18 @@ For Docker, please refer to [Mac Install](https://docs.docker.com/docker-for-mac
 
 ### Deployment Workflow
 
-1. Locally build the client project: 
+1. It is currently necessary to build the application locally in order to release it. This is because 
+azure can't handle the amount of files installed by npm, it would take forever with the plan we have. Travis CI can and should be used for
+this in the future.
 ```
 $ cd server/  
 $ npm run build:prod
 ```  
 2. Push the changes to your feature branch.
 
-3. Start a pull request to merge into develop branch. Azure is connected to the git repo and will take care of the deployment.
+3. Open a pull request to merge into develop branch. You won't be able to merge it before all tests have passed on Travis.
 
-4. Go the [Zuhlke Agile Assessment Tool Website](https://agileassessment-prod.azurewebsites.net) to verify the change.
+4. Azure is connected to the git repo and will take care of the deployment.
+
+5. Go the [Zuhlke Agile Assessment Tool Website](https://agileassessment-prod.azurewebsites.net) to verify the change.
 
