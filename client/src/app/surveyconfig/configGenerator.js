@@ -24,7 +24,6 @@ function generateQuestionConfig(question) {
         type: question.type,
         name: `${question.category}__${question.question}`,
         title: question.question,
-        description: question.description
     };
 
     if (question.type === QuestionType.RADIO || question.type === QuestionType.DROPDOWN) {
@@ -33,6 +32,10 @@ function generateQuestionConfig(question) {
 
     if (question.type === QuestionType.MULTIPLE_TEXT) {
         questionConfig.items = question.items;
+    }
+
+    if (question.description) {
+        questionConfig.description = question.description;
     }
 
     return questionConfig;
