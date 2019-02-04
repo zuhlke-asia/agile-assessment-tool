@@ -1,5 +1,5 @@
 
-const evaluate = result => {
+export const evaluate = result => {
 
     const score = {};
 
@@ -20,9 +20,4 @@ const evaluate = result => {
     }
 
     return score;
-};
-
-
-export {
-    evaluate
 };

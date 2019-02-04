@@ -1,6 +1,6 @@
 import * as QuestionType from './QuestionType';
 
-function generateSurveyConfig(config) {
+export function generateSurveyConfig(config) {
     return {
         showProgressBar: 'top',
         questionTitleTemplate: '{no}. {title}',
@@ -9,6 +9,15 @@ function generateSurveyConfig(config) {
         }))
     };
 }
+
+export const generatePageConfig = page => {
+
+    const questions = page.questions.map(question => generateQuestionConfig(question));
+
+    return {
+        questions
+    };
+};
 
 function generateQuestionConfig(question) {
     const questionConfig = {
@@ -27,18 +36,4 @@ function generateQuestionConfig(question) {
     }
 
     return questionConfig;
-}
-
-const generatePageConfig = page => {
-
-    const questions = page.questions.map(question => generateQuestionConfig(question));
-
-    return {
-        questions
-    };
-};
-
-export {
-    generatePageConfig,
-    generateSurveyConfig
 }
