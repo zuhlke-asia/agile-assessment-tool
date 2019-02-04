@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import config from './surveyconfig/config';
-import { generateSurveyConfig } from './surveyconfig/configGenerator';
-import {evaluate} from './evaluation/scoreEvaluator';
+import {generateSurveyConfig} from './surveyconfig/configGenerator';
 
 import Header from './Header';
 import Footer from './Footer';
 import FootNote from './FootNote';
 import AgileAssessment from './AgileAssessment';
-
+import axios from 'axios';
 
 export default class App extends Component {
 
@@ -22,9 +21,12 @@ export default class App extends Component {
         console.log('value changed!');
     }
 
-    onComplete(result) {
-        const score = evaluate(result.data);
-        console.log('Complete! ' + JSON.stringify(score));
+    async onComplete(result) {
+        try{
+            axios.post("/api/userscores", result.data);
+        }catch(err){
+            console.error(err);
+        }
     }
 
     render() {
