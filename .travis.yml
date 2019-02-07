@@ -9,7 +9,8 @@ script:
 
 before_deploy:
   - mv .gitignore.prod .gitignore
-  - git add .
+  - git add build
+  - git add node_modules
   - git commit -m "add build files"
 
 deploy:
