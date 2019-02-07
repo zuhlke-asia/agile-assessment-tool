@@ -1,0 +1,31 @@
+{
+  "name": "agile-assessment-tool",
+  "version": "1.0.0",
+  "description": "Agile Assessment Tool Zuhlke Singapore",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build:prod": "npm run build-client && npm install",
+    "build-client": "cd ../client && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://enpayne@github.com/enpayne/agile-assessment-tool.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enpayne/agile-assessment-tool/issues"
+  },
+  "homepage": "https://github.com/enpayne/agile-assessment-tool#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "4.16.4",
+    "mongodb": "3.1.13"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

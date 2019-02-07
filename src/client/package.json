@@ -14,7 +14,7 @@
     "surveyjs-editor": "latest",
     "surveyjs-widgets": "latest"
   },
-  "proxy": "http://server:8080",
+  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-scripts start && jest --watch",
     "start:dev": "npm start & npm test",

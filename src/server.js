@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-const config = require('./config');
+const config = require('./server/config');
 const {MongoClient} = require('mongodb');
 
 const dbUri = config.db.uri;
@@ -13,10 +13,10 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
-app.use('/static', express.static(path.join(__dirname, '../client/build/static')));
+app.use('/static', express.static(path.join(__dirname, '../build/static')));
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/../client/build/index.html'));
+    res.sendFile(path.join(__dirname + '/../build/index.html'));
 });
 
 (async () => {
