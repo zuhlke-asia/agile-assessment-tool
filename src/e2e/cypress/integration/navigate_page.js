@@ -26,9 +26,16 @@ describe("Navigate", function () {
             const status = xhr.xhr.status;
             expect(status).to.equal(200);
         });
-    })
+    });
 
-
-
+    it("should navigate backwards if previous is clicked.", function(){
+        cy.get('.progress span').contains("Page 1 of 4")
+        cy.contains("Mostly Agile").click();
+        cy.contains("Somewhat happy").click();
+        cy.get('input[value="Next"]').click();
+        cy.get('.progress span').contains("Page 2 of 4");
+        cy.get('input[value="Previous"]').click();
+        cy.get('.progress span').contains("Page 1 of 4");
+    });
 
 })
