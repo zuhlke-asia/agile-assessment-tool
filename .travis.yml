@@ -10,6 +10,6 @@ deploy:
   verbose: true
   on: develop
   provider: azure_web_apps              # these environment variables are set on travis
-  username: azure_deployment_user
-  password: azure_deployment_password
-  site: azure_deployment_sitename
+  username: $azure_deployment_user
+  password: $azure_deployment_password
+  site: $azure_deployment_sitename
