@@ -9,8 +9,8 @@
     "start:server:dev": "nodemon ./src/server.js",
     "start:client:dev": "cd ./src/client && npm start",
     "build:dev": "npm i && cd ./src/client && npm i",
-    "build:prod": "npm run build-client && npm install",
-    "build-client": "cd ./src/client && npm install && npm run build && rimraf ../../build && mv build ../../build",
+    "build:prod": "npm run build-client:prod && npm install",
+    "build-client:prod": "cd ./src/client && npm install && npm run build && rimraf ../../build && mv build ../../build",
     "test": "cd ./src/client && npm test"
   },
   "repository": {
