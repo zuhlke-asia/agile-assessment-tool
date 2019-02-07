@@ -5,6 +5,7 @@ script:
 - "npm run build:prod"
 before_deploy:
   - mv .gitignore.prod .gitignore
+  - git add .
 deploy:
   verbose: true
   on: develop
