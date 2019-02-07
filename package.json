@@ -13,7 +13,7 @@
     "build-client": "cd ./src/client && npm install && npm run build && rimraf ../../build && mv build ../../build",
     "test": "cd ./src/client && npm test",
     "test:e2e": "cypress test"
-  },
+ },
   "repository": {
     "type": "git",
     "url": "git+https://enpayne@github.com/enpayne/agile-assessment-tool.git"

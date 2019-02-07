@@ -1,1 +1,2 @@
-.idea/
+# This file is used to overwrite the local .gitignore on travis
+# It is empty because we want travis to push all files to azure

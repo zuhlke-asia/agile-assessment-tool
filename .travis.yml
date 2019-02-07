@@ -4,12 +4,13 @@ node_js:
 - "10.3"
 
 script:
-- "npm run build:prod"
+- "npm run build-client:prod"
 - "npm test"
 
 before_deploy:
   - mv .gitignore.prod .gitignore
-  - git add .
+  - git add build
+  - git commit -m "created new build"
 
 deploy:
   verbose: true

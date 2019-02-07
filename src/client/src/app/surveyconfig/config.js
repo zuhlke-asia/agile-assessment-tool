@@ -35,7 +35,7 @@ export default {
                 {
                     type: QuestionType.RADIO,
                     category: 'agility',
-                    question: 'Are you happy with your current software development process?',
+                    question: 'How happy are you with your current software development process?',
                     choices: [
                         {
                             value: 5,
