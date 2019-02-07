@@ -9,7 +9,8 @@ script:
 
 before_deploy:
   - mv .gitignore.prod .gitignore
-  - git commit -a -m "add build files"
+  - git add .
+  - git commit -m "add build files"
 
 deploy:
   verbose: true
