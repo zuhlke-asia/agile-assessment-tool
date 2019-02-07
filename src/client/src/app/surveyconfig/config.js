@@ -31,6 +31,29 @@ export default {
                             text: 'All plan-driven'
                         },
                     ]
+                },
+                {
+                    type: QuestionType.RADIO,
+                    category: 'agility',
+                    question: 'Are you happy with your current software development process?',
+                    choices: [
+                        {
+                            value: 5,
+                            text: 'Very happy'
+                        },
+                        {
+                            value: 4,
+                            text: 'Somewhat happy'
+                        },
+                        {
+                            value: 3,
+                            text: 'Not so happy'
+                        },
+                        {
+                            value: 2,
+                            text: 'Very unhappy'
+                        },
+                    ]
                 }
             ]
         },

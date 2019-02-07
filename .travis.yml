@@ -1,11 +1,16 @@
 language: node_js
+
 node_js:
 - "10.3"
+
 script:
 - "npm run build:prod"
+- "npm test"
+
 before_deploy:
   - mv .gitignore.prod .gitignore
   - git add .
+
 deploy:
   verbose: true
   on: develop
