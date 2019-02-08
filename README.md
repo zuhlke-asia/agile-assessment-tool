@@ -26,4 +26,3 @@ For Docker, please refer to [Mac Install](https://docs.docker.com/docker-for-mac
 is merged to develop. 
 
 1. Go the [Zuhlke Agile Assessment Tool Website](https://agileassessment-prod.azurewebsites.net) to verify the change.
-
