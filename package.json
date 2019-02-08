@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/server.js",
-    "start:e2e": "NODE_ENV=test-e2e node ./src/server.js",
+    "start:e2e": "NODE_ENV=test node ./src/server.js",
     "start:dev": "npm run start:server:dev & npm run start:client:dev",
     "start:server:dev": "nodemon ./src/server.js",
     "start:client:dev": "cd ./src/client && npm start",
