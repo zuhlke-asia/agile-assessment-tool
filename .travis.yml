@@ -4,8 +4,8 @@ node_js:
 - "10.3"
 
 script:
-- "npm run build-client:prod"
 - "npm test"
+- "npm run build-client:prod"
 
 before_deploy:
   - mv .gitignore.prod .gitignore

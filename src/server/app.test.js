@@ -9,7 +9,7 @@ beforeAll(async () => {
    process.env.NODE_ENV = 'test';
 
    db = await connectToDb();
-   app = await _app(db);
+   app = await _app(db, 8080);
 });
 
 afterAll(() => closeDb());
