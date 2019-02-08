@@ -23,7 +23,7 @@ export default class App extends Component {
 
     async onComplete(result) {
         try{
-            axios.post("/api/userscores", result.data);
+            axios.post("/api/survey", result.data);
         }catch(err){
             console.error(err);
         }
