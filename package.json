@@ -12,8 +12,8 @@
     "build:dev": "npm i && cd ./src/client && npm i",
     "build:prod": "npm run build-client:prod && npm install",
     "build-client:prod": "cd ./src/client && npm install && npm run build && rimraf ../../build && mv build ../../build",
-    "test:client": "cd ./src/client && npm test",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "jest": "^24.1.0",
     "mongodb-memory-server": "^3.0.0",
     "nodemon": "^1.18.9",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "supertest": "^3.4.2"
   }
 }
