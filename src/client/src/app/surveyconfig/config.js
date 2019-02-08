@@ -1,106 +1,857 @@
 import * as QuestionType from './QuestionType';
 
-export default {
-
+const draftQuestions = {
     pages: [
         {
-            questions: [
+            questions:[
                 {
-                    type: QuestionType.RADIO,
-                    category: 'agility',
-                    question: 'Is your organisation currently practicing plan-driven or agile software development?',
-                    choices: [
+                    type:QuestionType.RADIO,
+                    category:'organisation',
+                    question: 'Is software being developed and delivered with plan-driven or agile frameworks at your organization?',
+                    choices:[
                         {
-                            value: 5,
-                            text: 'All Agile'
-                        },
-                        {
-                            value: 4,
-                            text: 'Mostly Agile'
-                        },
-                        {
-                            value: 3,
-                            text: 'Both Agile and plan-driven'
+                            value: 1,
+                            text:'Fully plan driven'
                         },
                         {
                             value: 2,
-                            text: 'Mostly plan-driven'
+                            text:'Mostly plan driven'
                         },
                         {
-                            value: 1,
-                            text: 'All plan-driven'
+                            value: 3,
+                            text:'Plan and agile driven'
                         },
+                        {
+                            value: 4,
+                            text:'Mostly agile'
+                        },
+                        {
+                            value: 5,
+                            text:'Fully agile'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
                     ]
                 },
                 {
-                    type: QuestionType.RADIO,
-                    category: 'agility',
-                    question: 'How happy are you with your current software development process?',
-                    choices: [
+                    type:QuestionType.RADIO,
+                    category:'organisation',
+                    question: 'How long have you been using agile software development delivery frameworks?',
+                    choices:[
                         {
-                            value: 5,
-                            text: 'Very happy'
-                        },
-                        {
-                            value: 4,
-                            text: 'Somewhat happy'
-                        },
-                        {
-                            value: 3,
-                            text: 'Not so happy'
+                            value: 1,
+                            text:'Just starting'
                         },
                         {
                             value: 2,
-                            text: 'Very unhappy'
+                            text:'1 to 3 years'
                         },
+                        {
+                            value: 3,
+                            text:'4 to 8 years'
+                        },
+                        {
+                            value: 4,
+                            text:'9 to 12 years '
+                        },
+                        {
+                            value: 5,
+                            text:'over 12 years'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
                     ]
                 }
             ]
         },
         {
-            questions: [
+            questions:[
                 {
-                    type: QuestionType.DROPDOWN,
-                    category: 'estimation',
-                    question: 'What units do you use for estimation?',
-                    choices: [
+                    type:QuestionType.RADIO,
+                    category:'organisation',
+                    question: 'How transparent are the processes, work progress, and planning across your organisation?',
+                    choices:[
                         {
-                            text: 'Story Points',
-                            value: 10,
+                            value: 1,
+                            text:'Not transparent'
                         },
                         {
-                            text: 'Working Hours',
-                            value: 1
+                            value: 2,
+                            text:'A little transparent'
                         },
                         {
-                            text: 'T-Shirt Sizes',
-                            value: 8
+                            value: 3,
+                            text:'Mostly transparent'
+                        },
+                        {
+                            value: 4,
+                            text:'Very transparent'
+                        },
+                        {
+                            value: 5,
+                            text:'Completely transparent'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
                         }
-                    ],
+                    ]
                 },
+                {
+                    type:QuestionType.RADIO,
+                    category:'organisation',
+                    question: 'In your opinion, how agile is the overall culture of your organisation?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Not agile',
+                        },
+                        {
+                            value: 2,
+                            text:'A little agile'
+                        },
+                        {
+                            value: 3,
+                            text:'Very agile'
+                        },
+                        {
+                            value: 4,
+                            text:'Mostly agile'
+                        },
+                        {
+                            value: 5,
+                            text:'Completely agile'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
             ]
         },
         {
-            questions: [
+            questions:[
                 {
-                    type: QuestionType.RATING,
-                    question: 'How confident are you that your current project will be successful?',
-                    description: '1 means not confident at all, 5 means very confident',
-                    category: 'mood',
+                    type:QuestionType.RADIO,
+                    category:'organisation',
+                    question: 'How often do you release software to production?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Every 6 months or less often'
+                        },
+                        {
+                            value: 2,
+                            text:'Quarterly'
+                        },
+                        {
+                            value: 3,
+                            text:'Every month or two'
+                        },
+                        {
+                            value: 4,
+                            text:'Weekly or every two weeks'
+                        },
+                        {
+                            value: 5,
+                            text:'Daily'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
                 },
+                {
+                    type:QuestionType.RADIO,
+                    category:'organisation',
+                    question: 'How often do you use agile at scale (e.g. SAFe, LESS) for your projects?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never',
+                        },
+                        {
+                            value: 2,
+                            text:'Rarely'
+                        },
+                        {
+                            value: 3,
+                            text:'Sometimes'
+                        },
+                        {
+                            value: 4,
+                            text:'Often'
+                        },
+                        {
+                            value: 5,
+                            text:'Always'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
             ]
         },
         {
-            questions: [
+            questions:[
                 {
-                    type: QuestionType.MULTIPLE_TEXT,
-                    question: 'Optionally, you can leave some contact data here.',
-                    description: 'We would love to work with you!',
-                    category: 'contact',
-                    items: [{name: 'Company Name'}, {name: 'Email'}]
+                    type:QuestionType.RADIO,
+                    category:'teams',
+                    question: 'Are your teams cross-functional?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'No'
+                        },
+                        {
+                            value: 2,
+                            text:'Some of them'
+                        },
+                        {
+                            value: 3,
+                            text:'Half of them'
+                        },
+                        {
+                            value: 4,
+                            text:'Most of them'
+                        },
+                        {
+                            value: 5,
+                            text:'All of them'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
                 },
+                {
+                    type:QuestionType.RADIO,
+                    category:'organisation',
+                    question: 'Are your teams self-organising and empowered to make decisions about how they work?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'No',
+                        },
+                        {
+                            value: 2,
+                            text:'Some of them'
+                        },
+                        {
+                            value: 3,
+                            text:'Half of them'
+                        },
+                        {
+                            value: 4,
+                            text:'Most of them'
+                        },
+                        {
+                            value: 5,
+                            text:'All of them'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
             ]
-        }
-
+        },
+        {
+            questions:[
+                {
+                    type:QuestionType.RADIO,
+                    category:'teams',
+                    question: 'Are your teams cross-functional?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'No'
+                        },
+                        {
+                            value: 2,
+                            text:'Some of them'
+                        },
+                        {
+                            value: 3,
+                            text:'Half of them'
+                        },
+                        {
+                            value: 4,
+                            text:'Most of them'
+                        },
+                        {
+                            value: 5,
+                            text:'All of them'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                },
+                {
+                    type:QuestionType.RADIO,
+                    category:'teams',
+                    question: 'Are your teams self-organising and empowered to make decisions about how they work?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'No',
+                        },
+                        {
+                            value: 2,
+                            text:'Some of them'
+                        },
+                        {
+                            value: 3,
+                            text:'Half of them'
+                        },
+                        {
+                            value: 4,
+                            text:'Most of them'
+                        },
+                        {
+                            value: 5,
+                            text:'All of them'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            questions:[
+                {
+                    type:QuestionType.RADIO,
+                    category:'teams',
+                    question: 'How often does the team get together to decide on process improvments?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never'
+                        },
+                        {
+                            value: 2,
+                            text:'Once or twice a year'
+                        },
+                        {
+                            value: 3,
+                            text:'Every few months'
+                        },
+                        {
+                            value: 4,
+                            text:'At least once a month'
+                        },
+                        {
+                            value: 5,
+                            text:'On a weekly or biweekly basis'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                },
+                {
+                    type:QuestionType.RADIO,
+                    category:'teams',
+                    question: 'How often do you use automated testing for your software development?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never',
+                        },
+                        {
+                            value: 2,
+                            text:'Rarely'
+                        },
+                        {
+                            value: 3,
+                            text:'Sometimes'
+                        },
+                        {
+                            value: 4,
+                            text:'Often'
+                        },
+                        {
+                            value: 5,
+                            text:'Always'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            questions:[
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'How often do you gather feedback from your end users?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never'
+                        },
+                        {
+                            value: 2,
+                            text:'Rarely'
+                        },
+                        {
+                            value: 3,
+                            text:'Often'
+                        },
+                        {
+                            value: 4,
+                            text:'After each release'
+                        },
+                        {
+                            value: 5,
+                            text:'During development and after release'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                },
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'How often do you demonstrate your software to any stakeholders outside the team?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never',
+                        },
+                        {
+                            value: 2,
+                            text:'Once or twice a year'
+                        },
+                        {
+                            value: 3,
+                            text:'Every few months'
+                        },
+                        {
+                            value: 4,
+                            text:'Once a month, but not more often'
+                        },
+                        {
+                            value: 5,
+                            text:'Multiple times per months.'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            questions:[
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'How often do you gather feedback from your end users?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never'
+                        },
+                        {
+                            value: 2,
+                            text:'Rarely'
+                        },
+                        {
+                            value: 3,
+                            text:'Often'
+                        },
+                        {
+                            value: 4,
+                            text:'After each release'
+                        },
+                        {
+                            value: 5,
+                            text:'During development and after release'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                },
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'How often do you demonstrate your software to any stakeholders outside the team?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never',
+                        },
+                        {
+                            value: 2,
+                            text:'Once or twice a year'
+                        },
+                        {
+                            value: 3,
+                            text:'Every few months'
+                        },
+                        {
+                            value: 4,
+                            text:'Once a month, but not more often'
+                        },
+                        {
+                            value: 5,
+                            text:'Multiple times per months.'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            questions:[
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'How often do you work from a Single Backlog per product?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never'
+                        },
+                        {
+                            value: 2,
+                            text:'Rarely'
+                        },
+                        {
+                            value: 3,
+                            text:'Sometimes'
+                        },
+                        {
+                            value: 4,
+                            text:'Often'
+                        },
+                        {
+                            value: 5,
+                            text:'Always'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                },
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'Do your teams work with a dedicated Product Owner?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never'
+                        },
+                        {
+                            value: 2,
+                            text:'Rarely'
+                        },
+                        {
+                            value: 3,
+                            text:'Sometimes'
+                        },
+                        {
+                            value: 4,
+                            text:'Often'
+                        },
+                        {
+                            value: 5,
+                            text:'Always'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                },
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'Does the team understand the product vision and the value it brings to the user?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never'
+                        },
+                        {
+                            value: 2,
+                            text:'Rarely'
+                        },
+                        {
+                            value: 3,
+                            text:'Sometimes'
+                        },
+                        {
+                            value: 4,
+                            text:'Often'
+                        },
+                        {
+                            value: 5,
+                            text:'Always'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            questions:[
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'Does the Scrum Master / Agile Coach, live by and teach the Agile Values and Principles to the team?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never'
+                        },
+                        {
+                            value: 2,
+                            text:'Rarely'
+                        },
+                        {
+                            value: 3,
+                            text:'Sometimes'
+                        },
+                        {
+                            value: 4,
+                            text:'Often'
+                        },
+                        {
+                            value: 5,
+                            text:'Always'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                },
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'Do you work on your projects or product development in an iterative way?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Never'
+                        },
+                        {
+                            value: 2,
+                            text:'Rarely'
+                        },
+                        {
+                            value: 3,
+                            text:'Sometimes'
+                        },
+                        {
+                            value: 4,
+                            text:'Often'
+                        },
+                        {
+                            value: 5,
+                            text:'Always'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            questions:[
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'How long does it take to get a specified feature in production?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Over one year'
+                        },
+                        {
+                            value: 2,
+                            text:'Between 6 months and a year'
+                        },
+                        {
+                            value: 3,
+                            text:'Between one and 6 months'
+                        },
+                        {
+                            value: 4,
+                            text:'Between two weeks and one month'
+                        },
+                        {
+                            value: 5,
+                            text:'Two weeks or below'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                },
+                {
+                    type:QuestionType.RADIO,
+                    category:'project/product',
+                    question: 'How often do you have a fully integrated, deployable version of your software?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Once or twice a year'
+                        },
+                        {
+                            value: 2,
+                            text:'Every few months'
+                        },
+                        {
+                            value: 3,
+                            text:'At least once every few weeks, but not every day'
+                        },
+                        {
+                            value: 4,
+                            text:'Daily'
+                        },
+                        {
+                            value: 5,
+                            text:'With every Check In / Pull Request'
+                        },
+                        {
+                            value: -1,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: 0,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
+            ]
+        },
     ]
-};
+}
+
+export default draftQuestions;
