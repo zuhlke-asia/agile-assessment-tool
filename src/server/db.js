@@ -1,11 +1,16 @@
-const dbConfig = require('./dbConfig');
 const {MongoClient} = require('mongodb');
+const MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
 
 let client;
 
 async function connectToDb() {
     try {
-        const { uri, dbName } = await dbConfig.getConfig();
+        const isTestEnv = process.env.NODE_ENV === 'test';
+
+        const { uri, dbName } = isTestEnv ?
+            await getInMemoryDbConfig() :
+            await getDefaultDbConfig();
+
         client = await MongoClient.connect(uri, {useNewUrlParser: true});
         return client.db(dbName);
     } catch (ex) {
@@ -14,11 +19,24 @@ async function connectToDb() {
 }
 
 function closeDb() {
-    if (!client) {
-        return;
+    if (client) {
+        client.close();
     }
+}
 
-    client.close();
+async function getInMemoryDbConfig() {
+    const mongod = new MongoMemoryServer();
+
+    const uri = await mongod.getConnectionString();
+    const dbName = await mongod.getDbName();
+
+    return {uri, dbName};
+}
+
+async function getDefaultDbConfig() {
+    const uri = process.env.DB_URI || 'mongodb://root:example@mongo:27017';
+    const dbName = process.env.DB_NAME || 'agileassessment';
+    return {uri, dbName};
 }
 
 module.exports = {

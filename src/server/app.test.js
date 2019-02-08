@@ -2,22 +2,21 @@ const request = require('supertest');
 const _app = require('./app');
 const {connectToDb, closeDb } = require('./db');
 
-let app;
 let db;
+let server;
 
-beforeAll(async () => {
+beforeAll(async done => {
    process.env.NODE_ENV = 'test';
 
    db = await connectToDb();
-   app = await _app(db);
+   const app = await _app(db);
+
+   server = app.listen(done);
 });
-
-afterAll(() => closeDb());
-
 
 describe('The root path', () => {
     test('It should response the GET method', async () => {
-        const response = await request(app).get('/');
+        const response = await request(server).get('/');
         expect(response.statusCode).toBe(200);
     });
 });
@@ -28,7 +27,7 @@ describe('The /api/survey path', () => {
             someQuestion: 'someAnswer'
         };
 
-        const response = await request(app)
+        const response = await request(server)
             .post('/api/survey')
             .send(payload)
             .set('Accept', 'application/json');
@@ -38,4 +37,9 @@ describe('The /api/survey path', () => {
         expect(response.statusCode).toBe(200);
         expect(document.someQuestion).toBe(payload.someQuestion);
     });
+});
+
+afterAll(() => {
+    server.close();
+    closeDb();
 });
