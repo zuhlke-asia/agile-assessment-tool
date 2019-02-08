@@ -19,7 +19,7 @@ async function app(dbClient) {
 async function onPostSurveyResult(db, req, res) {
     try {
         await db.collection("userscores").insertOne(req.body);
-        res.send(200);
+        res.sendStatus(200);
     } catch (err) {
         res.status(500).send(err);
     }
