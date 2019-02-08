@@ -11,9 +11,9 @@ _app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/../../build/index.html'));
 });
 
-async function app(dbClient, port) {
+async function app(dbClient) {
     _app.post("/api/survey", (req, res) => onPostSurveyResult(dbClient, req, res));
-    return _app.listen(port);
+    return _app;
 }
 
 async function onPostSurveyResult(db, req, res) {
