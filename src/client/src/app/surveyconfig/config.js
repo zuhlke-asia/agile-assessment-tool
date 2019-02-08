@@ -30,11 +30,11 @@ const draftQuestions = {
                             text:'Fully agile'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -65,11 +65,11 @@ const draftQuestions = {
                             text:'over 12 years'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -104,11 +104,11 @@ const draftQuestions = {
                             text:'Completely transparent'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -139,11 +139,11 @@ const draftQuestions = {
                             text:'Completely agile'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -178,11 +178,11 @@ const draftQuestions = {
                             text:'Daily'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -213,11 +213,11 @@ const draftQuestions = {
                             text:'Always'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -252,11 +252,11 @@ const draftQuestions = {
                             text:'All of them'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -287,11 +287,11 @@ const draftQuestions = {
                             text:'All of them'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -326,11 +326,11 @@ const draftQuestions = {
                             text:'All of them'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -361,11 +361,11 @@ const draftQuestions = {
                             text:'All of them'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -400,11 +400,11 @@ const draftQuestions = {
                             text:'On a weekly or biweekly basis'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -435,11 +435,11 @@ const draftQuestions = {
                             text:'Always'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -474,11 +474,11 @@ const draftQuestions = {
                             text:'During development and after release'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -509,11 +509,11 @@ const draftQuestions = {
                             text:'Multiple times per months.'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -548,11 +548,11 @@ const draftQuestions = {
                             text:'During development and after release'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -583,11 +583,11 @@ const draftQuestions = {
                             text:'Multiple times per months.'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -622,11 +622,11 @@ const draftQuestions = {
                             text:'Always'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -657,11 +657,11 @@ const draftQuestions = {
                             text:'Always'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -692,11 +692,11 @@ const draftQuestions = {
                             text:'Always'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -731,11 +731,11 @@ const draftQuestions = {
                             text:'Always'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -766,11 +766,11 @@ const draftQuestions = {
                             text:'Always'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -805,11 +805,11 @@ const draftQuestions = {
                             text:'Two weeks or below'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
@@ -840,11 +840,11 @@ const draftQuestions = {
                             text:'With every Check In / Pull Request'
                         },
                         {
-                            value: -1,
+                            value: -2,
                             text:'Does not apply'
                         },
                         {
-                            value: 0,
+                            value: -1,
                             text:'I don’t know'
                         }
                     ]
