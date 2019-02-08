@@ -23,6 +23,7 @@ function generateQuestionConfig(question) {
     const questionConfig = {
         type: question.type,
         name: `${question.category}__${question.question}`,
+        isRequired: question.isRequrired,
         title: question.question,
     };
 
