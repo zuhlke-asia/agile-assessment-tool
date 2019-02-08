@@ -727,7 +727,7 @@ const draftQuestions = {
                     type:QuestionType.RADIO,
                     category:'aditional',
                     isRequrired: true,
-                    question: 'How much are you satisfied with you software development and delivery framework ?',
+                    question: 'How much are you satisfied with your software development and delivery framework ?',
                     choices:[
                         {
                             value: 1,
