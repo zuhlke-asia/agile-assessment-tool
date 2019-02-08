@@ -311,83 +311,7 @@ const draftQuestions = {
                     type:QuestionType.RADIO,
                     category:'teams',
                     isRequrired: true,
-                    question: 'Are your teams cross-functional?',
-                    choices:[
-                        {
-                            value: 1,
-                            text:'No'
-                        },
-                        {
-                            value: 2,
-                            text:'Some of them'
-                        },
-                        {
-                            value: 3,
-                            text:'Half of them'
-                        },
-                        {
-                            value: 4,
-                            text:'Most of them'
-                        },
-                        {
-                            value: 5,
-                            text:'All of them'
-                        },
-                        {
-                            value: -2,
-                            text:'Does not apply'
-                        },
-                        {
-                            value: -1,
-                            text:'I don’t know'
-                        }
-                    ]
-                },
-                {
-                    type:QuestionType.RADIO,
-                    category:'teams',
-                    isRequrired: true,
-                    question: 'Are your teams self-organising and empowered to make decisions about how they work?',
-                    choices:[
-                        {
-                            value: 1,
-                            text:'No',
-                        },
-                        {
-                            value: 2,
-                            text:'Some of them'
-                        },
-                        {
-                            value: 3,
-                            text:'Half of them'
-                        },
-                        {
-                            value: 4,
-                            text:'Most of them'
-                        },
-                        {
-                            value: 5,
-                            text:'All of them'
-                        },
-                        {
-                            value: -2,
-                            text:'Does not apply'
-                        },
-                        {
-                            value: -1,
-                            text:'I don’t know'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            questions:[
-                {
-                    type:QuestionType.RADIO,
-                    category:'teams',
-                    isRequrired: true,
-                    question: 'How often does the team get together to decide on process improvments?',
+                    question: 'How often does the team get together to decide on process improvements?',
                     choices:[
                         {
                             value: 1,
@@ -444,82 +368,6 @@ const draftQuestions = {
                         {
                             value: 5,
                             text:'Always'
-                        },
-                        {
-                            value: -2,
-                            text:'Does not apply'
-                        },
-                        {
-                            value: -1,
-                            text:'I don’t know'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            questions:[
-                {
-                    type:QuestionType.RADIO,
-                    category:'project/product',
-                    isRequrired: true,
-                    question: 'How often do you gather feedback from your end users?',
-                    choices:[
-                        {
-                            value: 1,
-                            text:'Never'
-                        },
-                        {
-                            value: 2,
-                            text:'Rarely'
-                        },
-                        {
-                            value: 3,
-                            text:'Often'
-                        },
-                        {
-                            value: 4,
-                            text:'After each release'
-                        },
-                        {
-                            value: 5,
-                            text:'During development and after release'
-                        },
-                        {
-                            value: -2,
-                            text:'Does not apply'
-                        },
-                        {
-                            value: -1,
-                            text:'I don’t know'
-                        }
-                    ]
-                },
-                {
-                    type:QuestionType.RADIO,
-                    category:'project/product',
-                    isRequrired: true,
-                    question: 'How often do you demonstrate your software to any stakeholders outside the team?',
-                    choices:[
-                        {
-                            value: 1,
-                            text:'Never',
-                        },
-                        {
-                            value: 2,
-                            text:'Once or twice a year'
-                        },
-                        {
-                            value: 3,
-                            text:'Every few months'
-                        },
-                        {
-                            value: 4,
-                            text:'Once a month, but not more often'
-                        },
-                        {
-                            value: 5,
-                            text:'Multiple times per months.'
                         },
                         {
                             value: -2,
@@ -860,6 +708,46 @@ const draftQuestions = {
                         {
                             value: 5,
                             text:'With every Check In / Pull Request'
+                        },
+                        {
+                            value: -2,
+                            text:'Does not apply'
+                        },
+                        {
+                            value: -1,
+                            text:'I don’t know'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            questions:[
+                {
+                    type:QuestionType.RADIO,
+                    category:'aditional',
+                    isRequrired: true,
+                    question: 'How much are you satisfied with you software development and delivery framework ?',
+                    choices:[
+                        {
+                            value: 1,
+                            text:'Unsatisfied'
+                        },
+                        {
+                            value: 2,
+                            text:'Fairly satisfied'
+                        },
+                        {
+                            value: 3,
+                            text:'Satisfied'
+                        },
+                        {
+                            value: 4,
+                            text:'Very satisfied'
+                        },
+                        {
+                            value: 5,
+                            text:'Fully Satisfied'
                         },
                         {
                             value: -2,
