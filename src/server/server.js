@@ -1,15 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-
-const config = require('./server/config');
-const {MongoClient} = require('mongodb');
-
-const dbUri = config.db.uri;
-const dbName = config.db.dbName;
-const port = config.port;
 const bodyParser = require('body-parser');
-
+const dbConfig = require('./dbConfig');
+const {MongoClient} = require('mongodb');
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
@@ -21,6 +15,10 @@ app.get('/', function (req, res) {
 
 (async () => {
     const db = await connectToDb();
+
+    const port = process.env.PORT || 8080;
+
+    app.listen(port, () => console.log(`listening on port ${port}`));
 
     app.post("/api/userscores", (req, res) => onPostSurveyResult(db, req, res));
 })();
@@ -34,12 +32,10 @@ async function onPostSurveyResult(db, req, res) {
     }
 }
 
-
 async function connectToDb() {
     try {
-        const client = await MongoClient.connect(dbUri, {useNewUrlParser: true});
-        console.log("Connected successfully to server");
-        app.listen(port, () => console.log(`listening on port ${port}`));
+        const { uri, dbName } = await dbConfig.getConfig();
+        const client = await MongoClient.connect(uri, {useNewUrlParser: true});
         return client.db(dbName);
     } catch (ex) {
         console.error(ex);
