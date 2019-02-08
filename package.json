@@ -12,7 +12,7 @@
     "build:dev": "npm i && cd ./src/client && npm i",
     "build:prod": "npm run build-client:prod && npm install",
     "build-client:prod": "cd ./src/client && npm install && npm run build && rimraf ../../build && mv build ../../build",
-    "test": "jest --detectOpenHandles",
+    "test": "jest",
     "test:watch": "jest --watchAll"
   },
   "repository": {

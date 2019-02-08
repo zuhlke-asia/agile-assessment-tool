@@ -18,9 +18,9 @@ async function connectToDb() {
     }
 }
 
-function closeDb() {
+function closeDb(cb) {
     if (client) {
-        client.close();
+        client.close(cb);
     }
 }
 
