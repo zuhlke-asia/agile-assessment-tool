@@ -1,16 +1,29 @@
 const dbConfig = require('./dbConfig');
 const {MongoClient} = require('mongodb');
 
+let client;
+
 async function connectToDb() {
     try {
         const { uri, dbName } = await dbConfig.getConfig();
-        const client = await MongoClient.connect(uri, {useNewUrlParser: true});
+        client = await MongoClient.connect(uri, {useNewUrlParser: true});
         return client.db(dbName);
     } catch (ex) {
         console.error(ex);
     }
 }
 
-module.exports = connectToDb;
+function closeDb() {
+    if (!client) {
+        return;
+    }
+
+    client.close();
+}
+
+module.exports = {
+    connectToDb,
+    closeDb
+};
 
 

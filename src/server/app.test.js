@@ -1,6 +1,6 @@
 const request = require('supertest');
 const _app = require('./app');
-const connectToDb = require('./db');
+const {connectToDb, closeDb } = require('./db');
 
 let app;
 let db;
@@ -11,6 +11,9 @@ beforeAll(async () => {
    db = await connectToDb();
    app = await _app(db);
 });
+
+afterAll(() => closeDb());
+
 
 describe('The root path', () => {
     test('It should response the GET method', async () => {
