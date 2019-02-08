@@ -39,7 +39,7 @@ describe('The /api/survey path', () => {
     });
 });
 
-afterAll(() => {
-    server.close();
+afterAll(done => {
+    server.close(done);
     closeDb();
 });
