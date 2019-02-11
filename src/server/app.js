@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 _app.use(bodyParser.json()); // support json encoded bodies
 _app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
-_app.use('/static', express.static(path.join(__dirname, '../build/static')));
+_app.use('/static', express.static(path.join(__dirname, '../../build/static')));
 
 _app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/../../build/index.html'));
