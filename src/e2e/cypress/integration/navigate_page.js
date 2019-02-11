@@ -1,44 +1,65 @@
+import WelcomePage from '../elements/WelcomePage';
+import Network from '../elements/CypressHttpRequest';
+
 describe("Navigate", function () {
 
-    beforeEach(function(){
-        cy.visit("/");
-        cy.server();
-        cy.route('POST', '/api/survey').as('submitForm')
+    let network;
+    const POST_SURVEY_ALIAS = "postSurvey";
+
+    before(function () {
+        network = new Network();
+        network.startServer();
+        network.registerRouteServices(POST_SURVEY_ALIAS);
     });
 
-    it("should Navigate all the pages without an error ", function () {
 
-        cy.contains('start').click();
-        cy.get('.progress span').contains("Page 1 of 4")
-        cy.contains("Mostly Agile").click();
-        cy.contains("Somewhat happy").click();
-        cy.get('input[value="Next"]').click();
-        cy.get('.progress span').contains("Page 2 of 4");
-        cy.get('select').select('Story Points');
-        cy.get('input[value="Next"]').click();
-        cy.get('.progress span').contains("Page 3 of 4");
-        cy.contains("5").click();
-        cy.get('input[value="Next"]').click();
-        cy.get('.progress span').contains("Page 4 of 4");
-        cy.get('input[aria-label="Company Name').type("Zuhlke");
-        cy.get('input[aria-label="Email').type("example@zuhlke.com");
-        cy.get('input[value="Complete"]').click();
+    it("should fill out the surveys and submit without an error", () => {
 
-        cy.wait('@submitForm').then(xhr => {
+        const welcome = new WelcomePage();
+        welcome.visit();
+
+        const survey = welcome.startSurvey();
+
+        while (!survey.isLastPage()) {
+            survey.getProgressBar()
+                .should('exist')
+                .contains(`Page ${survey.getCurrentPageNumber()} of 4`);
+            survey.fillAllAnswers();
+            survey.goToNextPage();
+        }
+
+        //this is the last page
+        survey.fillAllAnswers();
+        survey.submitSurvey();
+
+
+        network.waitForResponse(POST_SURVEY_ALIAS).then(xhr => {
             const status = xhr.xhr.status;
             expect(status).to.equal(200);
         });
+
+
     });
 
-    it("should navigate backwards if previous is clicked.", function(){
-        cy.contains('start').click();
-        cy.get('.progress span').contains("Page 1 of 4")
-        cy.contains("Mostly Agile").click();
-        cy.contains("Somewhat happy").click();
-        cy.get('input[value="Next"]').click();
-        cy.get('.progress span').contains("Page 2 of 4");
-        cy.get('input[value="Previous"]').click();
-        cy.get('.progress span').contains("Page 1 of 4");
+    it("should navigate backwards if previous is clicked.", function () {
+        const welcome = new WelcomePage();
+        welcome.visit();
+
+        const survey = welcome.startSurvey();
+
+        survey.getProgressBar()
+            .should('exist')
+            .contains(`Page 1 of 4`);
+        survey.fillAllAnswers();
+        survey.goToNextPage();
+        survey.getProgressBar()
+            .should('exist')
+            .contains(`Page 2 of 4`);
+
+        survey.goToPreviousPage();
+        survey.getProgressBar()
+            .should('exist')
+            .contains(`Page 1 of 4`);
     });
 
 })
