@@ -1,17 +1,14 @@
 describe("Navigate", function () {
 
-    before(function(){
-
-    });
-
     beforeEach(function(){
-        cy.visit("http://localhost:8080");
+        cy.visit("/");
         cy.server();
-        cy.route('POST', '/api/userscores').as('submitForm')
+        cy.route('POST', '/api/survey').as('submitForm')
     });
 
     it("should Navigate all the pages without an error ", function () {
 
+        cy.contains('start').click();
         cy.get('.progress span').contains("Page 1 of 4")
         cy.contains("Mostly Agile").click();
         cy.contains("Somewhat happy").click();
@@ -34,6 +31,7 @@ describe("Navigate", function () {
     });
 
     it("should navigate backwards if previous is clicked.", function(){
+        cy.contains('start').click();
         cy.get('.progress span').contains("Page 1 of 4")
         cy.contains("Mostly Agile").click();
         cy.contains("Somewhat happy").click();

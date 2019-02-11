@@ -34,7 +34,7 @@ export default class App extends Component {
             const res = await axios.post("/api/survey", result.data);
             this.setState(prevState => ({
                 ...prevState,
-                response: JSON.stringify(res),
+                response: JSON.stringify(res.data),
                 isSubmitted: true
             }))
         } catch (err) {
