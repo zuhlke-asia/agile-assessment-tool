@@ -1,6 +1,7 @@
 const request = require('supertest');
 const _app = require('./app');
-const { connectToDb, closeDb } = require('./db');
+const {connectToDb, closeDb} = require('./db');
+const fs = require('fs');
 
 let db;
 let server;
@@ -40,6 +41,21 @@ describe('The /api/survey path', () => {
                 });
             });
     });
+});
+
+describe("The /api/surveyconfig path", () => {
+    test('It should return the test config file if env is set to test', done => {
+
+        const expectedResponse = JSON.parse(fs.readFileSync(__dirname + '/surveys/survey.test.json', 'utf8'));
+
+        request(server).get('/api/surveyconfig')
+            .expect(200)
+            .expect(response => {
+                expect(response.body).toEqual(expectedResponse);
+            })
+            .end(done);
+    });
+
 });
 
 afterAll(done => {
