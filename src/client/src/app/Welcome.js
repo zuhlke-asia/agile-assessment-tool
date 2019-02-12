@@ -1,8 +1,14 @@
 import React from 'react';
 
 export default props => {
-    return (<>
-        <h1>Welcome</h1>
-        <button onClick={props.onStart}>start</button>
-    </>)
+    return (
+        <div id="pagecontent">
+            <div
+                className="github-content mobile-padding row zue-teaser-medium-boxes zue-boxes-container ng-scope">
+
+                <h4>Welcome</h4>
+                <button onClick={props.onStart}>Start</button>
+            </div>
+        </div>
+    )
 }

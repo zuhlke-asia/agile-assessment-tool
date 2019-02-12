@@ -7,7 +7,7 @@ class WelcomePage{
     }
 
     startSurvey(){
-        const start = cy.contains('start');
+        const start = cy.contains('Start');
         start.click();
 
         return new Survey();

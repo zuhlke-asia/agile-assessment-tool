@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-
-import config from './surveyconfig/config';
 import {generateSurveyConfig} from './surveyconfig/configGenerator';
 
 import Header from './Header';
@@ -11,56 +9,74 @@ import EvaluationPage from './Evaluation';
 import AgileAssessment from './AgileAssessment';
 import axios from 'axios';
 
+const PageState = {
+    WELCOME: 'WELCOME',
+    SURVEY: 'SURVEY',
+    EVALUATION: 'EVALUATION',
+};
+
 export default class App extends Component {
 
     state = {
-        isWelcoming: true,
-        isSubmitted: false,
+        pageState: PageState.WELCOME,
         response: undefined,
+        surveyConfig: undefined,
+    };
+
+    onValueChanged() {
+
     }
 
-    constructor(props) {
-        super(props);
+    async componentDidMount() {
+        try {
+            if (!this.surveyConfig) {
+                const response = await axios.get("/api/surveyconfig");
+                const surveyConfig = generateSurveyConfig(response.data);
+                this.setState(prevState => ({
+                    ...prevState,
+                    surveyConfig: surveyConfig
+                }));
+            }
+        } catch (err) {
+            console.error(err);
+        }
 
-        this.surveyConfig = generateSurveyConfig(config);
     }
 
-    onValueChanged(result) {
-        console.log('value changed!');
-    }
-
-     onComplete = async(result) => {
+    onComplete = async (result) => {
         try {
             const res = await axios.post("/api/survey", result.data);
             this.setState(prevState => ({
                 ...prevState,
                 response: JSON.stringify(res.data),
-                isSubmitted: true
+                pageState: PageState.EVALUATION
             }))
         } catch (err) {
             console.error(err);
         }
-    }
+    };
 
     onStart = () => {
         this.setState(prevState => ({
-           ...prevState,
-           isWelcoming: false
+            ...prevState,
+            pageState: PageState.SURVEY
         }))
-    }
+    };
 
-    getContent(){
-        if(this.state.isWelcoming){
-            return <WelcomePage onStart={this.onStart}/>
-        }else if(this.state.isSubmitted){
-            return <EvaluationPage content={this.state.response}/>;
-        }else {
-            return (<AgileAssessment
-                config={this.surveyConfig}
-                onComplete={this.onComplete}
-                onValueChange={this.onValueChanged}
-            />);
+    getContent() {
+        switch (this.state.pageState) {
+            case PageState.WELCOME:
+                return <WelcomePage onStart={this.onStart}/>;
+            case PageState.EVALUATION:
+                return <EvaluationPage content={this.state.response}/>;
+            default:
+                return <AgileAssessment
+                    config={this.state.surveyConfig}
+                    onComplete={this.onComplete}
+                    onValueChange={this.onValueChanged}
+                />;
         }
+
     }
 
     render() {
