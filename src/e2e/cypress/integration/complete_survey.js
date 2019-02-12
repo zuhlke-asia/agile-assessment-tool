@@ -39,7 +39,7 @@ describe("Complete Survey", function () {
         survey.enterTextBox('Email', 'example@zuhlke.com')
         survey.submit();
 
-        survey.shouldShowOk();
+        survey.shouldShowResultPage();
     });
 
     it("should navigate backwards if previous is clicked.", function () {

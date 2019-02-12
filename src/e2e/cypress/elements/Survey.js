@@ -31,8 +31,8 @@ class Survey {
         cy.get(`input[aria-label="${questionName}"`).type(answerText);
     }
 
-    shouldShowOk() {
-        cy.contains('OK');
+    shouldShowResultPage() {
+        cy.contains("Thanks!")
     }
 }
 
