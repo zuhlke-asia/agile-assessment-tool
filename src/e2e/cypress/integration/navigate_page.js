@@ -20,23 +20,30 @@ describe("Navigate", function () {
 
         const survey = welcome.startSurvey();
 
-        while (!survey.isLastPage()) {
-            survey.getProgressBar()
-                .should('exist')
-                .contains(`Page ${survey.getCurrentPageNumber()} of 4`);
-            survey.fillAllAnswers();
-            survey.goToNextPage();
-        }
-
-        //this is the last page
-        survey.fillAllAnswers();
-        survey.submitSurvey();
+        survey.shouldBeOnPage(1);
+        survey.chooseAnswer('Mostly Agile');
+        survey.chooseAnswer('Somewhat happy');
+        survey.nextPage();
 
 
-        network.waitForResponse(POST_SURVEY_ALIAS).then(xhr => {
-            const status = xhr.xhr.status;
-            expect(status).to.equal(200);
-        });
+        survey.shouldBeOnPage(2);
+        survey.selectAnswerFromDropdown('Story Points');
+        survey.nextPage();
+
+        survey.shouldBeOnPage(3);
+        survey.chooseAnswer('5');
+        survey.nextPage();
+
+        survey.shouldBeOnPage(4);
+        survey.enterTextBox('Company Name', 'Zuhlke');
+        survey.enterTextBox('Email', 'example@zuhlke.com')
+        survey.submit();
+
+        survey.shouldShowOk();
+        // network.waitForResponse(POST_SURVEY_ALIAS).then(xhr => {
+        //     const status = xhr.xhr.status;
+        //     expect(status).to.equal(200);
+        // });
 
 
     });
@@ -47,19 +54,13 @@ describe("Navigate", function () {
 
         const survey = welcome.startSurvey();
 
-        survey.getProgressBar()
-            .should('exist')
-            .contains(`Page 1 of 4`);
-        survey.fillAllAnswers();
-        survey.goToNextPage();
-        survey.getProgressBar()
-            .should('exist')
-            .contains(`Page 2 of 4`);
-
-        survey.goToPreviousPage();
-        survey.getProgressBar()
-            .should('exist')
-            .contains(`Page 1 of 4`);
+        survey.shouldBeOnPage(1)
+        survey.chooseAnswer('Mostly Agile');
+        survey.chooseAnswer('Somewhat happy');
+        survey.nextPage();
+        survey.shouldBeOnPage(2);
+        survey.previousPage();
+        survey.shouldBeOnPage(1);
     });
 
 })

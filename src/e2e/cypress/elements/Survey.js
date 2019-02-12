@@ -1,40 +1,37 @@
-import PageAnwsers from './PageAnswers';
-
 class Survey {
 
-    constructor(numberOfPages) {
-        this.numberOfpages = numberOfPages;
-        this.currentPageNumber = 1;
-    }
-
-    fillAllAnswers() {
-        PageAnwsers[this.currentPageNumber].fillAnswers();
-    }
-
-    goToNextPage() {
+    nextPage() {
         cy.get('input[value="Next"]').click();
-        this.currentPageNumber++;
     }
 
-    goToPreviousPage(){
+    previousPage(){
         cy.get('input[value="Previous').click();
-        this.currentPageNumber--;
     }
 
-    getProgressBar() {
-        return cy.get('.progress span');
-    }
 
-    getCurrentPageNumber() {
-        return this.currentPageNumber;
-    }
-
-    isLastPage() {
-        return this.currentPageNumber === this.numberOfpages;
-    }
-
-    submitSurvey() {
+    submit() {
         cy.get('input[value="Complete"]').click();
+    }
+
+    shouldBeOnPage(pageNumber) {
+        cy.get('.progress span').should('exist')
+            .contains(`Page ${pageNumber} of 4`);
+    }
+
+    chooseAnswer(answerText) {
+        cy.contains(answerText).click()
+    }
+
+    selectAnswerFromDropdown(answerText) {
+        cy.get('select').select(answerText);
+    }
+
+    enterTextBox(questionName, answerText) {
+        cy.get(`input[aria-label="${questionName}"`).type(answerText);
+    }
+
+    shouldShowOk() {
+        cy.contains('OK');
     }
 }
 
