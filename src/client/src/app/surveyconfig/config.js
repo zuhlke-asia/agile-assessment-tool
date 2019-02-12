@@ -7,7 +7,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'organisation',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'Is software being developed and delivered with plan-driven or agile frameworks at your organization?',
                     choices:[
                         {
@@ -43,7 +43,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'organisation',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How long have you been using agile software development delivery frameworks?',
                     choices:[
                         {
@@ -83,7 +83,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'organisation',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How transparent are the processes, work progress, and planning across your organisation?',
                     choices:[
                         {
@@ -158,7 +158,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'organisation',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How often do you release software to production?',
                     choices:[
                         {
@@ -194,7 +194,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'organisation',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How often do you use agile at scale (e.g. SAFe, LESS) for your projects?',
                     choices:[
                         {
@@ -234,7 +234,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'teams',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'Are your teams cross-functional?',
                     choices:[
                         {
@@ -270,7 +270,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'organisation',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'Are your teams self-organising and empowered to make decisions about how they work?',
                     choices:[
                         {
@@ -310,7 +310,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'teams',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How often does the team get together to decide on process improvements?',
                     choices:[
                         {
@@ -346,7 +346,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'teams',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How often do you use automated testing for your software development?',
                     choices:[
                         {
@@ -386,7 +386,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'project/product',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How often do you gather feedback from your end users?',
                     choices:[
                         {
@@ -422,7 +422,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'project/product',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How often do you demonstrate your software to any stakeholders outside the team?',
                     choices:[
                         {
@@ -462,7 +462,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'project/product',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How often do you work from a Single Backlog per product?',
                     choices:[
                         {
@@ -498,7 +498,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'project/product',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'Do your teams work with a dedicated Product Owner?',
                     choices:[
                         {
@@ -534,7 +534,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'project/product',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'Does the team understand the product vision and the value it brings to the user?',
                     choices:[
                         {
@@ -574,7 +574,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'project/product',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'Does the Scrum Master / Agile Coach, live by and teach the Agile Values and Principles to the team?',
                     choices:[
                         {
@@ -610,7 +610,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'project/product',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'Do you work on your projects or product development in an iterative way?',
                     choices:[
                         {
@@ -650,7 +650,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'project/product',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How long does it take to get a specified feature in production?',
                     choices:[
                         {
@@ -686,7 +686,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'project/product',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How often do you have a fully integrated, deployable version of your software?',
                     choices:[
                         {
@@ -726,7 +726,7 @@ const draftQuestions = {
                 {
                     type:QuestionType.RADIO,
                     category:'additional',
-                    isRequrired: true,
+                    isRequired: true,
                     question: 'How much are you satisfied with your software development and delivery framework ?',
                     choices:[
                         {
