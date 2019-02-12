@@ -27,7 +27,10 @@ async function app(dbClient) {
 
 async function onPostSurveyResult(db, req, res) {
     try {
+        console.log('saving survey to the database...');
+        console.log(JSON.stringify(req.body));
         await db.collection("userscores").insertOne(req.body);
+        console.log('successfully saved');
         res.sendStatus(200);
     } catch (err) {
         console.error(err);
