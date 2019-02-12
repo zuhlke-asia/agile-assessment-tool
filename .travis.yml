@@ -15,9 +15,7 @@ install:
 script:
   - npm run build-client:prod
   - npm test
-  - npm run start:ci
-  - npm run test:e2e
-
+  - npm run start:ci & npm run test:e2e
 
 before_deploy:
   - mv .gitignore.prod .gitignore
