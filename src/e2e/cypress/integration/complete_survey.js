@@ -1,7 +1,7 @@
 import WelcomePage from '../elements/WelcomePage';
 import Network from '../elements/CypressHttpRequest';
 
-describe("Navigate", function () {
+describe("Complete Survey", function () {
 
     let network;
     const POST_SURVEY_ALIAS = "postSurvey";
@@ -13,7 +13,7 @@ describe("Navigate", function () {
     });
 
 
-    it("should fill out the surveys and submit without an error", () => {
+    it("should fill out the survey and submit without an error", () => {
 
         const welcome = new WelcomePage();
         welcome.visit();
@@ -40,12 +40,6 @@ describe("Navigate", function () {
         survey.submit();
 
         survey.shouldShowOk();
-        // network.waitForResponse(POST_SURVEY_ALIAS).then(xhr => {
-        //     const status = xhr.xhr.status;
-        //     expect(status).to.equal(200);
-        // });
-
-
     });
 
     it("should navigate backwards if previous is clicked.", function () {
@@ -63,4 +57,4 @@ describe("Navigate", function () {
         survey.shouldBeOnPage(1);
     });
 
-})
+});

@@ -14,7 +14,8 @@ class Survey {
     }
 
     shouldBeOnPage(pageNumber) {
-        cy.get('.progress span').should('exist')
+        cy.get('.progress span')
+            .should('exist')
             .contains(`Page ${pageNumber} of 4`);
     }
 
