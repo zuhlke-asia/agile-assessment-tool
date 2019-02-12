@@ -30,6 +30,7 @@ async function onPostSurveyResult(db, req, res) {
         await db.collection("userscores").insertOne(req.body);
         res.sendStatus(200);
     } catch (err) {
+        console.error(err);
         res.status(500).send(err);
     }
 }
