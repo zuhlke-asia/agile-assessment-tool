@@ -24,7 +24,6 @@ function generateQuestionConfig(question) {
         type: question.type,
         isRequired: question.isRequired,
         title: question.question,
-        startWithNewLine: question.startWithNewLine,
         hasOther: question.hasOther,
     };
 
