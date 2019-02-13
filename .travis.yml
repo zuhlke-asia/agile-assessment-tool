@@ -1,11 +1,19 @@
 language: node_js
 
 node_js:
-- "10.3"
+  - "10.3"
+
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
+
+install:
+  - npm ci
 
 script:
-- "npm run build-client:prod"
-- "npm test"
+  - npm run build-client:prod
+  - npm test
 
 before_deploy:
   - mv .gitignore.prod .gitignore
@@ -19,3 +27,6 @@ deploy:
   username: $azure_deployment_user
   password: $azure_deployment_password
   site: agileassessment-prod
+
+
+

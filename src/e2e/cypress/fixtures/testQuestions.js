@@ -1,7 +1,6 @@
 import * as QuestionType from "../../../client/src/app/surveyconfig/QuestionType";
 
-const dummyQuestions = {
-
+export default {
     pages: [
         {
             questions: [

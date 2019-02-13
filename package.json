@@ -5,15 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/server.js",
-    "start:e2e": "NODE_ENV=test node ./src/server.js",
-    "start:dev": "npm run start:server:dev & npm run start:client:dev",
+    "start:ci": "NODE_ENV=test PORT=3000 node ./src/server.js",
+    "start:dev": "NODE_ENV=dev npm run start:server:dev & npm run start:client:dev",
     "start:server:dev": "nodemon ./src/server.js",
     "start:client:dev": "cd ./src/client && npm start",
     "build:dev": "npm i && cd ./src/client && npm i",
     "build:prod": "npm run build-client:prod && npm install",
     "build-client:prod": "cd ./src/client && npm install && npm run build && rimraf ../../build && mv build ../../build",
     "test": "jest --forceExit",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "test:e2e": "cypress run"
   },
   "repository": {
     "type": "git",
@@ -34,12 +35,14 @@
     "serve-favicon": "2.5.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "babel-jest": "^24.1.0",
-    "jest": "^24.1.0",
-    "nodemon": "^1.18.9",
-    "rimraf": "^2.6.3",
-    "supertest": "^3.4.2"
+    "@babel/core": "7.2.2",
+    "@babel/preset-env": "7.3.1",
+    "babel-jest": "24.1.0",
+    "cypress": "3.1.5",
+    "jest": "24.1.0",
+    "mongodb-memory-server": "3.0.0",
+    "nodemon": "1.18.9",
+    "rimraf": "2.6.3",
+    "supertest": "3.4.2"
   }
 }
