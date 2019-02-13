@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/progress-bars.scss';
+import '../../styles/progress-bars.scss';
 
 
 export default class Evaluation extends React.Component {
@@ -46,7 +46,7 @@ export default class Evaluation extends React.Component {
                         this.state.evaluations
                             .map((item, i) => ([
                                     <div key={item.name} className="category-label">{item.name}</div>,
-                                    <div key={i} className="score-bar-container">
+                                    <div key={i} className={`${item.name} score-bar-container`}>
                                         <div
                                             className="score-bar"
                                             style={{ width: `${100 * item.total / item.max}%` }}
@@ -56,7 +56,6 @@ export default class Evaluation extends React.Component {
                             ))
                     }
                     </div>
-
                 </div>
             </div>
         )

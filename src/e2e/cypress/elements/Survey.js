@@ -4,7 +4,7 @@ class Survey {
         cy.get('input[value="Next"]').click();
     }
 
-    previousPage(){
+    previousPage() {
         cy.get('input[value="Previous').click();
     }
 
@@ -23,6 +23,10 @@ class Survey {
         cy.contains(answerText).click()
     }
 
+    selectRating(rating) {
+        cy.get(`input[type="radio"][value="${rating}"]`).parent().click();
+    }
+
     selectAnswerFromDropdown(answerText) {
         cy.get('select').select(answerText);
     }
@@ -32,7 +36,17 @@ class Survey {
     }
 
     shouldShowResultPage() {
-        cy.contains("Thanks!")
+        cy.contains('Thank you for participating!')
+    }
+
+    shouldShowPercentage(category, percentage) {
+        const className = category.toLowerCase();
+
+        cy
+            .get(`.${className}`)
+            .find('.score-bar')
+            .its('width')
+            .should('be', `${percentage}%`)
     }
 }
 
