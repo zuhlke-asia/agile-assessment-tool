@@ -1,4 +1,4 @@
-import { evaluate } from './scoreEvaluator';
+import { evaluateScore, MAX_POINTS_PER_ANSWER } from './scoreEvaluator';
 
 test('given a result with one category, returns the score of a category', () => {
     // given
@@ -7,12 +7,16 @@ test('given a result with one category, returns the score of a category', () => 
     };
 
     // when
-    const score = evaluate(result);
+    const score = evaluateScore(result);
 
     // then
-    const expected = {
-        agility: 3
-    };
+    const expected = [
+        {
+            name: 'agility',
+            total: 3,
+            max: MAX_POINTS_PER_ANSWER
+        }
+    ];
 
     expect(score).toEqual(expected);
 });
@@ -25,12 +29,16 @@ test('given a result with one category, returns the summed score of a category',
     };
 
     // when
-    const score = evaluate(result);
+    const score = evaluateScore(result);
 
     // then
-    const expected = {
-        agility: 5
-    };
+    const expected = [
+        {
+            name: 'agility',
+            total: 5,
+            max: MAX_POINTS_PER_ANSWER * 2
+        }
+    ];
 
     expect(score).toEqual(expected);
 });
@@ -45,30 +53,75 @@ test('given a result with two categories, returns the summed score of each categ
     };
 
     // when
-    const score = evaluate(result);
+    const score = evaluateScore(result);
 
     // then
-    const expected = {
-        agility: 5,
-        estimation: 4
-    };
+    const expected = [
+        {
+            name: 'agility',
+            total: 5,
+            max: MAX_POINTS_PER_ANSWER * 2
+        },
+        {
+            name: 'estimation',
+            total: 4,
+            max: MAX_POINTS_PER_ANSWER * 2
+        }
+    ];
 
     expect(score).toEqual(expected);
 });
 
-test('given a category with non-numeric values, returns the category and answer', () => {
+test('negative ratings should be ignored', () => {
+    // given
+    const result = {
+        "agility__question1?": 3,
+        "agility__question2?": -1,
+    };
+
+    // when
+    const score = evaluateScore(result);
+
+    // then
+    const expected = [
+        {
+            name: 'agility',
+            total: 3,
+            max: MAX_POINTS_PER_ANSWER
+        }
+    ];
+
+    expect(score).toEqual(expected);
+});
+
+test('questions of category "additional" should be ignored', () => {
+    // given
+    const result = {
+        "additional__question1?": 3,
+        "additional__question2?": -1,
+    };
+
+    // when
+    const score = evaluateScore(result);
+
+    // then
+    const expected = [];
+
+    expect(score).toEqual(expected);
+});
+
+
+test('ignores non-numeric values that cannot be scored', () => {
     // given
     const result = {
         "email__what's your email?": "something@something.com",
     };
 
     // when
-    const score = evaluate(result);
+    const score = evaluateScore(result);
 
     // then
-    const expected = {
-        email: 'something@something.com',
-    };
+    const expected = [];
 
     expect(score).toEqual(expected);
 });

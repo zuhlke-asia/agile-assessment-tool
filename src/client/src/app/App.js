@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
-import {generateSurveyConfig} from './surveyconfig/configGenerator';
+import React, { Component } from 'react';
+import { generateSurveyConfig } from './surveyconfig/configGenerator';
+import { evaluateScore } from './evaluation/scoreEvaluator';
 
 import Header from './Header';
 import Footer from './Footer';
 import FootNote from './FootNote';
 import WelcomePage from './Welcome';
-import EvaluationPage from './Evaluation';
+import Evaluation from './evaluation/Evaluation';
 import AgileAssessment from './AgileAssessment';
 import axios from 'axios';
 
@@ -17,14 +18,14 @@ const PageState = {
 
 export default class App extends Component {
 
-    state = {
-        pageState: PageState.SURVEY,
-        response: undefined,
-        surveyConfig: undefined,
-    };
+    constructor(props) {
+        super(props);
 
-    onValueChanged() {
-
+        this.state = {
+            pageState: PageState.SURVEY,
+            evaluation: undefined,
+            surveyConfig: undefined,
+        };
     }
 
     async componentDidMount() {
@@ -40,15 +41,19 @@ export default class App extends Component {
         } catch (err) {
             console.error(err);
         }
-
     }
 
-    onComplete = async (result) => {
+    async onComplete(result) {
         try {
-            const res = await axios.post("/api/survey", result.data);
+            const answers = result.data;
+
+            await axios.post("/api/survey", answers);
+
+            const evaluations = evaluateScore(answers);
+
             this.setState(prevState => ({
                 ...prevState,
-                response: JSON.stringify(res.data),
+                evaluations,
                 pageState: PageState.EVALUATION
             }))
         } catch (err) {
@@ -56,7 +61,7 @@ export default class App extends Component {
         }
     };
 
-    onStart = () => {
+    onStart() {
         this.setState(prevState => ({
             ...prevState,
             pageState: PageState.SURVEY
@@ -66,14 +71,14 @@ export default class App extends Component {
     getContent() {
         switch (this.state.pageState) {
             case PageState.WELCOME:
-                return <WelcomePage onStart={this.onStart}/>;
+                return <WelcomePage onStart={() => this.onStart()}/>;
             case PageState.EVALUATION:
-                return <EvaluationPage content={this.state.response}/>;
+                return <Evaluation evaluations={this.state.evaluations}/>;
             default:
                 return <AgileAssessment
                     config={this.state.surveyConfig}
-                    onComplete={this.onComplete}
-                    onValueChange={this.onValueChanged}
+                    onComplete={result => this.onComplete(result)}
+                    onValueChange={() => {}}
                 />;
         }
 

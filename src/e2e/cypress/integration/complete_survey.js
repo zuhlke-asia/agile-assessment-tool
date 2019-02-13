@@ -31,7 +31,7 @@ describe("Complete Survey", function () {
         survey.nextPage();
 
         survey.shouldBeOnPage(3);
-        survey.chooseAnswer('5');
+        survey.selectRating('1');
         survey.nextPage();
 
         survey.shouldBeOnPage(4);
@@ -44,6 +44,9 @@ describe("Complete Survey", function () {
         survey.submit();
 
         survey.shouldShowResultPage();
+        survey.shouldShowPercentage('Agility', 80);
+        survey.shouldShowPercentage('Estimation', 100);
+        survey.shouldShowPercentage('Mood', 20);
     });
 
     it("should navigate backwards if previous is clicked.", function () {

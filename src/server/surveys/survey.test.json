@@ -63,7 +63,7 @@
           "choices": [
             {
               "text": "Story Points",
-              "value": 10
+              "value": 5
             },
             {
               "text": "Working Hours",
@@ -71,7 +71,7 @@
             },
             {
               "text": "T-Shirt Sizes",
-              "value": 8
+              "value": 4
             }
           ]
         }
