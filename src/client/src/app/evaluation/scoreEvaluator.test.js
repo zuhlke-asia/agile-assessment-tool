@@ -72,6 +72,45 @@ test('given a result with two categories, returns the summed score of each categ
     expect(score).toEqual(expected);
 });
 
+test('negative ratings should be ignored', () => {
+    // given
+    const result = {
+        "agility__question1?": 3,
+        "agility__question2?": -1,
+    };
+
+    // when
+    const score = evaluateScore(result);
+
+    // then
+    const expected = [
+        {
+            name: 'agility',
+            total: 3,
+            max: MAX_POINTS_PER_ANSWER
+        }
+    ];
+
+    expect(score).toEqual(expected);
+});
+
+test('questions of category "additional" should be ignored', () => {
+    // given
+    const result = {
+        "additional__question1?": 3,
+        "additional__question2?": -1,
+    };
+
+    // when
+    const score = evaluateScore(result);
+
+    // then
+    const expected = [];
+
+    expect(score).toEqual(expected);
+});
+
+
 test('ignores non-numeric values that cannot be scored', () => {
     // given
     const result = {
