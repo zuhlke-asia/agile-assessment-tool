@@ -343,7 +343,7 @@
           "type":"radiogroup",
           "category":"scrum",
           "isRequired":true,
-          "visibleIf":"{ifScrum}='Yes'",
+          "visibleIf":"{scrum__ifScrum}='Yes'",
           "question":"How often do you reach your sprint goals?",
           "choices":[
             {"value":1,"text":"We do not define sprint goals"},
@@ -359,7 +359,7 @@
           "type":"radiogroup",
           "category":"scrum",
           "isRequired":true,
-          "visibleIf":"{ifScrum}='Yes'",
+          "visibleIf":"{scrum__ifScrum}='Yes'",
           "question":"How well do you enforce a Definition of Done?",
           "choices":[
             {"value":1,"text":"We do not have a Definition of Done"},
@@ -387,7 +387,7 @@
           "type":"radiogroup",
           "category":"scrum",
           "isRequired":true,
-          "visibleIf":"{ifScrum}='Yes'",
+          "visibleIf":"{scrum__ifScrum}='Yes'",
           "question":"How well can developers focus their work on the sprint backlog?",
           "choices":[
             {"value":1,"text":"There is no sprint backlog"},
