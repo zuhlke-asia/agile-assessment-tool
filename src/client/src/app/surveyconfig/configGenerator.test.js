@@ -271,3 +271,73 @@ test('generates conditional questions if given visibleIf param', () => {
 
     expect(surveyConfig).toEqual(expectedSurveyConfig);
 });
+
+test('generates comment question if given visibleIf param', () => {
+    // given
+    const triggerQuestion = {
+        type:QuestionType.DROPDOWN,
+        category:"info",
+        isRequired:true,
+        name: "info_industry",
+        question:"Which industry is your organisation primarily in?",
+        "choices": [
+            "Industrial Manufacturing", "Consumer Manufacturing",
+            "Construction", "Health & Pharmaceuticals",
+            "Transportation and Logistics", "Information, Media and Communications",
+            "Finance and Insurance", "Business Services", "Public Administration", "Others"
+        ],
+        colCount:2
+    }
+
+
+    const conditionalQuestion = {
+        type: QuestionType.COMMENT,
+        name:"info_industry_others",
+        isRequired: true,
+        visibleIf: "{info_industry}='Others'",
+        question: "Please Specify:",
+        startWithNewLine: false
+    }
+
+    const config = {
+        pages: [{
+            questions: [triggerQuestion, conditionalQuestion]
+        }]
+    };
+
+    // when
+    const surveyConfig = generateSurveyConfig(config);
+
+    // then
+    const expectedSurveyConfig = {
+        showProgressBar: 'top',
+        questionTitleTemplate: '{no}. {title}',
+        pages: [{
+            questions: [
+                {
+                    type: QuestionType.DROPDOWN,
+                    isRequired:true,
+                    name: "info_industry",
+                    title:"Which industry is your organisation primarily in?",
+                    "choices": [
+                        "Industrial Manufacturing", "Consumer Manufacturing",
+                        "Construction", "Health & Pharmaceuticals",
+                        "Transportation and Logistics", "Information, Media and Communications",
+                        "Finance and Insurance", "Business Services", "Public Administration", "Others"
+                    ],
+                    colCount:2
+                },
+                {
+                    type: QuestionType.COMMENT,
+                    name:"info_industry_others",
+                    isRequired: true,
+                    visibleIf: "{info_industry}='Others'",
+                    title: "Please Specify:",
+                    startWithNewLine: false
+                }
+            ]
+        }]
+    };
+
+    expect(surveyConfig).toEqual(expectedSurveyConfig);
+});

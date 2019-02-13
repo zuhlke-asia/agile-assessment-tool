@@ -24,6 +24,8 @@ function generateQuestionConfig(question) {
         type: question.type,
         isRequired: question.isRequired,
         title: question.question,
+        startWithNewLine: question.startWithNewLine,
+        hasOther:question.hasOther,
     };
 
     questionConfig.name = question.name ? question.name:`${question.category}__${question.question}`;
@@ -31,6 +33,7 @@ function generateQuestionConfig(question) {
     if(question.visibleIf){
         questionConfig.visibleIf = question.visibleIf;
     }
+
 
     if(question.colCount !== undefined){
         questionConfig.colCount = question.colCount;

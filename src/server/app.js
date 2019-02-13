@@ -15,9 +15,7 @@ _app.get('/', function (req, res) {
 });
 
 function onGetSurveyConfig(req, res) {
-    //res.json(surveyReader.readSurveyConfig(process.env.NODE_ENV));
-    res.json(surveyReader.readSurveyConfig());
-
+    res.json(surveyReader.readSurveyConfig(process.env.NODE_ENV));
 }
 
 async function app(dbClient) {

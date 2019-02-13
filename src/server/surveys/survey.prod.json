@@ -228,7 +228,7 @@
         {
           "type":"radiogroup",
           "category":"project/product",
-          "isRequrired":true,
+          "isRequired":true,
           "question":"Do you prioritize your user stories based on specific criteria (eg. business value, risk, urgency)?",
           "choices":[
             {
@@ -418,7 +418,7 @@
         {
           "type":"radiogroup",
           "category":"additional",
-          "isRequrired":true,
+          "isRequired":true,
           "question":"How much are you satisfied with your software development and delivery framework ?",
           "choices":[
             {"value":1,"text":"Not happy"},
@@ -435,9 +435,45 @@
         {
           "type":"dropdown",
           "category":"info",
-          "isRequrired":true,
+          "isRequired":true,
+          "name": "info_industry",
           "question":"Which industry is your organisation primarily in?",
-          "choices":[]
+          "choices": [
+            "Industrial Manufacturing", "Consumer Manufacturing",
+            "Construction", "Health & Pharmaceuticals",
+            "Transportation and Logistics", "Information, Media and Communications",
+            "Finance and Insurance", "Business Services", "Public Administration"
+          ],
+          "colCount":2,
+          "hasOther": true
+        },
+        {
+          "type":"dropdown",
+          "category":"info",
+          "isRequired": true,
+          "question":"Number of Employees",
+          "choices": [
+            "1-50", "50-500", "500-5000", "5000+"]
+        },
+        {
+          "type":"dropdown",
+          "category":"info",
+          "isRequired": true,
+          "name": "info_position",
+          "question":"Your position in the organisation",
+          "choices": [
+            "Software engineer", "Software architect",
+            "Quality Assurance Specialist", "Business Analyst",
+            "Project Manager", "Agile Coach / Scrum Master",
+            "Product Owner / Product Manager", "Manager",
+            "Director", "VP"
+          ],
+          "hasOther": true
+        },
+        {
+          "type": "text",
+          "category": "info",
+          "question": "Company Name (Optional)"
         }
       ]
     }
