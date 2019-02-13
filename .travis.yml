@@ -1,11 +1,7 @@
 language: node_js
 
 node_js:
-- "10.3"
-
-branches:
-  only:
-    - master
+  - "10.3"
 
 cache:
   directories:
