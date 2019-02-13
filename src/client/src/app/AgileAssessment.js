@@ -37,6 +37,10 @@ export default class AgileAssessment extends React.Component {
         window['$'] = window['jQuery'] = $;
     }
 
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return !this.props.config;
+    }
+
     render() {
         Survey.Survey.cssType = 'bootstrap';
 
