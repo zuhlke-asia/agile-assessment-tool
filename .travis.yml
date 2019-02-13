@@ -1,0 +1,32 @@
+language: node_js
+
+node_js:
+  - "10.3"
+
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
+
+install:
+  - npm ci
+
+script:
+  - npm run build-client:prod
+  - npm test
+
+before_deploy:
+  - mv .gitignore.prod .gitignore
+  - git add build
+  - git commit -m "created new build"
+
+deploy:
+  verbose: true
+  on: master
+  provider: azure_web_apps              # these environment variables are set on travis
+  username: $azure_deployment_user
+  password: $azure_deployment_password
+  site: agileassessment-prod
+
+
+

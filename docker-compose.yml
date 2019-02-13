@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  web:
+    image: node
+    volumes:
+    - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: sh -c "npm run build:dev && npm run start:dev"
+    depends_on:
+    - mongo
+    ports:
+    - "3000:3000"
+    - "8080:8080"
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
