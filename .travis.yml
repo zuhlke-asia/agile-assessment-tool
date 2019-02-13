@@ -3,6 +3,10 @@ language: node_js
 node_js:
 - "10.3"
 
+branches:
+  only:
+    - master
+
 cache:
   directories:
     - ~/.npm
@@ -22,7 +26,7 @@ before_deploy:
 
 deploy:
   verbose: true
-  on: develop
+  on: master
   provider: azure_web_apps              # these environment variables are set on travis
   username: $azure_deployment_user
   password: $azure_deployment_password
