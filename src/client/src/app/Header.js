@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => (
+export default ({showBanner}) => (
 
     <div>
         <header id="site-header" role="banner">
@@ -43,7 +43,7 @@ export default () => (
 
 
         <div className="zue-brick zue-branding zue-branding-image">
-            <div className="zue-branding-inner">
+            <div className="zue-branding-inner" style={showBanner ? {opacity: 1} : {opacity: 0}}>
                 <h2 className="headersize-1 no-margin  ">Our self-assessment tool will provide some insights into the agility of your organisation.
                     Be honest - we won't judge!<br /> It shouldn't take any longer than 5-10 minutes.</h2>
             </div>

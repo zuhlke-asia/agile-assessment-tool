@@ -25,6 +25,7 @@ export default class App extends Component {
             pageState: PageState.WELCOME,
             evaluation: undefined,
             surveyConfig: undefined,
+            showBanner: true
         };
     }
 
@@ -65,8 +66,19 @@ export default class App extends Component {
         this.setState(prevState => ({
             ...prevState,
             pageState: PageState.SURVEY
-        }))
+        }));
     };
+
+    onValueChange() {
+        if (!this.state.showBanner) {
+            return;
+        }
+
+        this.setState(prevState => ({
+            ...prevState,
+            showBanner: false
+        }));
+    }
 
     getContent() {
         switch (this.state.pageState) {
@@ -78,7 +90,7 @@ export default class App extends Component {
                 return <AgileAssessment
                     config={this.state.surveyConfig}
                     onComplete={result => this.onComplete(result)}
-                    onValueChange={() => {}}
+                    onValueChange={() => this.onValueChange()}
                 />;
         }
 
@@ -88,7 +100,7 @@ export default class App extends Component {
         const content = this.getContent();
         return (
             <div id="outer">
-                <Header/>
+                <Header showBanner={this.state.showBanner}/>
                 {content}
                 <FootNote/>
                 <Footer/>
