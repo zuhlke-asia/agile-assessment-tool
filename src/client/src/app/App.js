@@ -18,7 +18,7 @@ const PageState = {
 export default class App extends Component {
 
     state = {
-        pageState: PageState.WELCOME,
+        pageState: PageState.SURVEY,
         response: undefined,
         surveyConfig: undefined,
     };

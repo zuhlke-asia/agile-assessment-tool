@@ -93,7 +93,6 @@
           "type": "radiogroup",
           "category": "scrum",
           "name": "ifScrum",
-          "isRequired": true,
           "question": "Do teams in your organisation use Scrum?",
           "choices": [
             "Yes",
@@ -104,7 +103,6 @@
         {
           "type": "radiogroup",
           "category": "scrum",
-          "isRequired": true,
           "visibleIf": "{scrum__ifScrum}='Yes'",
           "question": "How often do you reach your sprint goals?",
           "choices": [

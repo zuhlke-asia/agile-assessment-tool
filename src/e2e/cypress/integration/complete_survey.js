@@ -1,5 +1,5 @@
-import WelcomePage from '../elements/WelcomePage';
 import Network from '../elements/CypressHttpRequest';
+import Survey from '../elements/Survey';
 
 describe("Complete Survey", function () {
 
@@ -12,13 +12,13 @@ describe("Complete Survey", function () {
         network.registerRouteServices(POST_SURVEY_ALIAS);
     });
 
+    beforeEach(function () {
+        network.visitHomePage();
+    })
 
     it("should fill out the survey and submit without an error", () => {
 
-        const welcome = new WelcomePage();
-        welcome.visit();
-
-        const survey = welcome.startSurvey();
+        const survey = new Survey(5);
 
         survey.shouldBeOnPage(1);
         survey.chooseAnswer('Mostly Agile');
@@ -47,10 +47,9 @@ describe("Complete Survey", function () {
     });
 
     it("should navigate backwards if previous is clicked.", function () {
-        const welcome = new WelcomePage();
-        welcome.visit();
 
-        const survey = welcome.startSurvey();
+        const survey = new Survey(5);
+
 
         survey.shouldBeOnPage(1)
         survey.chooseAnswer('Mostly Agile');
@@ -62,10 +61,9 @@ describe("Complete Survey", function () {
     });
 
     it("should show condition question if conditional questions are triggered", function(){
-        const welcome = new WelcomePage();
-        welcome.visit();
 
-        const survey = welcome.startSurvey();
+        const survey = new Survey(5);
+
 
         survey.shouldBeOnPage(1);
         survey.chooseAnswer('Mostly Agile');
