@@ -232,7 +232,7 @@ test('generates conditional questions if given visibleIf param', () => {
         type: QuestionType.RADIO,
         question: 'How often do you reach your sprint goals?',
         category: 'scrum',
-        visibleIf: '{ifScrum}="Yes"'
+        visibleIf: '{srcum__ifScrum}="Yes"'
     }
 
     const config = {
@@ -252,7 +252,7 @@ test('generates conditional questions if given visibleIf param', () => {
             questions: [
                 {
                     type: QuestionType.RADIO,
-                    name: "ifScrum",
+                    name: "scrum__ifScrum",
                     title: 'Do you use Scrum?',
                     choices: [
                         'Yes', 'No'
@@ -263,7 +263,7 @@ test('generates conditional questions if given visibleIf param', () => {
                     type: QuestionType.RADIO,
                     name: 'scrum__How often do you reach your sprint goals?',
                     title: 'How often do you reach your sprint goals?',
-                    visibleIf: '{ifScrum}="Yes"',
+                    visibleIf: '{srcum__ifScrum}="Yes"',
                 }
             ]
         }]
@@ -272,72 +272,4 @@ test('generates conditional questions if given visibleIf param', () => {
     expect(surveyConfig).toEqual(expectedSurveyConfig);
 });
 
-test('generates comment question if given visibleIf param', () => {
-    // given
-    const triggerQuestion = {
-        type:QuestionType.DROPDOWN,
-        category:"info",
-        isRequired:true,
-        name: "info_industry",
-        question:"Which industry is your organisation primarily in?",
-        "choices": [
-            "Industrial Manufacturing", "Consumer Manufacturing",
-            "Construction", "Health & Pharmaceuticals",
-            "Transportation and Logistics", "Information, Media and Communications",
-            "Finance and Insurance", "Business Services", "Public Administration", "Others"
-        ],
-        colCount:2
-    }
 
-
-    const conditionalQuestion = {
-        type: QuestionType.COMMENT,
-        name:"info_industry_others",
-        isRequired: true,
-        visibleIf: "{info_industry}='Others'",
-        question: "Please Specify:",
-        startWithNewLine: false
-    }
-
-    const config = {
-        pages: [{
-            questions: [triggerQuestion, conditionalQuestion]
-        }]
-    };
-
-    // when
-    const surveyConfig = generateSurveyConfig(config);
-
-    // then
-    const expectedSurveyConfig = {
-        showProgressBar: 'top',
-        questionTitleTemplate: '{no}. {title}',
-        pages: [{
-            questions: [
-                {
-                    type: QuestionType.DROPDOWN,
-                    isRequired:true,
-                    name: "info_industry",
-                    title:"Which industry is your organisation primarily in?",
-                    "choices": [
-                        "Industrial Manufacturing", "Consumer Manufacturing",
-                        "Construction", "Health & Pharmaceuticals",
-                        "Transportation and Logistics", "Information, Media and Communications",
-                        "Finance and Insurance", "Business Services", "Public Administration", "Others"
-                    ],
-                    colCount:2
-                },
-                {
-                    type: QuestionType.COMMENT,
-                    name:"info_industry_others",
-                    isRequired: true,
-                    visibleIf: "{info_industry}='Others'",
-                    title: "Please Specify:",
-                    startWithNewLine: false
-                }
-            ]
-        }]
-    };
-
-    expect(surveyConfig).toEqual(expectedSurveyConfig);
-});

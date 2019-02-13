@@ -436,7 +436,6 @@
           "type":"dropdown",
           "category":"info",
           "isRequired":true,
-          "name": "info_industry",
           "question":"Which industry is your organisation primarily in?",
           "choices": [
             "Industrial Manufacturing", "Consumer Manufacturing",
@@ -459,7 +458,6 @@
           "type":"dropdown",
           "category":"info",
           "isRequired": true,
-          "name": "info_position",
           "question":"Your position in the organisation",
           "choices": [
             "Software engineer", "Software architect",

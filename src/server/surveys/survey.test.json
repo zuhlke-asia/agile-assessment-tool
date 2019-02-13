@@ -90,6 +90,59 @@
     {
       "questions": [
         {
+          "type": "radiogroup",
+          "category": "scrum",
+          "name": "ifScrum",
+          "isRequired": true,
+          "question": "Do teams in your organisation use Scrum?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "colCount": 0
+        },
+        {
+          "type": "radiogroup",
+          "category": "scrum",
+          "isRequired": true,
+          "visibleIf": "{scrum__ifScrum}='Yes'",
+          "question": "How often do you reach your sprint goals?",
+          "choices": [
+            {
+              "value": 1,
+              "text": "We do not define sprint goals"
+            },
+            {
+              "value": 2,
+              "text": "We never achieve them"
+            },
+            {
+              "value": 3,
+              "text": "We achieve them sometimes"
+            },
+            {
+              "value": 4,
+              "text": "We achieve them often"
+            },
+            {
+              "value": 5,
+              "text": "We achieve them always or almost always"
+            },
+            {
+              "value": -2,
+              "text": "Not applicable"
+            },
+            {
+              "value": -1,
+              "text": "I don’t know"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
           "type": "multipletext",
           "question": "Optionally, you can leave some contact data here.",
           "description": "We would love to work with you!",
