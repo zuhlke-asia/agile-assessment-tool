@@ -22,10 +22,19 @@ export const generatePageConfig = page => {
 function generateQuestionConfig(question) {
     const questionConfig = {
         type: question.type,
-        name: `${question.category}__${question.question}`,
-        isRequired: question.isRequrired,
+        isRequired: question.isRequired,
         title: question.question,
     };
+
+    questionConfig.name = question.name ? question.name:`${question.category}__${question.question}`;
+
+    if(question.visibleIf){
+        questionConfig.visibleIf = question.visibleIf;
+    }
+
+    if(question.colCount !== undefined){
+        questionConfig.colCount = question.colCount;
+    }
 
     if (question.type === QuestionType.RADIO || question.type === QuestionType.DROPDOWN) {
         questionConfig.choices = question.choices;
