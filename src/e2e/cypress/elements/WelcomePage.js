@@ -10,7 +10,7 @@ class WelcomePage{
         const start = cy.contains('Start');
         start.click();
 
-        return new Survey();
+        return new Survey(5);
     }
 }
 

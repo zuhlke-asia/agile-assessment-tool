@@ -1,5 +1,5 @@
-import WelcomePage from '../elements/WelcomePage';
 import Network from '../elements/CypressHttpRequest';
+import Survey from '../elements/Survey';
 
 describe("Complete Survey", function () {
 
@@ -12,13 +12,13 @@ describe("Complete Survey", function () {
         network.registerRouteServices(POST_SURVEY_ALIAS);
     });
 
+    beforeEach(function () {
+        network.visitHomePage();
+    })
 
     it("should fill out the survey and submit without an error", () => {
 
-        const welcome = new WelcomePage();
-        welcome.visit();
-
-        const survey = welcome.startSurvey();
+        const survey = new Survey(5);
 
         survey.shouldBeOnPage(1);
         survey.chooseAnswer('Mostly Agile');
@@ -35,6 +35,14 @@ describe("Complete Survey", function () {
         survey.nextPage();
 
         survey.shouldBeOnPage(4);
+        survey.chooseAnswer('No');
+        survey.shouldNotShowConditionalQuestion('How often do you reach your sprint goals?');
+        survey.chooseAnswer('Yes');
+        survey.shouldShowConditionalQuestion('How often do you reach your sprint goals?');
+        survey.chooseAnswer('We achieve them sometimes');
+        survey.nextPage();
+
+        survey.shouldBeOnPage(5);
         survey.enterTextBox('Company Name', 'Zuhlke');
         survey.enterTextBox('Email', 'example@zuhlke.com')
         survey.submit();
@@ -46,10 +54,9 @@ describe("Complete Survey", function () {
     });
 
     it("should navigate backwards if previous is clicked.", function () {
-        const welcome = new WelcomePage();
-        welcome.visit();
 
-        const survey = welcome.startSurvey();
+        const survey = new Survey(5);
+
 
         survey.shouldBeOnPage(1)
         survey.chooseAnswer('Mostly Agile');
@@ -59,5 +66,6 @@ describe("Complete Survey", function () {
         survey.previousPage();
         survey.shouldBeOnPage(1);
     });
+
 
 });
