@@ -1,5 +1,9 @@
 class Survey {
 
+    constructor(totalPage) {
+        this.totalPage = totalPage;
+    }
+
     nextPage() {
         cy.get('input[value="Next"]').click();
     }
@@ -16,7 +20,7 @@ class Survey {
     shouldBeOnPage(pageNumber) {
         cy.get('.progress span')
             .should('exist')
-            .contains(`Page ${pageNumber} of 4`);
+            .contains(`Page ${pageNumber} of ${this.totalPage}`);
     }
 
     chooseAnswer(answerText) {
@@ -46,7 +50,16 @@ class Survey {
             .get(`.${className}`)
             .find('.score-bar')
             .its('width')
-            .should('be', `${percentage}%`)
+            .should('be', `${percentage}%`);
+    }
+
+    shouldShowConditionalQuestion(question) {
+        cy.contains(question).should('be.visible');
+    }
+
+    shouldNotShowConditionalQuestion(question) {
+        cy.contains(question).should('not.exist')
+
     }
 }
 

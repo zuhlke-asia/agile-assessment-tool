@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => (
+export default ({showBanner}) => (
 
     <div>
         <header id="site-header" role="banner">
@@ -43,10 +43,9 @@ export default () => (
 
 
         <div className="zue-brick zue-branding zue-branding-image">
-            <div className="zue-branding-inner">
-                <h2 className="headersize-1 no-margin  ">We have created a super awesome and cool agile self assessment
-                tool which allows you to self assess your agileness in a couple of minutes, this is such a great sentence
-                I'm sorry I just need to use some space.</h2>
+            <div className="zue-branding-inner" style={showBanner ? {opacity: 1} : {opacity: 0}}>
+                <h2 className="headersize-1 no-margin  ">Our self-assessment tool will provide some insights into the agility of your organisation.
+                    Be honest - we won't judge!<br /> It shouldn't take any longer than 5-10 minutes.</h2>
             </div>
         </div>
 

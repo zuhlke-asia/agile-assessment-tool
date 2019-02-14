@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { generateSurveyConfig } from './surveyconfig/configGenerator';
-import { evaluateScore } from './evaluation/scoreEvaluator';
+import React, {Component} from 'react';
+import {generateSurveyConfig} from './surveyconfig/configGenerator';
+import {evaluateScore} from './evaluation/scoreEvaluator';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -22,9 +22,10 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            pageState: PageState.WELCOME,
+            pageState: PageState.SURVEY,
             evaluation: undefined,
             surveyConfig: undefined,
+            showBanner: true
         };
     }
 
@@ -35,8 +36,10 @@ export default class App extends Component {
                 const surveyConfig = generateSurveyConfig(response.data);
                 this.setState(prevState => ({
                     ...prevState,
-                    surveyConfig: surveyConfig
+                    surveyConfig: surveyConfig,
+                    pageState: PageState.SURVEY,
                 }));
+
             }
         } catch (err) {
             console.error(err);
@@ -65,8 +68,19 @@ export default class App extends Component {
         this.setState(prevState => ({
             ...prevState,
             pageState: PageState.SURVEY
-        }))
+        }));
     };
+
+    onValueChange() {
+        if (!this.state.showBanner) {
+            return;
+        }
+
+        this.setState(prevState => ({
+            ...prevState,
+            showBanner: false
+        }));
+    }
 
     getContent() {
         switch (this.state.pageState) {
@@ -75,11 +89,12 @@ export default class App extends Component {
             case PageState.EVALUATION:
                 return <Evaluation evaluations={this.state.evaluations}/>;
             default:
-                return <AgileAssessment
-                    config={this.state.surveyConfig}
-                    onComplete={result => this.onComplete(result)}
-                    onValueChange={() => {}}
-                />;
+                return <div>
+                    {this.state.surveyConfig && <AgileAssessment
+                        config={this.state.surveyConfig}
+                        onComplete={result => this.onComplete(result)}
+                        onValueChange={() => this.onValueChange()}/>}
+                </div>;
         }
 
     }
@@ -88,7 +103,7 @@ export default class App extends Component {
         const content = this.getContent();
         return (
             <div id="outer">
-                <Header/>
+                <Header showBanner={this.state.showBanner}/>
                 {content}
                 <FootNote/>
                 <Footer/>

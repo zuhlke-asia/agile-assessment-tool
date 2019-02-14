@@ -1,4 +1,4 @@
-import { generatePageConfig, generateSurveyConfig } from './configGenerator';
+import {generatePageConfig, generateSurveyConfig} from './configGenerator';
 import * as QuestionType from './QuestionType';
 
 test('generates one page with text field of category "contact"', () => {
@@ -154,7 +154,7 @@ test('generates one page with two text fields of category "contact"', () => {
             category,
             type,
             question: question1,
-        },{
+        }, {
             category,
             type,
             question: question2,
@@ -170,7 +170,7 @@ test('generates one page with two text fields of category "contact"', () => {
             type: type,
             name: `${category}__${question1}`,
             title: question1,
-        },{
+        }, {
             type: type,
             name: `${category}__${question2}`,
             title: question2,
@@ -214,3 +214,62 @@ test('generates complete survey config given a config', () => {
 
     expect(surveyConfig).toEqual(expectedSurveyConfig);
 });
+
+
+test('generates conditional questions if given visibleIf param', () => {
+    // given
+    const triggerQuestion = {
+        type: QuestionType.RADIO,
+        question: 'Do you use Scrum?',
+        category: 'scrum',
+        name: 'ifScrum',
+        choices: ['Yes', 'No'],
+        colCount: 0,
+    }
+
+
+    const conditionalQuestion = {
+        type: QuestionType.RADIO,
+        question: 'How often do you reach your sprint goals?',
+        category: 'scrum',
+        visibleIf: '{srcum__ifScrum}="Yes"'
+    }
+
+    const config = {
+        pages: [{
+            questions: [triggerQuestion, conditionalQuestion]
+        }]
+    };
+
+    // when
+    const surveyConfig = generateSurveyConfig(config);
+
+    // then
+    const expectedSurveyConfig = {
+        showProgressBar: 'top',
+        questionTitleTemplate: '{no}. {title}',
+        pages: [{
+            questions: [
+                {
+                    type: QuestionType.RADIO,
+                    name: "scrum__ifScrum",
+                    title: 'Do you use Scrum?',
+                    choices: [
+                        'Yes', 'No'
+                    ],
+                    colCount: 0
+                },
+                {
+                    type: QuestionType.RADIO,
+                    name: 'scrum__How often do you reach your sprint goals?',
+                    title: 'How often do you reach your sprint goals?',
+                    visibleIf: '{srcum__ifScrum}="Yes"',
+                }
+            ]
+        }]
+    };
+
+    expect(surveyConfig).toEqual(expectedSurveyConfig);
+});
+
+

@@ -1,761 +1,477 @@
 {
-  "pages": [
+  "pages":[
     {
-      "questions": [
+      "questions":[
         {
-          "type": "radiogroup",
-          "category": "organisation",
-          "isRequrired": true,
-          "question": "Is software being developed and delivered with plan-driven or agile frameworks at your organization?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Fully plan driven"
-            },
-            {
-              "value": 2,
-              "text": "Mostly plan driven"
-            },
-            {
-              "value": 3,
-              "text": "Plan and agile driven"
-            },
-            {
-              "value": 4,
-              "text": "Mostly agile"
-            },
-            {
-              "value": 5,
-              "text": "Fully agile"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"organisation",
+          "isRequired":true,
+          "question":"Is software being developed and delivered with plan-driven or agile frameworks at your organization?",
+          "choices":[
+            {"value":1,"text":"Mostly plan driven"},
+            {"value":3,"text":"Plan and agile driven"},
+            {"value":5,"text":"Mostly agile"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         },
         {
-          "type": "radiogroup",
-          "category": "organisation",
-          "isRequrired": true,
-          "question": "How long have you been using agile software development delivery frameworks?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Just starting"
-            },
-            {
-              "value": 2,
-              "text": "1 to 3 years"
-            },
-            {
-              "value": 3,
-              "text": "4 to 8 years"
-            },
-            {
-              "value": 4,
-              "text": "9 to 12 years "
-            },
-            {
-              "value": 5,
-              "text": "over 12 years"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"organisation",
+          "isRequired":true,
+          "question":"How long have you been using agile software development delivery frameworks?",
+          "choices":[
+            {"value":1,"text":"Just starting"},
+            {"value":2,"text":"1 to 3 years"},
+            {"value":3,"text":"4 to 8 years"},
+            {"value":4,"text":"9 to 12 years "},
+            {"value":5,"text":"over 12 years"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         }
       ]
     },
     {
-      "questions": [
+      "questions":[
         {
-          "type": "radiogroup",
-          "category": "organisation",
-          "isRequrired": true,
-          "question": "How transparent are the processes, work progress, and planning across your organisation?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Not transparent"
-            },
-            {
-              "value": 2,
-              "text": "A little transparent"
-            },
-            {
-              "value": 3,
-              "text": "Mostly transparent"
-            },
-            {
-              "value": 4,
-              "text": "Very transparent"
-            },
-            {
-              "value": 5,
-              "text": "Completely transparent"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"organisation",
+          "isRequired":true,
+          "question":"How transparent are the processes, work progress, and planning across your organisation?",
+          "choices":[
+            {"value":1,"text":"Not transparent"},
+            {"value":3,"text":"Transparent in some areas"},
+            {"value":5,"text":"Completely transparent"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"Not sure"}
           ]
         },
         {
-          "type": "radiogroup",
-          "category": "organisation",
-          "question": "In your opinion, how agile is the overall culture of your organisation?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Not agile"
-            },
-            {
-              "value": 2,
-              "text": "A little agile"
-            },
-            {
-              "value": 3,
-              "text": "Very agile"
-            },
-            {
-              "value": 4,
-              "text": "Mostly agile"
-            },
-            {
-              "value": 5,
-              "text": "Completely agile"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"organisation",
+          "question":"In your opinion, how agile is the overall culture of your organisation?",
+          "choices":[
+            {"value":1,"text":"Not agile"},
+            {"value":3,"text":"Agile in some areas"},
+            {"value":5,"text":"Completely agile"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         }
       ]
     },
     {
-      "questions": [
+      "questions":[
         {
-          "type": "radiogroup",
-          "category": "organisation",
-          "isRequrired": true,
-          "question": "How often do you release software to production?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Every 6 months or less often"
-            },
-            {
-              "value": 2,
-              "text": "Quarterly"
-            },
-            {
-              "value": 3,
-              "text": "Every month or two"
-            },
-            {
-              "value": 4,
-              "text": "Weekly or every two weeks"
-            },
-            {
-              "value": 5,
-              "text": "Daily"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
-          ]
-        },
-        {
-          "type": "radiogroup",
-          "category": "organisation",
-          "isRequrired": true,
-          "question": "How often do you use agile at scale (e.g. SAFe, LESS) for your projects?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Never"
-            },
-            {
-              "value": 2,
-              "text": "Rarely"
-            },
-            {
-              "value": 3,
-              "text": "Sometimes"
-            },
-            {
-              "value": 4,
-              "text": "Often"
-            },
-            {
-              "value": 5,
-              "text": "Always"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"organisation",
+          "isRequired":true,
+          "question":"How often do you release software to production?",
+          "choices":[
+            {"value":1,"text":"Every 6 months or less often"},
+            {"value":2,"text":"Every 3 months"},
+            {"value":3,"text":"Every month or two"},
+            {"value":4,"text":"Weekly or every two weeks"},
+            {"value":5,"text":"Daily"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         }
       ]
     },
     {
-      "questions": [
+      "questions":[
         {
-          "type": "radiogroup",
-          "category": "teams",
-          "isRequrired": true,
-          "question": "Are your teams cross-functional?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "No"
-            },
-            {
-              "value": 2,
-              "text": "Some of them"
-            },
-            {
-              "value": 3,
-              "text": "Half of them"
-            },
-            {
-              "value": 4,
-              "text": "Most of them"
-            },
-            {
-              "value": 5,
-              "text": "All of them"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"teams",
+          "isRequired":true,
+          "question":"Are your teams cross-functional?",
+          "choices":[
+            {"value":1,"text":"No"},
+            {"value":3,"text":"Some of them"},
+            {"value":5,"text":"All of them"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         },
         {
-          "type": "radiogroup",
-          "category": "organisation",
-          "isRequrired": true,
-          "question": "Are your teams self-organising and empowered to make decisions about how they work?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "No"
-            },
-            {
-              "value": 2,
-              "text": "Some of them"
-            },
-            {
-              "value": 3,
-              "text": "Half of them"
-            },
-            {
-              "value": 4,
-              "text": "Most of them"
-            },
-            {
-              "value": 5,
-              "text": "All of them"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"organisation",
+          "isRequired":true,
+          "question":"Are your teams self-organising and empowered to make decisions about how they work?",
+          "choices":[
+            {"value":1,"text":"No"},
+            {"value":3,"text":"Some of them"},
+            {"value":5,"text":"All of them"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         }
       ]
     },
     {
-      "questions": [
+      "questions":[
         {
-          "type": "radiogroup",
-          "category": "teams",
-          "isRequrired": true,
-          "question": "How often does the team get together to decide on process improvements?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Never"
-            },
-            {
-              "value": 2,
-              "text": "Once or twice a year"
-            },
-            {
-              "value": 3,
-              "text": "Every few months"
-            },
-            {
-              "value": 4,
-              "text": "At least once a month"
-            },
-            {
-              "value": 5,
-              "text": "On a weekly or biweekly basis"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"teams",
+          "isRequired":true,
+          "question":"How often does the team get together to decide on process improvements?",
+          "choices":[
+            {"value":1,"text":"Never"},
+            {"value":2,"text":"Once or twice a year"},
+            {"value":3,"text":"Every few months"},
+            {"value":4,"text":"At least once a month"},
+            {"value":5,"text":"On a weekly or biweekly basis"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         },
         {
-          "type": "radiogroup",
-          "category": "teams",
-          "isRequrired": true,
-          "question": "How often do you use automated testing for your software development?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Never"
-            },
-            {
-              "value": 2,
-              "text": "Rarely"
-            },
-            {
-              "value": 3,
-              "text": "Sometimes"
-            },
-            {
-              "value": 4,
-              "text": "Often"
-            },
-            {
-              "value": 5,
-              "text": "Always"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"teams",
+          "isRequired":true,
+          "question":"How often do you use automated testing for your software development?",
+          "choices":[
+            {"value":1,"text":"Never"},
+            {"value":2,"text":"Rarely"},
+            {"value":3,"text":"Sometimes"},
+            {"value":4,"text":"Often"},
+            {"value":5,"text":"Always"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         }
       ]
     },
     {
-      "questions": [
+      "questions":[
         {
-          "type": "radiogroup",
-          "category": "project/product",
-          "isRequrired": true,
-          "question": "How often do you gather feedback from your end users?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Never"
-            },
-            {
-              "value": 2,
-              "text": "Rarely"
-            },
-            {
-              "value": 3,
-              "text": "Often"
-            },
-            {
-              "value": 4,
-              "text": "After each release"
-            },
-            {
-              "value": 5,
-              "text": "During development and after release"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"project/product",
+          "isRequired":true,
+          "question":"How often do you gather feedback from your end users?",
+          "choices":[
+            {"value":1,"text":"Never"},
+            {"value":2,"text":"Rarely"},
+            {"value":3,"text":"Often"},
+            {"value":4,"text":"After each release"},
+            {"value":5,"text":"During development and after release"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         },
         {
-          "type": "radiogroup",
-          "category": "project/product",
-          "isRequrired": true,
-          "question": "How often do you demonstrate your software to any stakeholders outside the team?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Never"
-            },
-            {
-              "value": 2,
-              "text": "Once or twice a year"
-            },
-            {
-              "value": 3,
-              "text": "Every few months"
-            },
-            {
-              "value": 4,
-              "text": "Once a month, but not more often"
-            },
-            {
-              "value": 5,
-              "text": "Multiple times per months."
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"project/product",
+          "isRequired":true,
+          "question":"How often do you demonstrate your software to any stakeholders outside the team?",
+          "choices":[
+            {"value":1,"text":"Never"},
+            {"value":2,"text":"Once or twice a year"},
+            {"value":3,"text":"Every few months"},
+            {"value":4,"text":"Once a month, but not more often"},
+            {"value":5,"text":"Multiple times per months."},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         }
       ]
     },
     {
-      "questions": [
+      "questions":[
         {
-          "type": "radiogroup",
-          "category": "project/product",
-          "isRequrired": true,
-          "question": "How often do you work from a Single Backlog per product?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Never"
-            },
-            {
-              "value": 2,
-              "text": "Rarely"
-            },
-            {
-              "value": 3,
-              "text": "Sometimes"
-            },
-            {
-              "value": 4,
-              "text": "Often"
-            },
-            {
-              "value": 5,
-              "text": "Always"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"project/product",
+          "isRequired":true,
+          "question":"How often do you work from a Single Backlog per product?",
+          "choices":[
+            {"value":1,"text":"Never"},
+            {"value":2,"text":"Rarely"},
+            {"value":3,"text":"Sometimes"},
+            {"value":4,"text":"Often"},
+            {"value":5,"text":"Always"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         },
         {
-          "type": "radiogroup",
-          "category": "project/product",
-          "isRequrired": true,
-          "question": "Do your teams work with a dedicated Product Owner?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Never"
-            },
-            {
-              "value": 2,
-              "text": "Rarely"
-            },
-            {
-              "value": 3,
-              "text": "Sometimes"
-            },
-            {
-              "value": 4,
-              "text": "Often"
-            },
-            {
-              "value": 5,
-              "text": "Always"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"project/product",
+          "isRequired":true,
+          "question":"Do your teams work with a dedicated Product Owner?",
+          "choices":[
+            {"value":1,"text":"Never"},
+            {"value":2,"text":"Rarely"},
+            {"value":3,"text":"Sometimes"},
+            {"value":4,"text":"Often"},
+            {"value":5,"text":"Always"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         },
         {
-          "type": "radiogroup",
-          "category": "project/product",
-          "isRequrired": true,
-          "question": "Does the team understand the product vision and the value it brings to the user?",
-          "choices": [
+          "type":"radiogroup",
+          "category":"project/product",
+          "isRequired":true,
+          "question":"Does the team understand the product vision and the value it brings to the user?",
+          "choices":[
+            {"value":1,"text":"Never"},
+            {"value":2,"text":"Rarely"},
+            {"value":3,"text":"Sometimes"},
+            {"value":4,"text":"Often"},
+            {"value":5,"text":"Always"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
+          ]
+        },
+        {
+          "type":"radiogroup",
+          "category":"project/product",
+          "isRequired":true,
+          "question":"Do you prioritize your user stories based on specific criteria (eg. business value, risk, urgency)?",
+          "choices":[
             {
-              "value": 1,
-              "text": "Never"
+              "value":1,
+              "text":"We do not have a prioritization, but just follow a pre-established plan"
             },
             {
-              "value": 2,
-              "text": "Rarely"
+              "value":2,
+              "text":"No criteria are discussed or communicated for prioritization"
             },
             {
-              "value": 3,
-              "text": "Sometimes"
+              "value":3,
+              "text":"There is a vague idea of the criteria, but it is not overly transparent"
             },
             {
-              "value": 4,
-              "text": "Often"
+              "value":4,
+              "text":"The criteria for prioritization are communicated, but never validated or discussed"
             },
             {
-              "value": 5,
-              "text": "Always"
+              "value":5,
+              "text":"There is an active, transparent prioritization process based upon criteria"
             },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         }
       ]
     },
     {
-      "questions": [
+      "questions":[
         {
-          "type": "radiogroup",
-          "category": "project/product",
-          "isRequrired": true,
-          "question": "Does the Scrum Master / Agile Coach, live by and teach the Agile Values and Principles to the team?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Never"
-            },
-            {
-              "value": 2,
-              "text": "Rarely"
-            },
-            {
-              "value": 3,
-              "text": "Sometimes"
-            },
-            {
-              "value": 4,
-              "text": "Often"
-            },
-            {
-              "value": 5,
-              "text": "Always"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"project/product",
+          "isRequired":true,
+          "question":"Does the Scrum Master / Agile Coach, live by and teach the Agile Values and Principles to the team?",
+          "choices":[
+            {"value":1,"text":"Never"},
+            {"value":2,"text":"Rarely"},
+            {"value":3,"text":"Sometimes"},
+            {"value":4,"text":"Often"},
+            {"value":5,"text":"Always"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         },
         {
-          "type": "radiogroup",
-          "category": "project/product",
-          "isRequrired": true,
-          "question": "Do you work on your projects or product development in an iterative way?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Never"
-            },
-            {
-              "value": 2,
-              "text": "Rarely"
-            },
-            {
-              "value": 3,
-              "text": "Sometimes"
-            },
-            {
-              "value": 4,
-              "text": "Often"
-            },
-            {
-              "value": 5,
-              "text": "Always"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"project/product",
+          "isRequired":true,
+          "question":"Do you work on your projects or product development in an iterative way?",
+          "choices":[
+            {"value":1,"text":"Never"},
+            {"value":2,"text":"Rarely"},
+            {"value":3,"text":"Sometimes"},
+            {"value":4,"text":"Often"},
+            {"value":5,"text":"Always"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         }
       ]
     },
     {
-      "questions": [
+      "questions":[
         {
-          "type": "radiogroup",
-          "category": "project/product",
-          "isRequrired": true,
-          "question": "How long does it take to get a specified feature in production?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Over one year"
-            },
-            {
-              "value": 2,
-              "text": "Between 6 months and a year"
-            },
-            {
-              "value": 3,
-              "text": "Between one and 6 months"
-            },
-            {
-              "value": 4,
-              "text": "Between two weeks and one month"
-            },
-            {
-              "value": 5,
-              "text": "Two weeks or below"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"project/product",
+          "isRequired":true,
+          "question":"How long does it take to get a specified feature in production?",
+          "choices":[
+            {"value":1,"text":"Over one year"},
+            {"value":2,"text":"Between 6 months and a year"},
+            {"value":3,"text":"Between one and 6 months"},
+            {"value":4,"text":"Between two weeks and one month"},
+            {"value":5,"text":"Two weeks or below"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         },
         {
-          "type": "radiogroup",
-          "category": "project/product",
-          "isRequrired": true,
-          "question": "How often do you have a fully integrated, deployable version of your software?",
-          "choices": [
+          "type":"radiogroup",
+          "category":"project/product",
+          "isRequired":true,
+          "question":"How often do you have a fully integrated, deployable version of your software?",
+          "choices":[
+            {"value":1,"text":"Once or twice a year"},
+            {"value":2,"text":"Every few months"},
             {
-              "value": 1,
-              "text": "Once or twice a year"
+              "value":3,
+              "text":"At least once every few weeks, but not every day"
             },
-            {
-              "value": 2,
-              "text": "Every few months"
-            },
-            {
-              "value": 3,
-              "text": "At least once every few weeks, but not every day"
-            },
-            {
-              "value": 4,
-              "text": "Daily"
-            },
-            {
-              "value": 5,
-              "text": "With every Check In / Pull Request"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+            {"value":4,"text":"Daily"},
+            {"value":5,"text":"With every Check In / Pull Request"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
         }
       ]
     },
     {
-      "questions": [
+      "questions":[
         {
-          "type": "radiogroup",
-          "category": "aditional",
-          "isRequrired": true,
-          "question": "How much are you satisfied with your software development and delivery framework ?",
-          "choices": [
-            {
-              "value": 1,
-              "text": "Unsatisfied"
-            },
-            {
-              "value": 2,
-              "text": "Fairly satisfied"
-            },
-            {
-              "value": 3,
-              "text": "Satisfied"
-            },
-            {
-              "value": 4,
-              "text": "Very satisfied"
-            },
-            {
-              "value": 5,
-              "text": "Fully Satisfied"
-            },
-            {
-              "value": -2,
-              "text": "Does not apply"
-            },
-            {
-              "value": -1,
-              "text": "I don’t know"
-            }
+          "type":"radiogroup",
+          "category":"scrum",
+          "name":"ifScrum",
+          "isRequired":true,
+          "question":"Do teams in your organisation use Scrum?",
+          "choices":["Yes","No"],
+          "colCount":0
+        },
+        {
+          "type":"radiogroup",
+          "category":"scrum",
+          "isRequired":true,
+          "visibleIf":"{scrum__ifScrum}='Yes'",
+          "question":"How often do you reach your sprint goals?",
+          "choices":[
+            {"value":1,"text":"We do not define sprint goals"},
+            {"value":2,"text":"We never achieve them"},
+            {"value":3,"text":"We achieve them sometimes"},
+            {"value":4,"text":"We achieve them often"},
+            {"value":5,"text":"We achieve them always or almost always"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
           ]
+        },
+        {
+          "type":"radiogroup",
+          "category":"scrum",
+          "isRequired":true,
+          "visibleIf":"{scrum__ifScrum}='Yes'",
+          "question":"How well do you enforce a Definition of Done?",
+          "choices":[
+            {"value":1,"text":"We do not have a Definition of Done"},
+            {
+              "value":2,
+              "text":"We have a Definition of Done, but we do not enforce it"
+            },
+            {
+              "value":3,
+              "text":"We have a Definition of Done and we sometimes use it"
+            },
+            {
+              "value":4,
+              "text":"We have a Definition of Done and we adhere to it most of the time"
+            },
+            {
+              "value":5,
+              "text":"No user story is considered Done unless all criteria of the Definition of Done have been met"
+            },
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
+          ]
+        },
+        {
+          "type":"radiogroup",
+          "category":"scrum",
+          "isRequired":true,
+          "visibleIf":"{scrum__ifScrum}='Yes'",
+          "question":"How well can developers focus their work on the sprint backlog?",
+          "choices":[
+            {"value":1,"text":"There is no sprint backlog"},
+            {
+              "value":2,
+              "text":"There is a sprint backlog, but actual things to be done are decided independently several times a week"
+            },
+            {
+              "value":3,
+              "text":"Some of the time, developers can work on the sprint backlog, but often do other development work"
+            },
+            {
+              "value":4,
+              "text":"Most of the time, developers work on the sprint backlog, but sometimes do other development work"
+            },
+            {
+              "value":5,
+              "text":"Almost all development work goes towards the sprint backlog; any exceptions are managed and measured"
+            },
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
+          ]
+        }
+      ]
+    },
+    {
+      "questions":[
+        {
+          "type":"radiogroup",
+          "category":"additional",
+          "isRequired":true,
+          "question":"How much are you satisfied with your software development and delivery framework ?",
+          "choices":[
+            {"value":1,"text":"Not happy"},
+            {"value":3,"text":"Fairly happy"},
+            {"value":5,"text":"Very happy"},
+            {"value":-2,"text":"Not applicable"},
+            {"value":-1,"text":"I don’t know"}
+          ]
+        }
+      ]
+    },
+    {
+      "questions":[
+        {
+          "type":"dropdown",
+          "category":"info",
+          "isRequired":true,
+          "question":"Which industry is your organisation primarily in?",
+          "choices": [
+            "Industrial Manufacturing", "Consumer Manufacturing",
+            "Construction", "Health & Pharmaceuticals",
+            "Transportation and Logistics", "Information, Media and Communications",
+            "Finance and Insurance", "Business Services", "Public Administration"
+          ],
+          "colCount":2,
+          "hasOther": true
+        },
+        {
+          "type":"dropdown",
+          "category":"info",
+          "isRequired": true,
+          "question":"Number of Employees",
+          "choices": [
+            "1-50", "50-500", "500-5000", "5000+"]
+        },
+        {
+          "type":"dropdown",
+          "category":"info",
+          "isRequired": true,
+          "question":"Your position in the organisation",
+          "choices": [
+            "Software engineer", "Software architect",
+            "Quality Assurance Specialist", "Business Analyst",
+            "Project Manager", "Agile Coach / Scrum Master",
+            "Product Owner / Product Manager", "Manager",
+            "Director", "VP"
+          ],
+          "hasOther": true
+        },
+        {
+          "type": "text",
+          "category": "info",
+          "question": "Company Name (Optional)"
         }
       ]
     }

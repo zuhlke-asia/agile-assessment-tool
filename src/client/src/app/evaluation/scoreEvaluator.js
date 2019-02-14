@@ -24,7 +24,13 @@ export const evaluateScore = result => {
         const value = result[key];
         const category = key.split('__')[0];
 
-        if (isNaN(value)) {
+        if (isNaN(value) || category === 'additional') {
+            continue;
+        }
+
+        const valueAsInt = parseInt(value);
+
+        if (valueAsInt < 0) {
             continue;
         }
 
@@ -35,7 +41,7 @@ export const evaluateScore = result => {
             };
         }
 
-        score[category].total += parseInt(value);
+        score[category].total += valueAsInt;
         score[category].max += MAX_POINTS_PER_ANSWER;
     }
 
