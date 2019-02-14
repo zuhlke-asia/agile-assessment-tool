@@ -39,23 +39,24 @@ export default class Evaluation extends React.Component {
             <div id="pagecontent">
                 <div className="github-content mobile-padding row zue-teaser-medium-boxes zue-boxes-container ng-scope">
                     <h3>Thank you for participating!</h3>
-                    <p>Here are your results</p>
-                    <div className="score-container">
-                    {
-                        this.state.evaluations &&
-                        this.state.evaluations
-                            .map((item, i) => ([
-                                    <div key={item.name} className="category-label">{item.name}</div>,
-                                    <div key={i} className={`${item.name} score-bar-container`}>
-                                        <div
-                                            className="score-bar"
-                                            style={{ width: `${100 * item.total / item.max}%` }}
-                                        >&nbsp;</div>
-                                    </div>
-                                ]
-                            ))
+                    {this.state.evaluations ? null :
+                        <div>
+                            <p>Here are your results</p>
+                            <div className="score-container">
+                                {this.state.evaluations
+                                    .map((item, i) => ([
+                                            <div key={item.name} className="category-label">{item.name}</div>,
+                                            <div key={i} className={`${item.name} score-bar-container`}>
+                                                <div
+                                                    className="score-bar"
+                                                    style={{width: `${100 * item.total / item.max}%`}}
+                                                >&nbsp;</div>
+                                            </div>
+                                        ]
+                                    ))}
+                            </div>
+                        </div>
                     }
-                    </div>
                 </div>
             </div>
         )

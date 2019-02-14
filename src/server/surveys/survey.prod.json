@@ -44,7 +44,7 @@
             {"value":3,"text":"Transparent in some areas"},
             {"value":5,"text":"Completely transparent"},
             {"value":-2,"text":"Not applicable"},
-            {"value":-1,"text":"Not sure"}
+            {"value":-1,"text":"I don’t know"}
           ]
         },
         {
@@ -435,7 +435,6 @@
         {
           "type":"dropdown",
           "category":"info",
-          "isRequired":true,
           "question":"Which industry is your organisation primarily in?",
           "choices": [
             "Industrial Manufacturing", "Consumer Manufacturing",
@@ -449,7 +448,6 @@
         {
           "type":"dropdown",
           "category":"info",
-          "isRequired": true,
           "question":"Number of Employees",
           "choices": [
             "1-50", "50-500", "500-5000", "5000+"]
@@ -457,7 +455,6 @@
         {
           "type":"dropdown",
           "category":"info",
-          "isRequired": true,
           "question":"Your position in the organisation",
           "choices": [
             "Software engineer", "Software architect",
