@@ -56,6 +56,11 @@ class Survey {
     shouldShowConditionalQuestion(question) {
         cy.contains(question).should('be.visible');
     }
+
+    shouldNotShowConditionalQuestion(question) {
+        cy.contains(question).should('not.exist')
+
+    }
 }
 
 export default Survey;
