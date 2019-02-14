@@ -15,7 +15,7 @@ _app.get('/', function (req, res) {
 });
 
 function onGetSurveyConfig(req, res) {
-    res.json(surveyReader.readSurveyConfig());
+    res.json(surveyReader.readSurveyConfig(process.env.NODE_ENV));
 }
 
 async function app(dbClient) {
@@ -24,7 +24,7 @@ async function app(dbClient) {
     return _app;
 }
 
-
+ππ
 async function onPostSurveyResult(db, req, res) {
     try {
         await db.collection("userscores").insertOne(req.body);
