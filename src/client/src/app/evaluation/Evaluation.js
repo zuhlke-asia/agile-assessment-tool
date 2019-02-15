@@ -2,6 +2,7 @@ import React from 'react';
 import '../../styles/progress-bars.scss';
 import Profile from '../UI/profileSmall';
 import profileInformation from '../UI/profileInformation';
+import Link from '../UI/Link';
 
 export default class Evaluation extends React.Component {
 
@@ -55,19 +56,15 @@ export default class Evaluation extends React.Component {
         </div>);
 
         return (
-            <>
-                <div id="pagecontent">
-                    <div
-                        className="github-content mobile-padding row zue-teaser-medium-boxes zue-boxes-container ng-scope">
-                        <h3>Thank you for participating!</h3>
-                        {scoreBars}
-                        <Profile profileArray={profileInformation}/>
-                    </div>
-
+            <div id="pagecontent">
+                <div
+                    className="github-content mobile-padding row zue-teaser-medium-boxes zue-boxes-container ng-scope">
+                    <h3>Thank you for participating!</h3>
+                    {scoreBars}
+                    <Link />
+                    <Profile profileArray={profileInformation}/>
                 </div>
-            </>
-
+            </div>
         )
     }
-
 }
