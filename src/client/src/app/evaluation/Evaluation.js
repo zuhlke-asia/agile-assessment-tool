@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/progress-bars.scss';
-
+import Profile from '../UI/profile';
+import profileInformation from '../UI/profileInformation';
 
 export default class Evaluation extends React.Component {
 
@@ -36,29 +37,34 @@ export default class Evaluation extends React.Component {
 
     render() {
         return (
-            <div id="pagecontent">
-                <div className="github-content mobile-padding row zue-teaser-medium-boxes zue-boxes-container ng-scope">
-                    <h3>Thank you for participating!</h3>
-                    {this.state.evaluations ? null :
-                        <div>
-                            <p>Here are your results</p>
-                            <div className="score-container">
-                                {this.state.evaluations
-                                    .map((item, i) => ([
-                                            <div key={item.name} className="category-label">{item.name}</div>,
-                                            <div key={i} className={`${item.name} score-bar-container`}>
-                                                <div
-                                                    className="score-bar"
-                                                    style={{width: `${100 * item.total / item.max}%`}}
-                                                >&nbsp;</div>
-                                            </div>
-                                        ]
-                                    ))}
-                            </div>
-                        </div>
-                    }
+            <>
+                <div id="pagecontent">
+                    <div
+                        className="github-content mobile-padding row zue-teaser-medium-boxes zue-boxes-container ng-scope">
+                        <h3>Thank you for participating!</h3>
+                        {this.state.evaluations &&
+                            (<div>
+                                <div className="score-container">
+                                    <p>Here are your results</p>
+                                    {this.state.evaluations
+                                        .map((item, i) => ([
+                                                <div key={item.name} className="category-label">{item.name}</div>,
+                                                <div key={i} className={`${item.name} score-bar-container`}>
+                                                    <div
+                                                        className="score-bar"
+                                                        style={{width: `${100 * item.total / item.max}%`}}
+                                                    >&nbsp;</div>
+                                                </div>
+                                            ]
+                                        ))}
+                                </div>
+                            </div>)
+                        }
+                    </div>
+                    <Profile profileInfo={profileInformation[0]}/>
                 </div>
-            </div>
+            </>
+
         )
     }
 
