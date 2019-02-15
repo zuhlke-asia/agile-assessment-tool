@@ -8,4 +8,12 @@ export default [
         pic: './raj.png',
         linkedin: 'https://www.linkedin.com/in/nele-eckstein-96a2397/',
     },
+    {
+        name: 'Aleksandra Brewer',
+        position: 'Project Manager',
+        department: 'Singapore',
+        email: 'aleksandra.brewer@zuhlke.com',
+        pic:'./alex.png',
+        linkedin: 'https://www.linkedin.com/in/aleksandra-brewer-7020594/',
+    }
 ]
