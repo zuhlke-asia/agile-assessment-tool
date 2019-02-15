@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/progress-bars.scss';
-import Profile from '../UI/profile';
+import Profile from '../UI/profileSmall';
 import profileInformation from '../UI/profileInformation';
 
 export default class Evaluation extends React.Component {
@@ -37,7 +37,7 @@ export default class Evaluation extends React.Component {
 
     render() {
 
-        const scoreBars =  !! this.state.evaluations.length  && (<div>
+        const scoreBars = !!this.state.evaluations.length && (<div>
             <p>Here are your results</p>
             <div className="score-container">
                 {this.state.evaluations
@@ -61,8 +61,9 @@ export default class Evaluation extends React.Component {
                         className="github-content mobile-padding row zue-teaser-medium-boxes zue-boxes-container ng-scope">
                         <h3>Thank you for participating!</h3>
                         {scoreBars}
+                        <Profile profileArray={profileInformation}/>
                     </div>
-                    <Profile profileInfo={profileInformation[0]}/>
+
                 </div>
             </>
 

@@ -55,7 +55,6 @@ const Profile = props => {
                             <a href={`tel:${profileInfo.phone}`}
                                className={`button track track-contact track-tel ${classes.contactLinks}`}><i
                                 className="icon-Phone"/> {profileInfo.phone}</a>
-
                         </div>
 
                         <div className="contact-social-links">

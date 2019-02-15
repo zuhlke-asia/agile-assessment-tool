@@ -13,6 +13,7 @@ export default [
         position: 'Project Manager',
         department: 'Singapore',
         email: 'aleksandra.brewer@zuhlke.com',
+        phone: '+65 92231019',
         pic:'./alex.png',
         linkedin: 'https://www.linkedin.com/in/aleksandra-brewer-7020594/',
     }
