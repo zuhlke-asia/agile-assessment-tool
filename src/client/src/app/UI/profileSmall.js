@@ -31,6 +31,7 @@ const styles = {
             width: '160px',
             height: '160px',
             objectFit: 'cover',
+            maxWidth: 'none',
             borderRadius: '100%',
         },
         '@media screen and (max-width: 497px)': {
