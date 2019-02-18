@@ -40,6 +40,9 @@ const styles = {
                 justifyContent: 'center',
                 alignItems: 'center',
             },
+            '& p,h5':{
+                textAlign: 'center'
+            }
         },
     },
     name: {
@@ -72,6 +75,12 @@ const styles = {
     sectionName: {
         paddingBottom: '20px',
         borderBottom: 'solid 2px #ff820a',
+        '@media screen and (max-width: 497px)': {
+            '&': {
+                textAlign: 'center',
+                margin: '3px'
+            },
+        },
     }
 };
 

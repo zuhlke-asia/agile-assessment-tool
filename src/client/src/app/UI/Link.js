@@ -23,7 +23,7 @@ const Link = props => {
                     linkArray.map((item, i) =>
                         (<li className={`zue-box-outer ${classes.card}`} id={`${item.title}_${i}`}>
                             <a className="zue-box-cta font-opensans-bold"
-                               href={item.url}>
+                               onClick={()=> window.open(item.url, "_blank")}>
                                 <div className="zue-box-inner">
                                     <div className="zue-box-content box-padding-medium">
                                         <h4 className="font-opensans">{item.title}</h4>

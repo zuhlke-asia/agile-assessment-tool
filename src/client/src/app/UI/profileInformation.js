@@ -24,5 +24,13 @@ export default [
         email: 'jochen.reber@zuhlke.com',
         phone: '+65 84593220',
         pic:'./jochen.jpg',
+    },{
+        name: 'Michael Schnyder',
+        position: 'Agile Coach / Lead Software Architect',
+        department: 'Singapore',
+        email: 'michael.schnyder@zuhlke.com',
+        phone: '+65 8182 5581',
+        pic:'./michael.jpg',
+        linkedin: 'https://www.linkedin.com/in/mschnyder/'
     }
 ]
