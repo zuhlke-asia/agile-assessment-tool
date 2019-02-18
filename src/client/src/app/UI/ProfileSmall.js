@@ -68,6 +68,10 @@ const styles = {
             marginLeft: '8px',
             fontSize: '15px',
         }
+    },
+    sectionName: {
+        paddingBottom: '20px',
+        borderBottom: 'solid 2px #ff820a',
     }
 };
 
@@ -78,6 +82,10 @@ const ProfileSmall = props => {
     const {classes, profileArray} = props;
     return (
         <div className={classes.contacts}>
+            <div className = {classes.sectionName}>
+                <h3> <span className="color-primary"> Our contacts </span> </h3>
+                <p> If you wish to know more, please talk to our experts.</p>
+            </div>
             <div className={classes.wrapper}>
                 {
                     profileArray.map((profileInfo, i) => {

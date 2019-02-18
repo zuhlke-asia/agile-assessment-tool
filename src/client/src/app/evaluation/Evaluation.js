@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/progress-bars.scss';
-import Profile from '../UI/profileSmall';
+import Profile from '../UI/ProfileSmall';
 import profileInformation from '../UI/profileInformation';
 import Link from '../UI/Link';
 import linkInformation from '../UI/linkInformation';
