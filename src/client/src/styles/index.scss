@@ -13,6 +13,10 @@ footer {
   display: flex;
 }
 
+#pagecontent .mobile-padding {
+  padding: 0 6px;
+}
+
 /* surveyjs-overrides */
 
 .sv_main {
@@ -38,3 +42,31 @@ div.small {
 .zue-branding-inner {
   transition: opacity 0.5s ease-out;
 }
+
+
+.sv_qstn {
+
+  @media (max-width: 961px) {
+    input {
+      height: 100%;
+    }
+
+  }
+
+  label {
+    line-height: 1.3 !important;
+  }
+}
+
+@media (max-width: 961px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+
+  .progress {
+    width: 90%;
+  }
+
+  .progress-bar > span {
+    display: none;
+  }
+}
+

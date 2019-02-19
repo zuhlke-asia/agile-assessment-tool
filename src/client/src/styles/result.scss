@@ -1,5 +1,5 @@
 .card {
-  height: 333px;
+  height: 333px !important;
 }
 
 .linkSection {
@@ -43,10 +43,6 @@
     object-fit: cover;
     max-width: none;
     border-radius: 100%;
-  }
-
-  @media screen and (max-width: 962px) {
-    width: 490px;
   }
 
   @media screen and (max-width: 497px) {
