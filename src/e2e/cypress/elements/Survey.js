@@ -61,6 +61,20 @@ class Survey {
         cy.contains(question).should('not.exist')
 
     }
+
+    shouldShowNumberOfLinks(number) {
+        cy
+            .get('.linkSection ul')
+            .children('.card')
+            .should('have.length', number);
+    }
+
+    shouldShowNumberOfProfiles(number) {
+        cy
+            .get('.contacts .wrapper')
+            .children('.profile')
+            .should('have.length', number);
+    }
 }
 
 export default Survey;

@@ -24,7 +24,6 @@ async function app(dbClient) {
     return _app;
 }
 
-
 async function onPostSurveyResult(db, req, res) {
     try {
         await db.collection("userscores").insertOne(req.body);
