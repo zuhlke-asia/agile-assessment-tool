@@ -10,7 +10,7 @@ export default {
             title: 'Challenging Team Agility using White Elephant Principles',
             url: 'https://nomad8.com/articles/challenging-team-agility-using-white-elephant-principles',
             abstract:'Here’s a handy way to collectively challenge each other to improve in a constructive way. ' +
-                'This can be used as a retrospective activity, a team reset activity or any time you want to spark some reflection on how you work together as a team...',
+                'This can be used as a retrospective activity, a team reset activity...',
 
         },
         {

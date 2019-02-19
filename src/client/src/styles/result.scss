@@ -26,6 +26,9 @@
 
 .info {
   margin: 0 20px;
+  @media screen and (max-width: 962px) {
+    height: 196px;
+  }
 }
 
 
