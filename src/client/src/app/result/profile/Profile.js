@@ -1,5 +1,6 @@
 import React from 'react';
 import injectSheet from 'react-jss';
+import profileInformation from './profileInformation';
 
 const styles = {
     contacts: {
@@ -84,11 +85,11 @@ const styles = {
     }
 };
 
-const profilePics = require.context('../../assets/images/profile', true);
+const profilePics = require.context('../../../assets/images/profile', true);
 
-const ProfileSmall = props => {
+const Profile = props => {
 
-    const {classes, profileArray} = props;
+    const {classes} = props;
     return (
         <div className={classes.contacts}>
             <div className = {classes.sectionName}>
@@ -97,7 +98,7 @@ const ProfileSmall = props => {
             </div>
             <div className={classes.wrapper}>
                 {
-                    profileArray.map((profileInfo, i) => {
+                    profileInformation.map((profileInfo, i) => {
                         const img = profilePics(profileInfo.pic);
                         return (<div className={classes.profile} key={`${profileInfo}_${i}`}>
                             <div>
@@ -130,4 +131,4 @@ const ProfileSmall = props => {
     )
 };
 
-export default injectSheet(styles)(ProfileSmall);
+export default injectSheet(styles)(Profile);

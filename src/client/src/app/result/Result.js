@@ -1,5 +1,7 @@
 import React from 'react';
 import Evaluation from "./evaluation/Evaluation";
+import Link from "./link/Link";
+import Profile from "./profile/Profile";
 
 
 export default ({evaluations}) => (
@@ -10,8 +12,8 @@ export default ({evaluations}) => (
             <p>
                 Find out how Zuhlke can help your organisation on your path to agility. Contact one of our experienced consultants today.
             </p>
-            {/*<Link linkArray={linkInformation['team'].slice(0,6)}/>*/}
-            {/*<Profile profileArray={profileInformation}/>*/}
+            <Link />
+            <Profile />
         </div>
     </div>
 );
