@@ -5,13 +5,11 @@ import {evaluateScore} from './result/evaluation/scoreEvaluator';
 import Header from './Header';
 import Footer from './Footer';
 import FootNote from './FootNote';
-import WelcomePage from './Welcome';
 import AgileAssessment from './AgileAssessment';
 import axios from 'axios';
 import Result from "./result/Result";
 
 const PageState = {
-    WELCOME: 'WELCOME',
     SURVEY: 'SURVEY',
     EVALUATION: 'EVALUATION',
 };
@@ -84,8 +82,6 @@ export default class App extends Component {
 
     getContent() {
         switch (this.state.pageState) {
-            case PageState.WELCOME:
-                return <WelcomePage onStart={() => this.onStart()}/>;
             case PageState.EVALUATION:
                 return <Result evaluations={this.state.evaluations}/>;
             default:

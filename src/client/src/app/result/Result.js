@@ -2,7 +2,7 @@ import React from 'react';
 import Evaluation from "./evaluation/Evaluation";
 import Link from "./link/Link";
 import Profile from "./profile/Profile";
-
+import '../../styles/result.scss';
 
 export default ({evaluations}) => (
     <div id="pagecontent">

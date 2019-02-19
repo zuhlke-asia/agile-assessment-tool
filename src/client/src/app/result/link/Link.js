@@ -1,29 +1,18 @@
 import React from 'react';
-import injectSheet from 'react-jss';
 import linkArray from './linkInformation';
 
-
-const styles = {
-    card: {
-        height: '333px',
-    },
-    linkSection:{
-        marginTop: '40px',
-    }
-};
-
-const Link = props => {
+export default props => {
 
     const {classes} = props;
 
     const linksToDisplay = linkArray['team'].slice(0, 6);
     return (
-        <div className={classes.linkSection}>
+        <div className="linkSection">
             <h3> <span className='color-primary'>Find more about Agile</span></h3>
             <ul className="medium-block-grid-2 large-block-grid-3">
                 {
                     linksToDisplay.map((item, i) =>
-                        (<li className={`zue-box-outer ${classes.card}`} key={`${item.title}_${i}`}>
+                        (<li className="zue-box-outer card" key={`${item.title}_${i}`}>
                             <a className="zue-box-cta font-opensans-bold"
                                onClick={()=> window.open(item.url, "_blank")}>
                                 <div className="zue-box-inner">
@@ -45,6 +34,3 @@ const Link = props => {
         </div>);
 
 };
-
-export default injectSheet(styles)(Link);
-
