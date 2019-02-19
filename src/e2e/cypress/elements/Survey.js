@@ -62,14 +62,14 @@ class Survey {
 
     }
 
-    shouldShowLinkOfNumber(number) {
+    shouldShowNumberOfLinks(number) {
         cy
             .get('.linkSection ul')
             .children('.card')
             .should('have.length', number);
     }
 
-    shouldShowProfileOfNumber(number) {
+    shouldShowNumberOfProfiles(number) {
         cy
             .get('.contacts .wrapper')
             .children('.profile')

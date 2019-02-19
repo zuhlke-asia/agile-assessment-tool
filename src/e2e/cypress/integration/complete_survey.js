@@ -51,8 +51,8 @@ describe("Complete Survey", function () {
         survey.shouldShowPercentage('Agility', 80);
         survey.shouldShowPercentage('Estimation', 100);
         survey.shouldShowPercentage('Mood', 20);
-        survey.shouldShowLinkOfNumber(6);
-        survey.shouldShowProfileOfNumber(4);
+        survey.shouldShowNumberOfLinks(6);
+        survey.shouldShowNumberOfProfiles(4);
     });
 
     it("should navigate backwards if previous is clicked.", function () {

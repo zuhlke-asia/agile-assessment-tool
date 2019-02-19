@@ -13,30 +13,31 @@ export default () => (
             {
                 profileInformation.map((profileInfo, i) => {
                     const img = profilePics(profileInfo.pic);
-                    return (<div className="profile" key={`${profileInfo}_${i}`}>
-                        <div>
-                            <img src={img} alt={`${profileInfo.name}`}/>
-                        </div>
-                        <div className="info">
-                            <h5 className="name">{profileInfo.name}</h5>
-                            <p className="position">{profileInfo.position}</p>
-                            <p className="contactInfo">
-                                <i className="icon-E-mail"/>
-                                <span>{profileInfo.email}</span>
-                            </p>
-                            <p className="contactInfo">
-                                <i className="icon-Phone"/>
-                                <span>{profileInfo.phone}</span>
-                            </p>
-                            <ul className="our-experts-social-icons zue-plain-list zue-social-list">
-                                {profileInfo.linkedin &&
-                                <a target="_blank" rel="noopener noreferrer" href={profileInfo.linkedin}
-                                   title="Linkedin">
-                                    <i className="icon-Linkedin"/>
-                                </a>}
-                            </ul>
-                        </div>
-                    </div>)
+                    return (
+                        <div className="profile" key={`${profileInfo}_${i}`}>
+                            <div>
+                                <img src={img} alt={`${profileInfo.name}`}/>
+                            </div>
+                            <div className="info">
+                                <h5 className="name">{profileInfo.name}</h5>
+                                <p className="position">{profileInfo.position}</p>
+                                <p className="contactInfo">
+                                    <i className="icon-E-mail"/>
+                                    <span>{profileInfo.email}</span>
+                                </p>
+                                <p className="contactInfo">
+                                    <i className="icon-Phone"/>
+                                    <span>{profileInfo.phone}</span>
+                                </p>
+                                <ul className="our-experts-social-icons zue-plain-list zue-social-list">
+                                    {profileInfo.linkedin &&
+                                    <a target="_blank" rel="noopener noreferrer" href={profileInfo.linkedin}
+                                       title="Linkedin">
+                                        <i className="icon-Linkedin"/>
+                                    </a>}
+                                </ul>
+                            </div>
+                        </div>)
                 })
             }
         </div>
