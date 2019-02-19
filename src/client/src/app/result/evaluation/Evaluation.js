@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/progress-bars.scss';
+import '../../../styles/evaluation.scss';
 
 export default class Evaluation extends React.Component {
 
