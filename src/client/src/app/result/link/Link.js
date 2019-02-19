@@ -11,8 +11,8 @@ export default () => {
                 {
                     linksToDisplay.map((item, i) =>
                         (<li className="zue-box-outer card" key={`${item.title}_${i}`}>
-                            <a className="zue-box-cta font-opensans-bold"
-                               onClick={()=> window.open(item.url, "_blank")}>
+                            <a className="zue-box-cta font-opensans-bold" href={item.url} target="_blank"
+                            rel="noopener noreferrer">
                                 <div className="zue-box-inner">
                                     <div className="zue-box-content box-padding-medium">
                                         <h4 className="font-opensans">{item.title}</h4>
