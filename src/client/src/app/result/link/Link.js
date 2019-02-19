@@ -1,9 +1,7 @@
 import React from 'react';
 import linkArray from './linkInformation';
 
-export default props => {
-
-    const {classes} = props;
+export default () => {
 
     const linksToDisplay = linkArray['team'].slice(0, 6);
     return (
