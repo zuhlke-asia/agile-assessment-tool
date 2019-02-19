@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {generateSurveyConfig} from './surveyconfig/configGenerator';
-import {evaluateScore} from './evaluation/scoreEvaluator';
+import {evaluateScore} from './result/evaluation/scoreEvaluator';
 
 import Header from './Header';
 import Footer from './Footer';
 import FootNote from './FootNote';
 import WelcomePage from './Welcome';
-import Evaluation from './evaluation/Evaluation';
 import AgileAssessment from './AgileAssessment';
 import axios from 'axios';
+import Result from "./result/Result";
 
 const PageState = {
     WELCOME: 'WELCOME',
@@ -87,7 +87,7 @@ export default class App extends Component {
             case PageState.WELCOME:
                 return <WelcomePage onStart={() => this.onStart()}/>;
             case PageState.EVALUATION:
-                return <Evaluation evaluations={this.state.evaluations}/>;
+                return <Result evaluations={this.state.evaluations}/>;
             default:
                 return <div>
                     {this.state.surveyConfig && <AgileAssessment

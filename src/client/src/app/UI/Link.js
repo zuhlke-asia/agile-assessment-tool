@@ -18,10 +18,10 @@ const Link = props => {
     return (
         <div className={classes.linkSection}>
             <h3> <span className='color-primary'>Find more about Agile</span></h3>
-            <ul class="medium-block-grid-2 large-block-grid-3">
+            <ul className="medium-block-grid-2 large-block-grid-3">
                 {
                     linkArray.map((item, i) =>
-                        (<li className={`zue-box-outer ${classes.card}`} id={`${item.title}_${i}`}>
+                        (<li className={`zue-box-outer ${classes.card}`} key={`${item.title}_${i}`}>
                             <a className="zue-box-cta font-opensans-bold"
                                onClick={()=> window.open(item.url, "_blank")}>
                                 <div className="zue-box-inner">

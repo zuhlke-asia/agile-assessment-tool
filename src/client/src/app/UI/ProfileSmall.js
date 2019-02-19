@@ -99,7 +99,7 @@ const ProfileSmall = props => {
                 {
                     profileArray.map((profileInfo, i) => {
                         const img = profilePics(profileInfo.pic);
-                        return (<div className={classes.profile} id={`${profileInfo}_${i}`}>
+                        return (<div className={classes.profile} key={`${profileInfo}_${i}`}>
                             <div>
                                 <img src={img} alt={`${classes.name}`}/>
                             </div>
