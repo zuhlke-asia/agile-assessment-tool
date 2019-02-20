@@ -14,7 +14,7 @@ describe("Complete Survey", function () {
 
     beforeEach(function () {
         network.visitHomePage();
-    })
+    });
 
     it("should fill out the survey and submit without an error", () => {
 
@@ -43,7 +43,7 @@ describe("Complete Survey", function () {
         survey.nextPage();
 
         survey.enterTextBox('Company Name', 'Zuhlke');
-        survey.enterTextBox('Email', 'example@zuhlke.com')
+        survey.enterTextBox('Email', 'example@zuhlke.com');
         survey.submit();
 
         survey.shouldShowResultPage();
