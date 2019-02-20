@@ -6,8 +6,8 @@ const profilePics = require.context('../../../assets/images/profile', true);
 export default () => (
     <div className="contacts">
         <div className="sectionName">
-            <h3><span className="color-primary"> Our contacts </span></h3>
-            <p> If you wish to know more, please talk to our experts.</p>
+            <h3><span className="color-primary"> Our experts</span></h3>
+            <p>Find out how Zuhlke can help your organisation get to the next level. Contact one of our experienced consultants today.</p>
         </div>
         <div className="wrapper">
             {
