@@ -43,6 +43,9 @@ div.small {
   transition: opacity 0.5s ease-out;
 }
 
+.progress-bar > span {
+  display: none;
+}
 
 .sv_qstn {
 
@@ -65,8 +68,5 @@ div.small {
     width: 90%;
   }
 
-  .progress-bar > span {
-    display: none;
-  }
 }
 
