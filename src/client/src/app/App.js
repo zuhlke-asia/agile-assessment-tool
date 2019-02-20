@@ -12,6 +12,7 @@ import Result from "./result/Result";
 const PageState = {
     SURVEY: 'SURVEY',
     EVALUATION: 'EVALUATION',
+    SAVING_RESULT: 'SAVING_RESULT'
 };
 
 export default class App extends Component {
@@ -47,6 +48,11 @@ export default class App extends Component {
     async onComplete(result) {
         try {
             const answers = result.data;
+
+            this.setState(prevState => ({
+                ...prevState,
+                pageState: PageState.SAVING_RESULT,
+            }));
 
             await axios.post("/api/survey", answers);
 
@@ -84,6 +90,8 @@ export default class App extends Component {
         switch (this.state.pageState) {
             case PageState.EVALUATION:
                 return <Result evaluations={this.state.evaluations}/>;
+            case PageState.SAVING_RESULT:
+                return <div className="spinner">&nbsp;</div>;
             default:
                 return <div>
                     {this.state.surveyConfig && <AgileAssessment
@@ -92,7 +100,6 @@ export default class App extends Component {
                         onValueChange={() => this.onValueChange()}/>}
                 </div>;
         }
-
     }
 
     render() {

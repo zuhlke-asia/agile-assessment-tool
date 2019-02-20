@@ -14,37 +14,36 @@ describe("Complete Survey", function () {
 
     beforeEach(function () {
         network.visitHomePage();
-    })
+    });
 
     it("should fill out the survey and submit without an error", () => {
 
-        const survey = new Survey(5);
+        const survey = new Survey();
 
-        survey.shouldBeOnPage(1);
         survey.chooseAnswer('Mostly Agile');
         survey.chooseAnswer('Somewhat happy');
         survey.nextPage();
 
+        survey.shouldShowQuestion('What units do you use for estimation?');
+        survey.previousPage();
+        survey.shouldShowQuestion('How happy are you with your current software development process?');
+        survey.nextPage();
 
-        survey.shouldBeOnPage(2);
         survey.selectAnswerFromDropdown('Story Points');
         survey.nextPage();
 
-        survey.shouldBeOnPage(3);
         survey.selectRating('1');
         survey.nextPage();
 
-        survey.shouldBeOnPage(4);
         survey.chooseAnswer('No');
-        survey.shouldNotShowConditionalQuestion('How often do you reach your sprint goals?');
+        survey.shouldNotShowQuestion('How often do you reach your sprint goals?');
         survey.chooseAnswer('Yes');
-        survey.shouldShowConditionalQuestion('How often do you reach your sprint goals?');
+        survey.shouldShowQuestion('How often do you reach your sprint goals?');
         survey.chooseAnswer('We achieve them sometimes');
         survey.nextPage();
 
-        survey.shouldBeOnPage(5);
         survey.enterTextBox('Company Name', 'Zuhlke');
-        survey.enterTextBox('Email', 'example@zuhlke.com')
+        survey.enterTextBox('Email', 'example@zuhlke.com');
         survey.submit();
 
         survey.shouldShowResultPage();
@@ -54,20 +53,5 @@ describe("Complete Survey", function () {
         survey.shouldShowNumberOfLinks(6);
         survey.shouldShowNumberOfProfiles(4);
     });
-
-    it("should navigate backwards if previous is clicked.", function () {
-
-        const survey = new Survey(5);
-
-
-        survey.shouldBeOnPage(1)
-        survey.chooseAnswer('Mostly Agile');
-        survey.chooseAnswer('Somewhat happy');
-        survey.nextPage();
-        survey.shouldBeOnPage(2);
-        survey.previousPage();
-        survey.shouldBeOnPage(1);
-    });
-
 
 });

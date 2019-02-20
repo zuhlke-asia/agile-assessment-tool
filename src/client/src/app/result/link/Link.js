@@ -6,7 +6,7 @@ export default () => {
     const linksToDisplay = linkProvider.getRandomLinks(6);
     return (
         <div className="linkSection">
-            <h3><span className='color-primary'>Find out more about Agile</span></h3>
+            <h3><span className="color-primary">Find out more about Agile</span></h3>
             <ul className="medium-block-grid-2 large-block-grid-3">
                 {
                     linksToDisplay.map((item, i) => (

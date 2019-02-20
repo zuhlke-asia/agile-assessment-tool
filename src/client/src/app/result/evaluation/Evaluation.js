@@ -39,7 +39,7 @@ export default class Evaluation extends React.Component {
             <div>
                 {this.state.evaluations && !!this.state.evaluations.length && (
                     <div>
-                        <p>Here are your results</p>
+                        <p>Below are the results based on your answers:</p>
                         <div className="score-container">
                             {this.state.evaluations
                                 .map((item, i) => ([
