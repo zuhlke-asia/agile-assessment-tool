@@ -11,7 +11,9 @@ export default () => (
         </div>
         <div className="wrapper">
             {
-                profileInformation.map((profileInfo, i) => {
+                profileInformation
+                    .filter((p, i) => i < 2)
+                    .map((profileInfo, i) => {
                     const img = profilePics(profileInfo.pic);
                     return (
                         <div className="profile" key={`${profileInfo}_${i}`}>
