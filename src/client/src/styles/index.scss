@@ -9,6 +9,10 @@ $c-brand: rgb(147, 95, 167);
   background-position-y: 50%;
 }
 
+.zue-branding-inner {
+  transition: opacity 0.5s ease-out;
+}
+
 .spinner {
   padding: 15px;
   background: url('../assets/spinner.gif') center center no-repeat;
@@ -45,17 +49,11 @@ div.small {
   width: 80%;
 }
 
-.zue-branding-inner {
-  transition: opacity 0.5s ease-out;
-}
-
 .progress-bar > span {
   display: none;
 }
 
 .sv_qstn {
-
-
 
   @media (max-width: 961px) {
 
@@ -80,5 +78,9 @@ div.small {
     width: 90%;
   }
 
+}
+
+.alert.alert-danger > div > span {
+  padding-right: 8px;
 }
 
