@@ -51,7 +51,7 @@ describe("Complete Survey", function () {
         survey.shouldShowPercentage('Estimation', 100);
         survey.shouldShowPercentage('Mood', 20);
         survey.shouldShowNumberOfLinks(6);
-        survey.shouldShowNumberOfProfiles(4);
+        survey.shouldShowNumberOfProfiles(2);
     });
 
 });
