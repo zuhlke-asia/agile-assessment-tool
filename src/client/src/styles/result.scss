@@ -130,3 +130,16 @@
     margin: 3px;
   }
 }
+
+.zue-box-inner, .zue-box-content {
+  height: 100%;
+}
+
+.zue-box-content {
+  display: flex;
+  flex-direction: column;
+
+  .teaser-text {
+    overflow: hidden;
+  }
+}

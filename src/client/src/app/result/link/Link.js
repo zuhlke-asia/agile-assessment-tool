@@ -21,7 +21,7 @@ export default () => {
                                                 <span className="text-medium-up">{item.abstract}</span>
                                                 <span className="text-large-up">{item.abstract}</span>
                                             </p>
-                                            Discover now
+                                            <span>Discover now</span>
                                         </div>
                                     </div>
                                 </a>
