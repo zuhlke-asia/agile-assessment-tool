@@ -27,6 +27,14 @@
   }
 }
 
+.feedback {
+  margin-top: 40px;
+}
+
+textarea {
+  resize: none;
+}
+
 @media screen and (max-width: 962px) {
 
   .result-content {

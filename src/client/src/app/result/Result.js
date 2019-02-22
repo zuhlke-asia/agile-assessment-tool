@@ -3,6 +3,7 @@ import Evaluation from './evaluation/Evaluation';
 import Link from './link/Link';
 import Profile from './profile/Profile';
 import '../../styles/result.scss';
+import Feedback from './Feedback';
 
 export default class Result extends React.Component {
 
@@ -23,6 +24,10 @@ export default class Result extends React.Component {
 
     }
 
+    onSubmitFeedback(feedback) {
+        console.log('send feedback');
+    }
+
     render() {
         return (
             <div id="pagecontent" ref={ (ref) => this.scrollRef = ref }>
@@ -31,6 +36,7 @@ export default class Result extends React.Component {
                         <div className="result-left">
                             <h3 className="color-primary">Thank you for participating!</h3>
                             <Evaluation evaluations={this.props.evaluations}/>
+                            <Feedback onSubmit={feedback => this.onSubmitFeedback(feedback)} />
                             <Link/>
                         </div>
                         <Profile/>
