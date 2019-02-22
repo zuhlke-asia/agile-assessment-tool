@@ -15,7 +15,7 @@ export default class Result extends React.Component {
         // since we are not using a router, the scroll position is preserved when we change
         // the view, so we need to reset to the top of the content.
         const contentTop = this.scrollRef.offsetTop;
-        const currentTop = document.documentElement.scrollTop;
+        const currentTop = document.documentElement.scrollTop || document.body.scrollTop;
 
         if (currentTop > contentTop) {
             window.scrollTo(0, contentTop);
