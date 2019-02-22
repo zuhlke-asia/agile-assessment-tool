@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {generateSurveyConfig} from './surveyconfig/configGenerator';
-import {evaluateScore} from './result/evaluation/scoreEvaluator';
+import React, { Component } from 'react';
+import { generateSurveyConfig } from './surveyconfig/configGenerator';
+import { evaluateScore } from './result/evaluation/scoreEvaluator';
 
 import Header from './Header';
 import Footer from './Footer';
 import FootNote from './FootNote';
 import AgileAssessment from './AgileAssessment';
 import axios from 'axios';
-import Result from "./result/Result";
+import Result from './result/Result';
 
 const PageState = {
     SURVEY: 'SURVEY',
@@ -31,7 +31,10 @@ export default class App extends Component {
     async componentDidMount() {
         try {
             if (!this.surveyConfig) {
-                const response = await axios.get("/api/surveyconfig");
+                const urlParams = new URLSearchParams(window.location.search);
+                const env = urlParams.get('env');
+
+                const response = await axios.get(`/api/surveyconfig${env ? `?env=${env}` : ''}`);
                 const surveyConfig = generateSurveyConfig(response.data);
                 this.setState(prevState => ({
                     ...prevState,
@@ -54,7 +57,7 @@ export default class App extends Component {
                 pageState: PageState.SAVING_RESULT,
             }));
 
-            await axios.post("/api/survey", answers);
+            await axios.post('/api/survey', answers);
 
             const evaluations = evaluateScore(answers);
 
@@ -93,12 +96,14 @@ export default class App extends Component {
             case PageState.SAVING_RESULT:
                 return <div className="spinner">&nbsp;</div>;
             default:
-                return <div>
-                    {this.state.surveyConfig && <AgileAssessment
-                        config={this.state.surveyConfig}
-                        onComplete={result => this.onComplete(result)}
-                        onValueChange={() => this.onValueChange()}/>}
-                </div>;
+                return (
+                    <div>
+                        {this.state.surveyConfig && <AgileAssessment
+                            config={this.state.surveyConfig}
+                            onComplete={result => this.onComplete(result)}
+                            onValueChange={() => this.onValueChange()}/>}
+                    </div>
+                );
         }
     }
 
