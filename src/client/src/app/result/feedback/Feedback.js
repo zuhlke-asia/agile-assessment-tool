@@ -9,11 +9,12 @@ export default class Feedback extends React.Component {
         this.state = {
             feedback: '',
             email: '',
+            privacyAgreement: false,
             validation: {},
         }
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
 
         const email = this.state.email;
@@ -30,7 +31,20 @@ export default class Feedback extends React.Component {
             return;
         }
 
-        this.props.onSubmit({ feedback, email });
+        this.setState(prev => ({
+            ...prev,
+            email: '',
+            feedback: '',
+            privacyAgreement: false
+        }));
+
+        await this.props.onSubmit({ feedback, email });
+
+        this.setState(prev => ({
+            ...prev,
+            feedbackSaved: true
+        }));
+
     }
 
     handleFeedbackChanged(feedback) {
@@ -65,38 +79,46 @@ export default class Feedback extends React.Component {
     render() {
         return (
             <div className="feedback">
-                <h5>We'd love to hear your feedback!</h5>
-                <p>Feel free to leave your feedback and email address here. Thanks!</p>
-                <form onSubmit={ev => this.handleSubmit(ev)}>
-                    {this.emailIsInvalid() &&
-                    <span className="validation-error">Please enter a valid email address, or none.</span>
-                    }
+                <div className={`feedback-form ${this.state.feedbackSaved ? 'collapsed' : ''}`}>
+                    <h5>We'd love to hear your feedback!</h5>
+                    <p>Feel free to leave your feedback and email address here. Thanks!</p>
+                    <form onSubmit={ev => this.handleSubmit(ev)}>
+                        {this.emailIsInvalid() &&
+                        <span className="validation-error">Please enter a valid email address, or none.</span>
+                        }
 
-                    {this.privacyAgreementMissing() &&
-                    <span className="validation-error">You must agree to us saving your email address.</span>
-                    }
+                        {this.privacyAgreementMissing() &&
+                        <span className="validation-error">You must agree to us saving your email address.</span>
+                        }
 
-                    <textarea
-                        name="feedback"
-                        placeholder="Enter your feedback here"
-                        onChange={event => this.handleFeedbackChanged(event.target.value)}
-                    />
+                        <textarea
+                            name="feedback"
+                            placeholder="Enter your feedback here"
+                            disabled={this.state.feedbackSaved}
+                            onChange={event => this.handleFeedbackChanged(event.target.value)}
+                        />
 
-                    <input
-                        name="email"
-                        type="text"
-                        placeholder="Enter your email here"
-                        onChange={event => this.handleEmailChanged(event.target.value)}/>
-
-                    <label>
                         <input
-                            type="checkbox"
-                            onChange={event => this.handlePrivacyAgreementChanged(event.target.checked)}/>
-                        I agree to Zuhlke storing my email address, if provided.
-                    </label>
+                            name="email"
+                            type="text"
+                            placeholder="Enter your email here"
+                            disabled={this.state.feedbackSaved}
+                            onChange={event => this.handleEmailChanged(event.target.value)}/>
 
-                    <button type="submit" disabled={!this.state.feedback}>Submit</button>
-                </form>
+                        <label>
+                            <input
+                                type="checkbox"
+                                onChange={event => this.handlePrivacyAgreementChanged(event.target.checked)}
+                                disabled={this.state.feedbackSaved}
+                            />
+                            I agree to Zuhlke storing my email address, if provided.
+                        </label>
+
+                        <button type="submit" disabled={!this.state.feedback || this.state.feedbackSaved}>Submit
+                        </button>
+                    </form>
+                </div>
+                {this.state.feedbackSaved && <span className="feedback-saved-hint">Thank you for your feedback!</span>}
             </div>
         )
     }

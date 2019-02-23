@@ -35,6 +35,25 @@
 
 .feedback {
   margin-top: 40px;
+
+  .feedback-form {
+    height: 350px;
+    transition: height .5s ease-out;
+    overflow: hidden;
+
+    &.collapsed  {
+      height: 0;
+    }
+  }
+
+
+  button[type="submit"] {
+    padding: 10px;
+  }
+}
+
+.feedback-saved-hint {
+  padding-left: 5px;
 }
 
 textarea {

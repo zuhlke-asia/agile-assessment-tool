@@ -1,6 +1,6 @@
 const request = require('supertest');
 const _app = require('./app');
-const {connectToDb, closeDb} = require('./db');
+const { connectToDb, closeDb } = require('./db');
 const fs = require('fs');
 
 let db;
@@ -43,7 +43,7 @@ describe('The /api/survey path', () => {
     });
 });
 
-describe("The /api/surveyconfig path", () => {
+describe('The /api/surveyconfig path', () => {
     test('It should return the test config file if env is set to test', done => {
 
         const expectedResponse = JSON.parse(fs.readFileSync(__dirname + '/surveys/survey.test.json', 'utf8'));
@@ -57,6 +57,29 @@ describe("The /api/surveyconfig path", () => {
     });
 
 });
+
+describe('The /api/feedback path', () => {
+    test('Should save feedback to the DB', done => {
+
+        const payload = {
+            feedback: 'awesome stuff'
+        };
+
+        request(server)
+            .post('/api/feedback')
+            .send(payload)
+            .set('Accept', 'application/json')
+            .expect(200)
+            .end(() => {
+                db.collection('feedbacks').findOne(payload).then(document => {
+                    expect(document.feedback).toBe(payload.feedback);
+                    done();
+                });
+            });
+    });
+
+});
+
 
 afterAll(done => {
     server.close(() => {
