@@ -3,6 +3,8 @@ import Evaluation from './evaluation/Evaluation';
 import Link from './link/Link';
 import Profile from './profile/Profile';
 import '../../styles/result.scss';
+import Feedback from './feedback/Feedback';
+import axios from 'axios';
 
 export default class Result extends React.Component {
 
@@ -20,7 +22,10 @@ export default class Result extends React.Component {
         if (currentTop > contentTop) {
             window.scrollTo(0, contentTop);
         }
+    }
 
+    async onSubmitFeedback(feedback) {
+        await axios.post('/api/feedback', feedback);
     }
 
     render() {
@@ -31,6 +36,7 @@ export default class Result extends React.Component {
                         <div className="result-left">
                             <h3 className="color-primary">Thank you for participating!</h3>
                             <Evaluation evaluations={this.props.evaluations}/>
+                            <Feedback onSubmit={feedback => this.onSubmitFeedback(feedback)} />
                             <Link/>
                         </div>
                         <Profile/>

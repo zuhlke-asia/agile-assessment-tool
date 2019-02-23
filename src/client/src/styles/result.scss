@@ -27,6 +27,39 @@
   }
 }
 
+.validation-error {
+  color: red;
+  display: inline-block;
+  padding: 5px 0;
+}
+
+.feedback {
+  margin-top: 40px;
+
+  .feedback-form {
+    height: 350px;
+    transition: height .5s ease-out;
+    overflow: hidden;
+
+    &.collapsed  {
+      height: 0;
+    }
+  }
+
+
+  button[type="submit"] {
+    padding: 10px;
+  }
+}
+
+.feedback-saved-hint {
+  padding-left: 5px;
+}
+
+textarea {
+  resize: none;
+}
+
 @media screen and (max-width: 962px) {
 
   .result-content {
@@ -128,5 +161,18 @@
   @media screen and (max-width: 962px) {
     text-align: center;
     margin: 3px;
+  }
+}
+
+.zue-box-inner, .zue-box-content {
+  height: 100%;
+}
+
+.zue-box-content {
+  display: flex;
+  flex-direction: column;
+
+  .teaser-text {
+    overflow: hidden;
   }
 }
