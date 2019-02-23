@@ -3,7 +3,8 @@ import Evaluation from './evaluation/Evaluation';
 import Link from './link/Link';
 import Profile from './profile/Profile';
 import '../../styles/result.scss';
-import Feedback from './Feedback';
+import Feedback from './feedback/Feedback';
+import axios from 'axios';
 
 export default class Result extends React.Component {
 
@@ -21,11 +22,11 @@ export default class Result extends React.Component {
         if (currentTop > contentTop) {
             window.scrollTo(0, contentTop);
         }
-
     }
 
-    onSubmitFeedback(feedback) {
-        console.log('send feedback');
+    async onSubmitFeedback(feedback) {
+        await axios.post('/api/feedback', feedback);
+        console.log('feedback sent');
     }
 
     render() {
