@@ -52,6 +52,8 @@ describe("Complete Survey", function () {
         survey.shouldShowPercentage('Mood', 20);
         survey.shouldShowNumberOfLinks(6);
         survey.shouldShowNumberOfProfiles(2);
+
+        survey.giveFeedback('This was a great survey!');
     });
 
 });
