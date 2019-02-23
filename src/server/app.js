@@ -27,8 +27,19 @@ function onGetSurveyConfig(req, res) {
 
 async function app(dbClient) {
     _app.post("/api/survey", (req, res) => onPostSurveyResult(dbClient, req, res));
+    _app.post("/api/feedback", (req, res) => onPostFeedback(dbClient, req, res));
     _app.get("/api/surveyconfig", (req, res) => onGetSurveyConfig(req, res));
     return _app;
+}
+
+async function onPostFeedback(db, req, res) {
+    try {
+        await db.collection('feedbacks').insertOne(req.body);
+        res.sendStatus(200);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err);
+    }
 }
 
 async function onPostSurveyResult(db, req, res) {

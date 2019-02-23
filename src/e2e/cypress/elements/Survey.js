@@ -65,6 +65,18 @@ class Survey {
             .children('.profile')
             .should('have.length', number);
     }
+
+    giveFeedback(feedback) {
+        cy
+            .get('textarea[name="feedback"]')
+            .type(feedback);
+
+        cy
+            .get('button[type="submit"]')
+            .click();
+
+        cy.contains('Thank you for your feedback!')
+    }
 }
 
 export default Survey;
