@@ -111,7 +111,7 @@ export default class Feedback extends React.Component {
                                 onChange={event => this.handlePrivacyAgreementChanged(event.target.checked)}
                                 disabled={this.state.feedbackSaved}
                             />
-                            I agree to Zuhlke storing my email address, if provided.
+                            I agree to Zuhlke storing my email address.
                         </label>
 
                         <button type="submit" disabled={!this.state.feedback || this.state.feedbackSaved}>Submit

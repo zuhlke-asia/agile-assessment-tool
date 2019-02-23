@@ -37,7 +37,7 @@
   margin-top: 40px;
 
   .feedback-form {
-    height: 350px;
+    height: 370px;
     transition: height .5s ease-out;
     overflow: hidden;
 
@@ -48,6 +48,7 @@
 
 
   button[type="submit"] {
+    margin-top: 5px;
     padding: 10px;
   }
 }
