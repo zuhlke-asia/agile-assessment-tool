@@ -1,19 +1,24 @@
 {
   "name": "agile-assessment-tool",
   "version": "1.0.0",
-  "description": "Agile Assessment Tool Zuhlke Singapore",
-  "main": "index.js",
+  "description": "[![Build Status](https://travis-ci.com/enpayne/agile-assessment-tool.svg?token=XM7zo21DjfuY5wpehaVz&branch=develop)](https://travis-ci.com/enpayne/agile-assessment-tool)",
+  "main": "babel.config.js",
   "scripts": {
-    "start": "node ./src/server.js",
-    "start:ci": "NODE_ENV=test PORT=3000 node ./src/server.js",
-    "start:dev": "NODE_ENV=dev npm run start:server:dev & npm run start:client:dev",
-    "start:server:dev": "nodemon ./src/server.js",
-    "start:client:dev": "cd ./src/client && npm start",
-    "build:dev": "npm i && cd ./src/client && npm i",
-    "build:prod": "npm run build-client:prod && npm install",
-    "build-client:prod": "cd ./src/client && npm install && npm run build && rimraf ../../build && mv build ../../build",
-    "test": "jest --forceExit",
-    "test:watch": "jest --watchAll",
+    "install:all": "concurrently 'npm install' 'npm run install:server' 'npm run install:client'",
+    "install:server": "cd ./server && npm install",
+    "install:client": "cd ./client && npm install",
+    "build:client:prod": "npm run install:client && npm run build:client",
+    "build:client": "cd ./client && npm run build && rimraf ../build && mv build ../build",
+    "start": "cd ./server && npm start",
+    "start:dev": "concurrently 'npm run start:server:dev' 'npm run start:client:dev'",
+    "start:server:dev": "cd ./server && npm run start:dev",
+    "start:client:dev": "cd ./client && npm start",
+    "test": "concurrently 'npm run test:server' 'npm run test:client'",
+    "test:watch": "concurrently 'npm run test:server:watch' 'npm run test:client:watch'",
+    "test:client": "cd ./client && npm test",
+    "test:client:watch": "cd ./client && npm run test:watch",
+    "test:server": "cd ./server && npm test",
+    "test:server:watch": "cd ./server && npm run test:watch",
     "test:e2e": "cypress run"
   },
   "repository": {
@@ -27,23 +32,12 @@
     "url": "https://github.com/enpayne/agile-assessment-tool/issues"
   },
   "homepage": "https://github.com/enpayne/agile-assessment-tool#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "4.16.4",
-    "mongodb": "3.1.13",
-    "mongodb-memory-server": "^3.0.0",
-    "serve-favicon": "2.5.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.2.2",
+    "@babel/core": "^7.3.3",
     "@babel/preset-env": "7.3.1",
-    "@babel/preset-react": "^7.0.0",
-    "babel-jest": "24.1.0",
+    "concurrently": "^4.1.0",
     "cypress": "3.1.5",
-    "jest": "24.1.0",
-    "mongodb-memory-server": "3.0.0",
-    "nodemon": "1.18.9",
-    "rimraf": "2.6.3",
-    "supertest": "3.4.2"
+    "rimraf": "^2.6.3"
   }
 }

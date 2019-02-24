@@ -1,5 +1,5 @@
-const _app = require('./server/app');
-const {connectToDb} = require('./server/db');
+const _app = require('./app');
+const {connectToDb} = require('./db');
 
 (async () => {
     const db = await connectToDb();

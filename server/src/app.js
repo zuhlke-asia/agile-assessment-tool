@@ -18,7 +18,6 @@ function onGetSurveyConfig(req, res) {
     let env = process.env.NODE_ENV;
 
     if (req.query && req.query.env) {
-        console.log('query');
         env = req.query.env;
     }
 
