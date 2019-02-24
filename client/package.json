@@ -20,6 +20,7 @@
     "start:dev": "npm start & npm test",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom --watchAll",
     "eject": "react-scripts eject"
   },
   "browserslist": [
