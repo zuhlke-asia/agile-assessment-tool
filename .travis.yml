@@ -9,6 +9,7 @@ cache:
     - ~/.cache
 
 install:
+  - npm install
   - npm run install:server:ci
   - npm run build:client:prod
 
