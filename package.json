@@ -6,6 +6,7 @@
   "scripts": {
     "install:all": "concurrently 'npm install' 'npm run install:server' 'npm run install:client'",
     "install:server": "cd ./server && npm install",
+    "install:server:ci": "cd ./server && npm ci",
     "install:client": "cd ./client && npm install",
     "build:client:prod": "npm run install:client && npm run build:client",
     "build:client": "cd ./client && npm run build && rimraf ../build && mv build ../build",

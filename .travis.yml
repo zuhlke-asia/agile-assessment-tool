@@ -9,10 +9,10 @@ cache:
     - ~/.cache
 
 install:
-  - cd ./server && npm ci
+  - npm run install:server:ci
+  - npm run build-client:prod
 
 script:
-  - npm run build-client:prod
   - npm test
 
 before_deploy:
