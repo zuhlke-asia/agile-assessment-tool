@@ -1,7 +1,7 @@
 import FeedbackValidator, {ValidationErrors} from './feedbackValidator';
 
 test('given an invalid email, returns invalid due to email', () => {
-    const invalidEmail = 'aa';
+    const invalidEmail = 'aa@bb';
 
     const result = FeedbackValidator.getValidationResult(invalidEmail);
 
