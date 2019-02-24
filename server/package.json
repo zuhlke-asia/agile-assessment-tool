@@ -23,22 +23,19 @@
   },
   "homepage": "https://github.com/enpayne/agile-assessment-tool#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "1.18.3",
     "express": "4.16.4",
     "mongodb": "3.1.13",
-    "mongodb-memory-server": "^3.0.0",
+    "mongodb-memory-server": "3.0.0",
     "serve-favicon": "2.5.0"
   },
   "devDependencies": {
     "@babel/core": "7.2.2",
     "@babel/preset-env": "7.3.1",
-    "@babel/preset-react": "^7.0.0",
     "babel-jest": "24.1.0",
     "cypress": "3.1.5",
     "jest": "24.1.0",
-    "mongodb-memory-server": "3.0.0",
     "nodemon": "1.18.9",
-    "rimraf": "2.6.3",
     "supertest": "3.4.2"
   }
 }
