@@ -1,24 +1,16 @@
 function convertToArray(score) {
-    const res = Object.keys(score)
+    return Object.keys(score)
         .filter(key => key !== 'text')
         .map(key => ({
             name: key,
             total: score[key].total,
             max: score[key].max
         }));
-
-    if (score.text.length > 0) {
-        res.push(...score.text);
-    }
-
-    return res;
 }
 
 export const evaluateScore = result => {
 
-    const score = {
-        text: []
-    };
+    const score = {};
 
     for (const key of Object.keys(result)) {
         const value = result[key];
