@@ -10,7 +10,7 @@ cache:
 
 install:
   - npm run install:server:ci
-  - npm run build-client:prod
+  - npm run build:client:prod
 
 script:
   - npm test
