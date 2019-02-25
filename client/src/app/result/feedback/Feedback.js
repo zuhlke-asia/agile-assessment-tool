@@ -19,6 +19,7 @@ export default class Feedback extends React.Component {
 
         const email = this.state.email;
         const feedback = this.state.feedback;
+        const privacyAgreement = this.state.privacyAgreement;
 
         const validation = FeedbackValidator.getValidationResult(email, this.state.privacyAgreement);
 
@@ -38,7 +39,7 @@ export default class Feedback extends React.Component {
             privacyAgreement: false
         }));
 
-        await this.props.onSubmit({ feedback, email });
+        await this.props.onSubmit({ feedback, email, privacyAgreement });
 
         this.setState(prev => ({
             ...prev,
@@ -87,7 +88,7 @@ export default class Feedback extends React.Component {
                         }
 
                         {this.privacyAgreementMissing() &&
-                        <span className="validation-error">You must agree to us saving your email address.</span>
+                        <span className="validation-error">Please read and accept our privacy policy and terms of use.</span>
                         }
 
                         <textarea
@@ -110,7 +111,8 @@ export default class Feedback extends React.Component {
                                 onChange={event => this.handlePrivacyAgreementChanged(event.target.checked)}
                                 disabled={this.state.feedbackSaved}
                             />
-                            I agree to Zuhlke storing my email address.
+                            I hereby confirm that I have read
+                            the <a href="https://www.zuehlke.com/ch/en/privacy-policy/">privacy policy</a> and <a href="https://www.zuehlke.com/ch/en/terms-use">terms of use</a> and accepted them.
                         </label>
 
                         <button type="submit" disabled={!this.state.feedback || this.state.feedbackSaved}>Submit

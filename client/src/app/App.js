@@ -34,7 +34,7 @@ export default class App extends Component {
                 const urlParams = new URLSearchParams(window.location.search);
                 const env = urlParams.get('env');
 
-                const response = await axios.get(`/api/surveyconfig${env ? `?env=${env}` : ''}`);
+                const response = await axios.get(`api/surveyconfig${env ? `?env=${env}` : ''}`);
                 const surveyConfig = generateSurveyConfig(response.data);
                 this.setState(prevState => ({
                     ...prevState,
@@ -57,7 +57,7 @@ export default class App extends Component {
                 pageState: PageState.SAVING_RESULT,
             }));
 
-            await axios.post('/api/survey', answers);
+            await axios.post('api/survey', answers);
 
             const evaluations = evaluateScore(answers);
 

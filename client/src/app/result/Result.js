@@ -25,7 +25,7 @@ export default class Result extends React.Component {
     }
 
     async onSubmitFeedback(feedback) {
-        await axios.post('/api/feedback', feedback);
+        await axios.post('api/feedback', feedback);
     }
 
     render() {

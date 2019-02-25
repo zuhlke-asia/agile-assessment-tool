@@ -49,7 +49,7 @@ test('displays privacy agreement warning when email is provided but privacy agre
     form.simulate('submit');
 
     const validationError = wrapper.find('span.validation-error');
-    expect(validationError).toHaveText('You must agree to us saving your email address.');
+    expect(validationError).toHaveText('Please read and accept our privacy policy and terms of use.');
     expect(onSubmitCallback.mock.calls.length).toBe(0);
 });
 
@@ -69,5 +69,9 @@ test('calls the onSubmit callback when input is valid', () => {
     form.simulate('submit');
 
     expect(onSubmitCallback.mock.calls.length).toBe(1);
-    expect(onSubmitCallback.mock.calls[0][0]).toEqual({ feedback: 'Feedback', email: 'test@test.com' });
+    expect(onSubmitCallback.mock.calls[0][0]).toEqual({
+        feedback: 'Feedback',
+        email: 'test@test.com',
+        privacyAgreement: true
+    });
 });
