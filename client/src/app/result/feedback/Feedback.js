@@ -44,7 +44,6 @@ export default class Feedback extends React.Component {
             ...prev,
             feedbackSaved: true
         }));
-
     }
 
     handleFeedbackChanged(feedback) {
@@ -84,7 +83,7 @@ export default class Feedback extends React.Component {
                     <p>Feel free to leave your feedback and email address here. Thanks!</p>
                     <form onSubmit={ev => this.handleSubmit(ev)}>
                         {this.emailIsInvalid() &&
-                        <span className="validation-error">Please enter a valid email address, or none.</span>
+                        <span className="validation-error">Please enter a valid email address.</span>
                         }
 
                         {this.privacyAgreementMissing() &&
