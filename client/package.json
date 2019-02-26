@@ -10,6 +10,7 @@
     "node-sass": "4.11.0",
     "react": "16.4.1",
     "react-dom": "16.4.2",
+    "react-recaptcha": "2.3.10",
     "react-scripts": "2.1.3",
     "survey-react": "latest",
     "surveyjs-editor": "latest",

@@ -1,5 +1,6 @@
 import React from 'react';
 import FeedbackValidator, { ValidationErrors } from './feedbackValidator';
+import Recaptcha from 'react-recaptcha';
 
 export default class Feedback extends React.Component {
 
@@ -10,6 +11,7 @@ export default class Feedback extends React.Component {
             feedback: '',
             email: '',
             privacyAgreement: false,
+            recaptcha: false,
             validation: {},
         }
     }
@@ -68,6 +70,13 @@ export default class Feedback extends React.Component {
         }));
     }
 
+    onVerifyRecaptcha() {
+        this.setState(prev => ({
+            ...prev,
+            recaptcha: true
+        }));
+    }
+
     emailIsInvalid() {
         return this.state.validation.reason === ValidationErrors.INVALID_EMAIL;
     }
@@ -112,11 +121,16 @@ export default class Feedback extends React.Component {
                                 disabled={this.state.feedbackSaved}
                             />
                             I hereby confirm that I have read
-                            the <a href="https://www.zuehlke.com/ch/en/privacy-policy/">privacy policy</a> and <a href="https://www.zuehlke.com/ch/en/terms-use">terms of use</a> and accepted them.
+                            the <a href="https://www.zuehlke.com/ch/en/privacy-policy/" target="_blank">privacy policy</a> and <a href="https://www.zuehlke.com/ch/en/terms-use" target="_blank">terms of use</a> and accepted them.
                         </label>
 
-                        <button type="submit" disabled={!this.state.feedback || this.state.feedbackSaved}>Submit
+                        <button type="submit" disabled={!this.state.feedback || this.state.feedbackSaved || !this.state.recaptcha}>Submit
                         </button>
+
+                        <Recaptcha
+                            sitekey="6Ldg55MUAAAAAESf_7uhqnUtivfpFUcS_nQ3MJLv"
+                            verifyCallback={response => this.onVerifyRecaptcha(response)}
+                        />
                     </form>
                 </div>
                 {this.state.feedbackSaved && <span className="feedback-saved-hint">Thank you for your feedback!</span>}
