@@ -7,11 +7,13 @@ export default class Feedback extends React.Component {
     constructor(props) {
         super(props);
 
+        const recaptcha = process.env.REACT_APP_DISABLE_CAPTCHA === 'true';
+
         this.state = {
             feedback: '',
             email: '',
             privacyAgreement: false,
-            recaptcha: false,
+            recaptcha,
             validation: {},
         }
     }

@@ -19,8 +19,7 @@
   },
   "proxy": "http://localhost:8080",
   "scripts": {
-    "start": "react-scripts start && jest --watch",
-    "start:dev": "npm start & npm test",
+    "start": "REACT_APP_DISABLE_CAPTCHA=true react-scripts start && jest --watch",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom --watchAll",
