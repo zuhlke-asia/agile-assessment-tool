@@ -37,13 +37,9 @@
   margin-top: 40px;
 
   .feedback-form {
-    height: 450px;
+    height: 370px;
     transition: height .5s ease-out;
     overflow: hidden;
-
-    @media screen and (max-width: 962px) {
-      height: 480px;
-    }
 
     &.collapsed  {
       height: 0;
