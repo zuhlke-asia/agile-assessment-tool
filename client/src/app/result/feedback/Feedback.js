@@ -123,7 +123,7 @@ export default class Feedback extends React.Component {
                                 disabled={this.state.feedbackSaved}
                             />
                             I hereby confirm that I have read
-                            the <a href="https://www.zuehlke.com/ch/en/privacy-policy/" target="_blank">privacy policy</a> and <a href="https://www.zuehlke.com/ch/en/terms-use" target="_blank">terms of use</a> and accepted them.
+                            the <a href="https://www.zuehlke.com/ch/en/privacy-policy/" target="_blank" rel="noopener noreferrer">privacy policy</a> and <a href="https://www.zuehlke.com/ch/en/terms-use" target="_blank" rel="noopener noreferrer">terms of use</a> and accepted them.
                         </label>
 
                         <button type="submit" disabled={!this.state.feedback || this.state.feedbackSaved || !this.state.recaptcha}>Submit
