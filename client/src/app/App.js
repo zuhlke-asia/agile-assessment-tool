@@ -8,6 +8,7 @@ import FootNote from './FootNote';
 import AgileAssessment from './AgileAssessment';
 import axios from 'axios';
 import Result from './result/Result';
+import uuidv1 from 'uuid/v1';
 
 const PageState = {
     SURVEY: 'SURVEY',
@@ -24,8 +25,9 @@ export default class App extends Component {
             pageState: PageState.SURVEY,
             evaluation: undefined,
             surveyConfig: undefined,
-            showBanner: true
-        };
+            showBanner: true,
+            surveyId: uuidv1()
+        }
     }
 
     async componentDidMount() {
@@ -34,7 +36,7 @@ export default class App extends Component {
                 const urlParams = new URLSearchParams(window.location.search);
                 const env = urlParams.get('env');
 
-                const response = await axios.get(`/api/surveyconfig${env ? `?env=${env}` : ''}`);
+                const response = await axios.get(`api/surveyconfig${env ? `?env=${env}` : ''}`);
                 const surveyConfig = generateSurveyConfig(response.data);
                 this.setState(prevState => ({
                     ...prevState,
@@ -50,16 +52,17 @@ export default class App extends Component {
 
     async onComplete(result) {
         try {
-            const answers = result.data;
+            const surveyResult = result.data;
+            surveyResult.id = this.state.surveyId;
 
             this.setState(prevState => ({
                 ...prevState,
                 pageState: PageState.SAVING_RESULT,
             }));
 
-            await axios.post('/api/survey', answers);
+            await axios.post('api/survey', surveyResult);
 
-            const evaluations = evaluateScore(answers);
+            const evaluations = evaluateScore(surveyResult);
 
             this.setState(prevState => ({
                 ...prevState,
@@ -92,7 +95,7 @@ export default class App extends Component {
     getContent() {
         switch (this.state.pageState) {
             case PageState.EVALUATION:
-                return <Result evaluations={this.state.evaluations}/>;
+                return <Result evaluations={this.state.evaluations} surveyId={this.state.surveyId}/>;
             case PageState.SAVING_RESULT:
                 return <div className="spinner">&nbsp;</div>;
             default:

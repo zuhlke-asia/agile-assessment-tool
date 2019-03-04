@@ -2,8 +2,10 @@ import React from 'react';
 import Feedback from './Feedback';
 import { mount } from 'enzyme';
 
-test('sets submit button to disabled when no feedback is entered', () => {
+test('sets submit button to enabled when feedback is entered and captcha is validated', () => {
     const wrapper = mount(<Feedback onSubmit={() => {}}/>);
+
+    wrapper.setState({recaptcha: true});
 
     const textarea = wrapper.find('textarea');
     const submitBeforeChange = wrapper.find('button[type="submit"]');
@@ -16,6 +18,24 @@ test('sets submit button to disabled when no feedback is entered', () => {
     const submitAfterChange = wrapper.find('button[type="submit"]');
     expect(submitAfterChange).not.toBeDisabled();
 });
+
+test('sets submit button to disabled when feedback is entered but captcha not validated', () => {
+    const wrapper = mount(<Feedback onSubmit={() => {}}/>);
+
+    wrapper.setState({recaptcha: false});
+
+    const textarea = wrapper.find('textarea');
+    const submitBeforeChange = wrapper.find('button[type="submit"]');
+
+    expect(textarea).toHaveText('');
+    expect(submitBeforeChange).toBeDisabled();
+
+    textarea.simulate('change', { target: { value: 'Feedback' } });
+
+    const submitAfterChange = wrapper.find('button[type="submit"]');
+    expect(submitAfterChange).toBeDisabled();
+});
+
 
 test('displays invalid email warning when invalid email is entered', () => {
     const onSubmitCallback = jest.fn(() => {});
@@ -49,7 +69,7 @@ test('displays privacy agreement warning when email is provided but privacy agre
     form.simulate('submit');
 
     const validationError = wrapper.find('span.validation-error');
-    expect(validationError).toHaveText('You must agree to us saving your email address.');
+    expect(validationError).toHaveText('Please read and accept our privacy policy and terms of use.');
     expect(onSubmitCallback.mock.calls.length).toBe(0);
 });
 
@@ -69,5 +89,9 @@ test('calls the onSubmit callback when input is valid', () => {
     form.simulate('submit');
 
     expect(onSubmitCallback.mock.calls.length).toBe(1);
-    expect(onSubmitCallback.mock.calls[0][0]).toEqual({ feedback: 'Feedback', email: 'test@test.com' });
+    expect(onSubmitCallback.mock.calls[0][0]).toEqual({
+        feedback: 'Feedback',
+        email: 'test@test.com',
+        privacyAgreement: true
+    });
 });

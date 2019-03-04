@@ -33,7 +33,13 @@ async function app(dbClient) {
 
 async function onPostFeedback(db, req, res) {
     try {
-        await db.collection('feedbacks').insertOne(req.body);
+        const date = new Date().toISOString();
+        const feedback = {
+            ...req.body,
+            date,
+        };
+
+        await db.collection('feedbacks').insertOne(feedback);
         res.sendStatus(200);
     } catch (err) {
         console.error(err);
@@ -43,7 +49,13 @@ async function onPostFeedback(db, req, res) {
 
 async function onPostSurveyResult(db, req, res) {
     try {
-        await db.collection("userscores").insertOne(req.body);
+        const date = new Date().toISOString();
+        const surveyResult = {
+            ...req.body,
+            date
+        };
+
+        await db.collection("userscores").insertOne(surveyResult);
         res.sendStatus(200);
     } catch (err) {
         console.error(err);

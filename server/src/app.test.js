@@ -37,6 +37,7 @@ describe('The /api/survey path', () => {
             .end(() => {
                 db.collection('userscores').findOne(payload).then(document => {
                     expect(document.someQuestion).toBe(payload.someQuestion);
+                    expect(document.date).toBeDefined();
                     done();
                 });
             });
@@ -73,6 +74,7 @@ describe('The /api/feedback path', () => {
             .end(() => {
                 db.collection('feedbacks').findOne(payload).then(document => {
                     expect(document.feedback).toBe(payload.feedback);
+                    expect(document.date).toBeDefined();
                     done();
                 });
             });

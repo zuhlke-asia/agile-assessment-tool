@@ -25,7 +25,8 @@ export default class Result extends React.Component {
     }
 
     async onSubmitFeedback(feedback) {
-        await axios.post('/api/feedback', feedback);
+        feedback.surveyId = this.props.surveyId;
+        await axios.post('api/feedback', feedback);
     }
 
     render() {

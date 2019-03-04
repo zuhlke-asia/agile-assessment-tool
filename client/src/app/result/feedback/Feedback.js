@@ -1,15 +1,19 @@
 import React from 'react';
 import FeedbackValidator, { ValidationErrors } from './feedbackValidator';
+import Recaptcha from 'react-recaptcha';
 
 export default class Feedback extends React.Component {
 
     constructor(props) {
         super(props);
 
+        const recaptcha = process.env.REACT_APP_DISABLE_CAPTCHA === 'true';
+
         this.state = {
             feedback: '',
             email: '',
             privacyAgreement: false,
+            recaptcha,
             validation: {},
         }
     }
@@ -19,6 +23,7 @@ export default class Feedback extends React.Component {
 
         const email = this.state.email;
         const feedback = this.state.feedback;
+        const privacyAgreement = this.state.privacyAgreement;
 
         const validation = FeedbackValidator.getValidationResult(email, this.state.privacyAgreement);
 
@@ -38,7 +43,7 @@ export default class Feedback extends React.Component {
             privacyAgreement: false
         }));
 
-        await this.props.onSubmit({ feedback, email });
+        await this.props.onSubmit({ feedback, email, privacyAgreement });
 
         this.setState(prev => ({
             ...prev,
@@ -67,6 +72,13 @@ export default class Feedback extends React.Component {
         }));
     }
 
+    onVerifyRecaptcha() {
+        this.setState(prev => ({
+            ...prev,
+            recaptcha: true
+        }));
+    }
+
     emailIsInvalid() {
         return this.state.validation.reason === ValidationErrors.INVALID_EMAIL;
     }
@@ -87,7 +99,7 @@ export default class Feedback extends React.Component {
                         }
 
                         {this.privacyAgreementMissing() &&
-                        <span className="validation-error">You must agree to us saving your email address.</span>
+                        <span className="validation-error">Please read and accept our privacy policy and terms of use.</span>
                         }
 
                         <textarea
@@ -110,11 +122,17 @@ export default class Feedback extends React.Component {
                                 onChange={event => this.handlePrivacyAgreementChanged(event.target.checked)}
                                 disabled={this.state.feedbackSaved}
                             />
-                            I agree to Zuhlke storing my email address.
+                            I hereby confirm that I have read
+                            the <a href="https://www.zuehlke.com/ch/en/privacy-policy/" target="_blank" rel="noopener noreferrer">privacy policy</a> and <a href="https://www.zuehlke.com/ch/en/terms-use" target="_blank" rel="noopener noreferrer">terms of use</a> and accepted them.
                         </label>
 
-                        <button type="submit" disabled={!this.state.feedback || this.state.feedbackSaved}>Submit
+                        <button type="submit" disabled={!this.state.feedback || this.state.feedbackSaved || !this.state.recaptcha}>Submit
                         </button>
+
+                        <Recaptcha
+                            sitekey="6Ldg55MUAAAAAESf_7uhqnUtivfpFUcS_nQ3MJLv"
+                            verifyCallback={response => this.onVerifyRecaptcha(response)}
+                        />
                     </form>
                 </div>
                 {this.state.feedbackSaved && <span className="feedback-saved-hint">Thank you for your feedback!</span>}
