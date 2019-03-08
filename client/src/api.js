@@ -1,4 +1,4 @@
-export const pollyFillUrlSearchParamForEdge = (w) => {
+export const polyFillUrlSearchParamForEdge = (w) => {
   w.URLSearchParams = w.URLSearchParams || function (searchString) {
     let self = this;
     self.searchString = searchString;
