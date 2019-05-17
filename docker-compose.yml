@@ -2,7 +2,7 @@ version: '3'
 services:
 
   web:
-    image: node
+    image: node:11.15.0
     volumes:
     - ./:/usr/src/app
     working_dir: /usr/src/app
