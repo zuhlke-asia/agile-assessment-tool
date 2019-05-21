@@ -9,7 +9,7 @@ export default () => (
                 <div className="row">
                     <div className="small-12 medium-2 columns">
                         <a href="http://zuehlke.com/" className="zue-logo-foot-wrap">
-                            <img className="zue-logo-foot" alt="Zühlke" src={require('../assets/images/logo-zuhlke.svg')} />
+                            <img className="zue-logo-foot" alt="Zühlke" src={require('../assets/images/logo-zuhlke.svg')} style={{width: "120px"}} />
                         </a>
                     </div>
                     <div className="small-12 medium-4 columns">
