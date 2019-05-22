@@ -20,6 +20,12 @@ For Docker, please refer to [Mac Install](https://docs.docker.com/docker-for-mac
 
 3. Go to a browser to look at *localhost:3000* to see the start page.
 
+### Local Testing
+
+Testing the `./server/` makes use of an in-memory mongodb package [`mongodb-memory-server`](https://github.com/nodkz/mongodb-memory-server). This package will automatically download a mongodb binary into a cache for future use.
+
+If for some reason the `./server` tests fail, please delete the `./server/./node_modules/.cache/mongodb-memory-server` folder and try again. If your download speeds are slow, consider increasing the timeout in `app.test.js`.
+
 ### Deployment Workflow
 
 1. Travis will build & deploy the application for us. This happens automatically after a pull request
