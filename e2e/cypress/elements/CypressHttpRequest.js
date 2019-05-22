@@ -1,17 +1,15 @@
 class CypressHttpRequest {
+  static startServer() {
+    cy.server();
+  }
 
-    startServer(){
-        cy.server();
-    };
+  static visitHomePage() {
+    cy.visit('/');
+  }
 
-    visitHomePage(){
-        cy.visit('/');
-    }
-
-    registerRouteServices(serviceAlias){
-        cy.route('POST', '/api/survey').as(serviceAlias);
-    }
-
+  static registerRouteServices(serviceAlias) {
+    cy.route('POST', '/api/survey').as(serviceAlias);
+  }
 }
 
 export default CypressHttpRequest;
