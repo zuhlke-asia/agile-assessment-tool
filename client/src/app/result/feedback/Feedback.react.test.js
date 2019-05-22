@@ -1,77 +1,77 @@
 import React from 'react';
-import Feedback from './Feedback';
 import { mount } from 'enzyme';
+import Feedback from './Feedback';
 
 test('sets submit button to disabled when no feedback is entered', () => {
-    const wrapper = mount(<Feedback onSubmit={() => {}}/>);
+  const wrapper = mount(<Feedback onSubmit={() => {}} />);
 
-    const textarea = wrapper.find('textarea');
-    const submitBeforeChange = wrapper.find('button[type="submit"]');
+  const textarea = wrapper.find('textarea');
+  const submitBeforeChange = wrapper.find('button[type="submit"]');
 
-    expect(textarea).toHaveText('');
-    expect(submitBeforeChange).toBeDisabled();
+  expect(textarea).toHaveText('');
+  expect(submitBeforeChange).toBeDisabled();
 
-    textarea.simulate('change', { target: { value: 'Feedback' } });
+  textarea.simulate('change', { target: { value: 'Feedback' } });
 
-    const submitAfterChange = wrapper.find('button[type="submit"]');
-    expect(submitAfterChange).not.toBeDisabled();
+  const submitAfterChange = wrapper.find('button[type="submit"]');
+  expect(submitAfterChange).not.toBeDisabled();
 });
 
 test('displays invalid email warning when invalid email is entered', () => {
-    const onSubmitCallback = jest.fn(() => {});
-    const wrapper = mount(<Feedback onSubmit={onSubmitCallback}/>);
+  const onSubmitCallback = jest.fn(() => {});
+  const wrapper = mount(<Feedback onSubmit={onSubmitCallback} />);
 
-    const textarea = wrapper.find('textarea');
-    const email = wrapper.find('input[name="email"]');
+  const textarea = wrapper.find('textarea');
+  const email = wrapper.find('input[name="email"]');
 
-    textarea.simulate('change', { target: { value: 'Feedback' } });
-    email.simulate('change', { target: { value: 'invalid' } });
+  textarea.simulate('change', { target: { value: 'Feedback' } });
+  email.simulate('change', { target: { value: 'invalid' } });
 
-    const form = wrapper.find('form');
-    form.simulate('submit');
+  const form = wrapper.find('form');
+  form.simulate('submit');
 
-    const validationError = wrapper.find('span.validation-error');
-    expect(validationError).toHaveText('Please enter a valid email address.');
-    expect(onSubmitCallback.mock.calls.length).toBe(0);
+  const validationError = wrapper.find('span.validation-error');
+  expect(validationError).toHaveText('Please enter a valid email address.');
+  expect(onSubmitCallback.mock.calls.length).toBe(0);
 });
 
 test('displays privacy agreement warning when email is provided but privacy agreement not checked', () => {
-    const onSubmitCallback = jest.fn(() => {});
-    const wrapper = mount(<Feedback onSubmit={onSubmitCallback}/>);
+  const onSubmitCallback = jest.fn(() => {});
+  const wrapper = mount(<Feedback onSubmit={onSubmitCallback} />);
 
-    const textarea = wrapper.find('textarea');
-    const email = wrapper.find('input[name="email"]');
+  const textarea = wrapper.find('textarea');
+  const email = wrapper.find('input[name="email"]');
 
-    textarea.simulate('change', { target: { value: 'Feedback' } });
-    email.simulate('change', { target: { value: 'test@test.com' } });
+  textarea.simulate('change', { target: { value: 'Feedback' } });
+  email.simulate('change', { target: { value: 'test@test.com' } });
 
-    const form = wrapper.find('form');
-    form.simulate('submit');
+  const form = wrapper.find('form');
+  form.simulate('submit');
 
-    const validationError = wrapper.find('span.validation-error');
-    expect(validationError).toHaveText('Please read and accept our privacy policy and terms of use.');
-    expect(onSubmitCallback.mock.calls.length).toBe(0);
+  const validationError = wrapper.find('span.validation-error');
+  expect(validationError).toHaveText('Please read and accept our privacy policy and terms of use.');
+  expect(onSubmitCallback.mock.calls.length).toBe(0);
 });
 
 test('calls the onSubmit callback when input is valid', () => {
-    const onSubmitCallback = jest.fn(() => {});
-    const wrapper = mount(<Feedback onSubmit={onSubmitCallback}/>);
+  const onSubmitCallback = jest.fn(() => {});
+  const wrapper = mount(<Feedback onSubmit={onSubmitCallback} />);
 
-    const textarea = wrapper.find('textarea');
-    const email = wrapper.find('input[name="email"]');
-    const privacyAgreement = wrapper.find('input[type="checkbox"]');
+  const textarea = wrapper.find('textarea');
+  const email = wrapper.find('input[name="email"]');
+  const privacyAgreement = wrapper.find('input[type="checkbox"]');
 
-    textarea.simulate('change', { target: { value: 'Feedback' } });
-    email.simulate('change', { target: { value: 'test@test.com' } });
-    privacyAgreement.simulate('change', { target: { checked: true } });
+  textarea.simulate('change', { target: { value: 'Feedback' } });
+  email.simulate('change', { target: { value: 'test@test.com' } });
+  privacyAgreement.simulate('change', { target: { checked: true } });
 
-    const form = wrapper.find('form');
-    form.simulate('submit');
+  const form = wrapper.find('form');
+  form.simulate('submit');
 
-    expect(onSubmitCallback.mock.calls.length).toBe(1);
-    expect(onSubmitCallback.mock.calls[0][0]).toEqual({
-        feedback: 'Feedback',
-        email: 'test@test.com',
-        privacyAgreement: true
-    });
+  expect(onSubmitCallback.mock.calls.length).toBe(1);
+  expect(onSubmitCallback.mock.calls[0][0]).toEqual({
+    feedback: 'Feedback',
+    email: 'test@test.com',
+    privacyAgreement: true,
+  });
 });
