@@ -1,23 +1,5 @@
 import * as QuestionType from './QuestionType';
 
-export function generateSurveyConfig(config) {
-  return {
-    showProgressBar: 'top',
-    questionTitleTemplate: '{no}. {title}',
-    pages: config.pages.map((page) => ({
-      questions: page.questions.map((question) => generateQuestionConfig(question)),
-    })),
-  };
-}
-
-export const generatePageConfig = (page) => {
-  const questions = page.questions.map((question) => generateQuestionConfig(question));
-
-  return {
-    questions,
-  };
-};
-
 function generateQuestionConfig(question) {
   const questionConfig = {
     type: question.type,
@@ -53,3 +35,21 @@ function generateQuestionConfig(question) {
 
   return questionConfig;
 }
+
+export function generateSurveyConfig(config) {
+  return {
+    showProgressBar: 'top',
+    questionTitleTemplate: '{no}. {title}',
+    pages: config.pages.map((page) => ({
+      questions: page.questions.map((question) => generateQuestionConfig(question)),
+    })),
+  };
+}
+
+export const generatePageConfig = (page) => {
+  const questions = page.questions.map((question) => generateQuestionConfig(question));
+
+  return {
+    questions,
+  };
+};

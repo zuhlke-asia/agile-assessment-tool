@@ -1,28 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ showBanner }) => (
-
+const Header = ({ showBanner }) => (
   <div>
     <header id="site-header" role="banner">
-
       <div className="grid-contain">
-        { /* eslint-disable-next-line react/jsx-no-target-blank */}
-        <a href="http://www.zuehlke.com/" className="zue-logo-head" rel="noopener">&nbsp;</a>
+        <a href="http://www.zuehlke.com/" className="zue-logo-head" rel="noopener">
+          &nbsp;
+        </a>
       </div>
 
       <nav className="zue-meta-nav" role="navigation">
         <ul>
           <li>
-            { /* eslint-disable-next-line react/jsx-no-target-blank */}
-            <a href="http://www.zuehlke.com/" rel="noopener">Zühlke Website</a>
+            <a href="http://www.zuehlke.com/" rel="noopener">
+              Zühlke Website
+            </a>
           </li>
           <li>
-            { /* eslint-disable-next-line react/jsx-no-target-blank */}
-            <a href="http://www.zuehlke.com/jobs/" rel="noopener">Jobs</a>
+            <a href="http://www.zuehlke.com/jobs/" rel="noopener">
+              Jobs
+            </a>
           </li>
           <li>
-            { /* eslint-disable-next-line react/jsx-no-target-blank */}
-            <a href="http://blog.zuehlke.com/en/" rel="noopener">Blog</a>
+            <a href="http://blog.zuehlke.com/en/" rel="noopener">
+              Blog
+            </a>
           </li>
         </ul>
       </nav>
@@ -38,22 +41,25 @@ export default ({ showBanner }) => (
           </nav>
         </div>
       </div>
-
     </header>
-
 
     <div className="zue-brick zue-branding zue-branding-image">
       <div className="zue-branding-inner" style={showBanner ? { opacity: 1 } : { opacity: 0 }}>
-        <h2 className="headersize-1 no-margin  ">
-Our self-assessment tool will provide some insights into the agility of your organisation.
-                    Be honest - we won't judge!
+        <h2 className="headersize-1 no-margin">
+          <span>
+            Our self-assessment tool will provide some insights into the agility of your
+            organisation. Be honest - we won&apos;t judge!
+          </span>
           <br />
-          {' '}
-It shouldn't take any longer than 5-10 minutes.
+          <span>It shouldn&apos;t take any longer than 5-10 minutes.</span>
         </h2>
       </div>
     </div>
-
   </div>
-
 );
+
+Header.propTypes = {
+  showBanner: PropTypes.bool.isRequired,
+};
+
+export default Header;
