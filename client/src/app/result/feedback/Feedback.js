@@ -16,11 +16,10 @@ export default class Feedback extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
 
-    const { email } = this.state;
-    const { feedback } = this.state;
-    const { privacyAgreement } = this.state;
+    const { email, feedback, privacyAgreement } = this.state;
+    const { onSubmit } = this.props;
 
-    const validation = FeedbackValidator.getValidationResult(email, this.state.privacyAgreement);
+    const validation = FeedbackValidator.getValidationResult(email, privacyAgreement);
 
     this.setState((prev) => ({
       ...prev,
@@ -38,7 +37,7 @@ export default class Feedback extends React.Component {
       privacyAgreement: false,
     }));
 
-    await this.props.onSubmit({ feedback, email, privacyAgreement });
+    await onSubmit({ feedback, email, privacyAgreement });
 
     this.setState((prev) => ({
       ...prev,
@@ -68,32 +67,37 @@ export default class Feedback extends React.Component {
   }
 
   emailIsInvalid() {
-    return this.state.validation.reason === ValidationErrors.INVALID_EMAIL;
+    const { validation } = this.state;
+    return validation.reason === ValidationErrors.INVALID_EMAIL;
   }
 
   privacyAgreementMissing() {
-    return this.state.validation.reason === ValidationErrors.PRIVACY_AGREEMENT_MISSING;
+    const { validation } = this.state;
+    return validation.reason === ValidationErrors.PRIVACY_AGREEMENT_MISSING;
   }
 
   render() {
+    const { feedback, feedbackSaved } = this.state;
     return (
       <div className="feedback">
-        <div className={`feedback-form ${this.state.feedbackSaved ? 'collapsed' : ''}`}>
-          <h5>We'd love to hear your feedback!</h5>
+        <div className={`feedback-form ${feedbackSaved ? 'collapsed' : ''}`}>
+          <h5>We&apos;d love to hear your feedback!</h5>
           <p>Feel free to leave your feedback and email address here. Thanks!</p>
           <form onSubmit={(ev) => this.handleSubmit(ev)}>
-            {this.emailIsInvalid()
-                        && <span className="validation-error">Please enter a valid email address.</span>
-            }
+            {this.emailIsInvalid() && (
+              <span className="validation-error">Please enter a valid email address.</span>
+            )}
 
-            {this.privacyAgreementMissing()
-                        && <span className="validation-error">Please read and accept our privacy policy and terms of use.</span>
-            }
+            {this.privacyAgreementMissing() && (
+              <span className="validation-error">
+                Please read and accept our privacy policy and terms of use.
+              </span>
+            )}
 
             <textarea
               name="feedback"
               placeholder="Enter your feedback here"
-              disabled={this.state.feedbackSaved}
+              disabled={feedbackSaved}
               onChange={(event) => this.handleFeedbackChanged(event.target.value)}
             />
 
@@ -101,34 +105,29 @@ export default class Feedback extends React.Component {
               name="email"
               type="text"
               placeholder="Enter your email here"
-              disabled={this.state.feedbackSaved}
+              disabled={feedbackSaved}
               onChange={(event) => this.handleEmailChanged(event.target.value)}
             />
 
-            <label>
+            <label htmlFor="privacy-agreement">
               <input
                 type="checkbox"
+                id="privacy-agreement"
                 onChange={(event) => this.handlePrivacyAgreementChanged(event.target.checked)}
-                disabled={this.state.feedbackSaved}
+                disabled={feedbackSaved}
               />
-                            I hereby confirm that I have read
-                            the
-              {' '}
+              <span>I hereby confirm that I have read the&nbsp;</span>
               <a href="https://www.zuehlke.com/ch/en/privacy-policy/">privacy policy</a>
-              {' '}
-and
-              {' '}
+              <span>&nbsp;and&nbsp;</span>
               <a href="https://www.zuehlke.com/ch/en/terms-use">terms of use</a>
-              {' '}
-and accepted them.
+              <span>&nbsp;and accepted them.</span>
             </label>
-
-            <button type="submit" disabled={!this.state.feedback || this.state.feedbackSaved}>
-Submit
+            <button type="submit" disabled={!feedback || feedbackSaved}>
+              Submit
             </button>
           </form>
         </div>
-        {this.state.feedbackSaved && <span className="feedback-saved-hint">Thank you for your feedback!</span>}
+        {feedbackSaved && <span className="feedback-saved-hint">Thank you for your feedback!</span>}
       </div>
     );
   }
