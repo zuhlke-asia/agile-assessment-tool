@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import Evaluation from './evaluation/Evaluation';
 import Link from './link/Link';
 import Profile from './profile/Profile';
 import '../../styles/result.scss';
 import Feedback from './feedback/Feedback';
-import axios from 'axios';
 
-export default class Result extends React.Component {
+class Result extends React.Component {
   constructor(props) {
     super(props);
     this.scrollRef = React.createRef();
@@ -24,18 +25,24 @@ export default class Result extends React.Component {
   }
 
   async onSubmitFeedback(feedback) {
-    feedback.surveyId = this.props.surveyId;
-    await axios.post('api/feedback', feedback);
+    const { surveyId } = this.props;
+    await axios.post('api/feedback', { ...feedback, surveyId });
   }
 
   render() {
+    const { evaluations } = this.props;
     return (
-      <div id="pagecontent" ref={(ref) => this.scrollRef = ref}>
+      <div
+        id="pagecontent"
+        ref={(ref) => {
+          this.scrollRef = ref;
+        }}
+      >
         <div className="github-content mobile-padding row zue-teaser-medium-boxes zue-boxes-container ng-scope">
           <div className="result-content">
             <div className="result-left">
               <h3 className="color-primary">Thank you for participating!</h3>
-              <Evaluation evaluations={this.props.evaluations} />
+              <Evaluation evaluations={evaluations} />
               <Feedback onSubmit={(feedback) => this.onSubmitFeedback(feedback)} />
               <Link />
             </div>
@@ -46,3 +53,9 @@ export default class Result extends React.Component {
     );
   }
 }
+
+Result.propTypes = {
+  evaluations: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+};
+
+export default Result;

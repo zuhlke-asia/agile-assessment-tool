@@ -1,4 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as Survey from 'survey-react';
 import * as widgets from 'surveyjs-widgets';
 
@@ -12,7 +14,9 @@ import 'bootstrap-slider/dist/css/bootstrap-slider.css';
 import 'jquery-bar-rating/dist/themes/css-stars.css';
 
 import $ from 'jquery';
+// eslint-disable-next-line import/extensions
 import 'jquery-ui/ui/widgets/datepicker.js';
+// eslint-disable-next-line import/extensions
 import 'select2/dist/js/select2.js';
 import 'jquery-bar-rating';
 
@@ -30,14 +34,16 @@ widgets.ckeditor(Survey);
 widgets.autocomplete(Survey, $);
 widgets.bootstrapslider(Survey);
 
-export default class AgileAssessment extends React.Component {
+class AgileAssessment extends React.Component {
   componentWillMount() {
-        import('icheck');
-        window.$ = window.jQuery = $;
+    import('icheck');
+    // eslint-disable-next-line no-multi-assign
+    window.$ = window.jQuery = $;
   }
 
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    return !this.props.config;
+  shouldComponentUpdate() {
+    const { config } = this.props;
+    return !config;
   }
 
   render() {
@@ -62,3 +68,11 @@ export default class AgileAssessment extends React.Component {
     );
   }
 }
+
+AgileAssessment.propTypes = {
+  config: PropTypes.shape({}).isRequired,
+  onComplete: PropTypes.func.isRequired,
+  onValueChange: PropTypes.func.isRequired,
+};
+
+export default AgileAssessment;

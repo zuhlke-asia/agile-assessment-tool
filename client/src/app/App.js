@@ -50,6 +50,7 @@ export default class App extends Component {
 
   async onComplete(result) {
     const { surveyId } = this.state;
+
     try {
       const surveyResult = result.data;
       surveyResult.id = surveyId;
@@ -118,8 +119,8 @@ export default class App extends Component {
 
   render() {
     const { showBanner } = this.state;
-
     const content = this.getContent();
+
     return (
       <div id="outer">
         <Header showBanner={showBanner} />
