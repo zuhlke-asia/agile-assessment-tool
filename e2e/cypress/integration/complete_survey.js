@@ -22,6 +22,15 @@ describe('Complete Survey', () => {
     );
   });
 
+  it('should not display glitchy numbering', () => {
+    cy.contains(
+      '1. Is your organisation currently practicing plan-driven or agile software development?',
+    ).should('not.exist');
+    cy.contains('2. How happy are you with your current software development process?').should(
+      'not.exist',
+    );
+  });
+
   it('display 3rd question on selecting answers and going to the next page', () => {
     cy.contains('Mostly Agile').click();
     cy.contains('Somewhat happy').click();
