@@ -1,24 +1,6 @@
 import * as QuestionType from './QuestionType';
 
-export function generateSurveyConfig(config) {
-  return {
-    showProgressBar: 'top',
-    questionTitleTemplate: '{no}. {title}',
-    pages: config.pages.map((page) => ({
-      questions: page.questions.map((question) => generateQuestionConfig(question)),
-    })),
-  };
-}
-
-export const generatePageConfig = (page) => {
-  const questions = page.questions.map((question) => generateQuestionConfig(question));
-
-  return {
-    questions,
-  };
-};
-
-function generateQuestionConfig(question) {
+const generateQuestionConfig = (question) => {
   const questionConfig = {
     type: question.type,
     isRequired: question.isRequired,
@@ -33,7 +15,6 @@ function generateQuestionConfig(question) {
   if (question.visibleIf) {
     questionConfig.visibleIf = question.visibleIf;
   }
-
 
   if (question.colCount !== undefined) {
     questionConfig.colCount = question.colCount;
@@ -52,4 +33,13 @@ function generateQuestionConfig(question) {
   }
 
   return questionConfig;
-}
+};
+
+// eslint-disable-next-line import/prefer-default-export
+export const generateSurveyConfig = (config) => ({
+  showProgressBar: 'top',
+  questionTitleTemplate: '{title}',
+  pages: config.pages.map((page) => ({
+    questions: page.questions.map((question) => generateQuestionConfig(question)),
+  })),
+});

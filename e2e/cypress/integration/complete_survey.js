@@ -1,59 +1,120 @@
-import Network from '../elements/CypressHttpRequest';
-import Survey from '../elements/Survey';
+describe('Complete Survey', () => {
+  const goNextSurveyPage = () => {
+    cy.get('input[value="Next"]').click();
+  };
 
-describe("Complete Survey", function () {
+  const goPreviousSurveyPage = () => {
+    cy.get('input[value="Previous').click();
+  };
 
-    let network;
-    const POST_SURVEY_ALIAS = "postSurvey";
+  before(() => {
+    cy.server();
+    cy.route('POST', '/api/survey').as('postSurvey');
+  });
 
-    before(function () {
-        network = new Network();
-        network.startServer();
-        network.registerRouteServices(POST_SURVEY_ALIAS);
-    });
+  it('display 1st and 2nd question on page load', () => {
+    cy.visit('/');
+    cy.contains(
+      'Is your organisation currently practicing plan-driven or agile software development?',
+    ).should('be.visible');
+    cy.contains('How happy are you with your current software development process?').should(
+      'be.visible',
+    );
+  });
 
-    beforeEach(function () {
-        network.visitHomePage();
-    });
+  it('should not display glitchy numbering', () => {
+    cy.contains(
+      '1. Is your organisation currently practicing plan-driven or agile software development?',
+    ).should('not.exist');
+    cy.contains('2. How happy are you with your current software development process?').should(
+      'not.exist',
+    );
+  });
 
-    it("should fill out the survey and submit without an error", () => {
+  it('display 3rd question on selecting answers and going to the next page', () => {
+    cy.contains('Mostly Agile').click();
+    cy.contains('Somewhat happy').click();
+    goNextSurveyPage();
+    cy.contains('What units do you use for estimation?').should('be.visible');
+  });
 
-        const survey = new Survey();
+  it('display 1st and 2nd question on selecting previous page', () => {
+    goPreviousSurveyPage();
+    cy.contains('How happy are you with your current software development process?').should(
+      'be.visible',
+    );
+  });
 
-        survey.chooseAnswer('Mostly Agile');
-        survey.chooseAnswer('Somewhat happy');
-        survey.nextPage();
+  it('display 3rd question on selecting next page', () => {
+    goNextSurveyPage();
+    cy.contains('What units do you use for estimation?').should('be.visible');
+  });
 
-        survey.shouldShowQuestion('What units do you use for estimation?');
-        survey.previousPage();
-        survey.shouldShowQuestion('How happy are you with your current software development process?');
-        survey.nextPage();
+  it('display 4th question on selecting answers and going to the next page', () => {
+    cy.get('select').select('Story Points');
+    goNextSurveyPage();
+    cy.contains('How confident are you that your current project will be successful?').should(
+      'be.visible',
+    );
+  });
 
-        survey.selectAnswerFromDropdown('Story Points');
-        survey.nextPage();
+  it('display 5th question on selecting answers and going to the next page', () => {
+    cy.get('input[type="radio"][value="1"]')
+      .parent()
+      .click();
+    goNextSurveyPage();
+    cy.contains('Do teams in your organisation use Scrum?').should('be.visible');
+  });
 
-        survey.selectRating('1');
-        survey.nextPage();
+  it('display 6th question on selecting radio buttons', () => {
+    cy.contains('No').click();
+    cy.contains('Yes').click();
+    cy.contains('How often do you reach your sprint goals?').should('be.visible');
+  });
 
-        survey.chooseAnswer('No');
-        survey.shouldNotShowQuestion('How often do you reach your sprint goals?');
-        survey.chooseAnswer('Yes');
-        survey.shouldShowQuestion('How often do you reach your sprint goals?');
-        survey.chooseAnswer('We achieve them sometimes');
-        survey.nextPage();
+  it('display contact form on selecting answers and going to the next page', () => {
+    cy.contains('We achieve them sometimes').click();
+    goNextSurveyPage();
+  });
 
-        survey.enterTextBox('Company Name', 'Zuhlke');
-        survey.enterTextBox('Email', 'example@zuhlke.com');
-        survey.submit();
+  it('display results page on submission of contact details', () => {
+    cy.get('input[aria-label="Company Name"').type('Zuhlke');
+    cy.get('input[aria-label="Email"').type('example@zuhlke.com');
+    cy.get('input[value="Complete"]').click();
+    cy.contains('Thank you for participating!');
+  });
 
-        survey.shouldShowResultPage();
-        survey.shouldShowPercentage('Agility', 80);
-        survey.shouldShowPercentage('Estimation', 100);
-        survey.shouldShowPercentage('Mood', 20);
-        survey.shouldShowNumberOfLinks(6);
-        survey.shouldShowNumberOfProfiles(2);
+  it('display correct results data', () => {
+    cy.get('.agility')
+      .find('.score-bar')
+      .its('width')
+      .should('be', '80%');
+    cy.get('.estimation')
+      .find('.score-bar')
+      .its('width')
+      .should('be', '100%');
+    cy.get('.mood')
+      .find('.score-bar')
+      .its('width')
+      .should('be', '20%');
+    cy.get('.scrum')
+      .find('.score-bar')
+      .its('width')
+      .should('be', '60%');
+  });
 
-        survey.giveFeedback('This was a great survey!');
-    });
+  it('display correct number of links and profiles', () => {
+    cy.get('.linkSection ul')
+      .children('.card')
+      .should('have.length', 6);
+    cy.get('.contacts .wrapper')
+      .children('.profile')
+      .should('have.length', 2);
+  });
 
+  it('display correct text on feedback submission', () => {
+    cy.get('textarea[name="feedback"]').type('This was a great survey!');
+    cy.get('button[type="submit"]').click();
+    cy.contains('Thank you for your feedback!');
+  });
 });
