@@ -49,9 +49,10 @@ export default class App extends Component {
   }
 
   async onComplete(result) {
+    const { surveyId } = this.state;
     try {
       const surveyResult = result.data;
-      surveyResult.id = this.state.surveyId;
+      surveyResult.id = surveyId;
 
       this.setState((prevState) => ({
         ...prevState,
@@ -80,7 +81,9 @@ export default class App extends Component {
   }
 
   onValueChange() {
-    if (!this.state.showBanner) {
+    const { showBanner } = this.state;
+
+    if (!showBanner) {
       return;
     }
 
@@ -91,17 +94,19 @@ export default class App extends Component {
   }
 
   getContent() {
-    switch (this.state.pageState) {
+    const { pageState, evaluations, surveyId, surveyConfig } = this.state;
+
+    switch (pageState) {
     case PageState.EVALUATION:
-      return <Result evaluations={this.state.evaluations} surveyId={this.state.surveyId} />;
+      return <Result evaluations={evaluations} surveyId={surveyId} />;
     case PageState.SAVING_RESULT:
       return <div className="spinner">&nbsp;</div>;
     default:
       return (
         <div>
-          {this.state.surveyConfig && (
+          {surveyConfig && (
             <AgileAssessment
-              config={this.state.surveyConfig}
+              config={surveyConfig}
               onComplete={(result) => this.onComplete(result)}
               onValueChange={() => this.onValueChange()}
             />
@@ -112,10 +117,12 @@ export default class App extends Component {
   }
 
   render() {
+    const { showBanner } = this.state;
+
     const content = this.getContent();
     return (
       <div id="outer">
-        <Header showBanner={this.state.showBanner} />
+        <Header showBanner={showBanner} />
         {content}
         <FootNote />
         <Footer />
