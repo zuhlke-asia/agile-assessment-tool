@@ -5,7 +5,7 @@ const Header = ({ showBanner }) => (
   <div>
     <header id="site-header" role="banner">
       <div className="grid-contain">
-        <a href="http://www.zuehlke.com/" className="zue-logo-head" rel="noopener">
+        <a href="https://www.zuehlke.com/asia/en/" className="zue-logo-head" rel="noopener">
           &nbsp;
         </a>
       </div>
@@ -13,7 +13,7 @@ const Header = ({ showBanner }) => (
       <nav className="zue-meta-nav" role="navigation">
         <ul>
           <li>
-            <a href="http://www.zuehlke.com/" rel="noopener">
+            <a href="https://www.zuehlke.com/asia/en/" rel="noopener">
               Zühlke Website
             </a>
           </li>
@@ -35,7 +35,7 @@ const Header = ({ showBanner }) => (
           <nav id="zue-main-nav" role="navigation">
             <ul>
               <li className="child sibling">
-                <a href="http://www.zuhlke.com/">Zuhlke Singapore</a>
+                <a href="https://www.zuehlke.com/asia/en/">Zuhlke Singapore</a>
               </li>
             </ul>
           </nav>

@@ -2,11 +2,11 @@ import React from 'react';
 import linkProvider from './linkProvider';
 
 export default () => {
-  const linksToDisplay = linkProvider.getRandomLinks(6);
+  const linksToDisplay = linkProvider.getRandomLinks(4);
   return (
     <div className="linkSection">
       <h3><span className="color-primary">Find out more about Agile</span></h3>
-      <ul className="medium-block-grid-2 large-block-grid-3">
+      <ul className="medium-block-grid-2">
         {
           linksToDisplay.map((item, i) => (
             <li className="zue-box-outer card" key={`${item.title}_${i}`}>
