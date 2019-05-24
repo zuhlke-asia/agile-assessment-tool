@@ -7,14 +7,14 @@ export default ({ showBanner }) => (
 
       <div className="grid-contain">
         { /* eslint-disable-next-line react/jsx-no-target-blank */}
-        <a href="http://www.zuehlke.com/" className="zue-logo-head" rel="noopener">&nbsp;</a>
+        <a href="https://www.zuehlke.com/asia/en/" className="zue-logo-head" rel="noopener">&nbsp;</a>
       </div>
 
       <nav className="zue-meta-nav" role="navigation">
         <ul>
           <li>
             { /* eslint-disable-next-line react/jsx-no-target-blank */}
-            <a href="http://www.zuehlke.com/" rel="noopener">Zühlke Website</a>
+            <a href="https://www.zuehlke.com/asia/en/" rel="noopener">Zühlke Website</a>
           </li>
           <li>
             { /* eslint-disable-next-line react/jsx-no-target-blank */}
@@ -32,7 +32,7 @@ export default ({ showBanner }) => (
           <nav id="zue-main-nav" role="navigation">
             <ul>
               <li className="child sibling">
-                <a href="http://www.zuhlke.com/">Zuhlke Singapore</a>
+                <a href="https://www.zuehlke.com/asia/en/">Zuhlke Singapore</a>
               </li>
             </ul>
           </nav>
