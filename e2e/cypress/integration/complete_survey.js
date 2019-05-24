@@ -106,7 +106,7 @@ describe('Complete Survey', () => {
   it('display correct number of links and profiles', () => {
     cy.get('.linkSection ul')
       .children('.card')
-      .should('have.length', 6);
+      .should('have.length', 4);
     cy.get('.contacts .wrapper')
       .children('.profile')
       .should('have.length', 2);
