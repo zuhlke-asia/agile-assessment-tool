@@ -1,5 +1,5 @@
 import React from 'react';
-import FeedbackValidator, { ValidationErrors } from './feedbackValidator';
+import { ValidationErrors, getValidationResult } from './feedbackValidator';
 
 export default class Feedback extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export default class Feedback extends React.Component {
     const { email, feedback, privacyAgreement } = this.state;
     const { onSubmit } = this.props;
 
-    const validation = FeedbackValidator.getValidationResult(email, privacyAgreement);
+    const validation = getValidationResult(email, privacyAgreement);
 
     this.setState((prev) => ({
       ...prev,
