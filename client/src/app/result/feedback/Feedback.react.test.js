@@ -75,10 +75,12 @@ test('calls the onSubmit callback when input is valid', () => {
 
   const textarea = wrapper.find('textarea');
   const email = wrapper.find('input[name="email"]');
+  const organisation = wrapper.find('input[name="organisation"]');
   const privacyAgreement = wrapper.find('input[type="checkbox"]');
 
   textarea.simulate('change', { target: { value: 'Feedback' } });
   email.simulate('change', { target: { value: 'test@test.com' } });
+  organisation.simulate('change', { target: { value: 'Zuhlke' } });
   privacyAgreement.simulate('change', { target: { checked: true } });
 
   const form = wrapper.find('form');
@@ -88,6 +90,7 @@ test('calls the onSubmit callback when input is valid', () => {
   expect(onSubmitCallback.mock.calls[0][0]).toEqual({
     feedback: 'Feedback',
     email: 'test@test.com',
+    organisation: 'Zuhlke',
     privacyAgreement: true,
   });
 });

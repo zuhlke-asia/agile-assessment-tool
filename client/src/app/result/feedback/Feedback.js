@@ -8,6 +8,7 @@ export default class Feedback extends React.Component {
     this.state = {
       feedback: '',
       email: '',
+      organisation: '',
       privacyAgreement: false,
       validation: {},
     };
@@ -16,7 +17,7 @@ export default class Feedback extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
 
-    const { email, feedback, privacyAgreement } = this.state;
+    const { email, feedback, organisation, privacyAgreement } = this.state;
     const { onSubmit } = this.props;
 
     const validation = getValidationResult(email, privacyAgreement);
@@ -33,11 +34,12 @@ export default class Feedback extends React.Component {
     this.setState((prev) => ({
       ...prev,
       email: '',
+      organisation: '',
       feedback: '',
       privacyAgreement: false,
     }));
 
-    await onSubmit({ feedback, email, privacyAgreement });
+    await onSubmit({ feedback, email, organisation, privacyAgreement });
 
     this.setState((prev) => ({
       ...prev,
@@ -45,17 +47,24 @@ export default class Feedback extends React.Component {
     }));
   }
 
-  handleFeedbackChanged(feedback) {
-    this.setState((prev) => ({
-      ...prev,
-      feedback,
-    }));
-  }
-
   handleEmailChanged(email) {
     this.setState((prev) => ({
       ...prev,
       email,
+    }));
+  }
+
+  handleOrganisationChange(organisation) {
+    this.setState((prev) => ({
+      ...prev,
+      organisation,
+    }));
+  }
+
+  handleFeedbackChanged(feedback) {
+    this.setState((prev) => ({
+      ...prev,
+      feedback,
     }));
   }
 
@@ -98,19 +107,27 @@ export default class Feedback extends React.Component {
               </span>
             )}
 
-            <textarea
-              name="feedback"
-              placeholder="Enter your feedback here"
-              disabled={feedbackSaved}
-              onChange={(event) => this.handleFeedbackChanged(event.target.value)}
-            />
-
             <input
               name="email"
               type="text"
-              placeholder="Enter your email here"
+              placeholder="Email"
               disabled={feedbackSaved}
               onChange={(event) => this.handleEmailChanged(event.target.value)}
+            />
+
+            <input
+              name="organisation"
+              type="text"
+              placeholder="Organisation (Optional)"
+              disabled={feedbackSaved}
+              onChange={(event) => this.handleOrganisationChange(event.target.value)}
+            />
+
+            <textarea
+              name="feedback"
+              placeholder="Feedback / Comments / Specific areas of interest"
+              disabled={feedbackSaved}
+              onChange={(event) => this.handleFeedbackChanged(event.target.value)}
             />
 
             <label htmlFor="privacy-agreement">
