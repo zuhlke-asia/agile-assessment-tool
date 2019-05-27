@@ -3,18 +3,18 @@ export const ValidationErrors = {
   PRIVACY_AGREEMENT_MISSING: 'PRIVACY_AGREEMENT_MISSING',
 };
 
-export const getValidationResult = (email, privacyAgreement) => {
-  const emailProvided = !!email;
-  const emailIsValid = !emailProvided || (emailProvided && /(.+)@(.+){2,}\.(.+){2,}/.test(email));
-  const privacyAgreementIsValid = !emailProvided || privacyAgreement;
+const isEmailProvided = (email) => typeof email !== 'undefined' || email !== null;
 
-  const valid = emailIsValid && privacyAgreementIsValid;
+const isEmailValid = (email) => isEmailProvided(email) && /(.+)@(.+){2,}\.(.+){2,}/.test(email);
+
+export const getValidationResult = (email, isPrivacyAgreementChecked) => {
+  const valid = isEmailValid(email) && isPrivacyAgreementChecked;
 
   let reason;
 
-  if (!emailIsValid) {
+  if (!isEmailValid(email)) {
     reason = ValidationErrors.INVALID_EMAIL;
-  } else if (!privacyAgreementIsValid) {
+  } else if (!isPrivacyAgreementChecked) {
     reason = ValidationErrors.PRIVACY_AGREEMENT_MISSING;
   }
 

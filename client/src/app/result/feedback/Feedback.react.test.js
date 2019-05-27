@@ -35,6 +35,22 @@ test('displays invalid email warning when invalid email is entered', () => {
   expect(onSubmitCallback.mock.calls.length).toBe(0);
 });
 
+test('displays invalid email warning when email is blank', () => {
+  const onSubmitCallback = jest.fn(() => {});
+  const wrapper = mount(<Feedback onSubmit={onSubmitCallback} />);
+
+  const textarea = wrapper.find('textarea');
+
+  textarea.simulate('change', { target: { value: 'Feedback' } });
+
+  const form = wrapper.find('form');
+  form.simulate('submit');
+
+  const validationError = wrapper.find('span.validation-error');
+  expect(validationError).toHaveText('Please enter a valid email address.');
+  expect(onSubmitCallback.mock.calls.length).toBe(0);
+});
+
 test('displays privacy agreement warning when email is provided but privacy agreement not checked', () => {
   const onSubmitCallback = jest.fn(() => {});
   const wrapper = mount(<Feedback onSubmit={onSubmitCallback} />);

@@ -13,14 +13,28 @@ test('given an invalid email, returns invalid due to email', () => {
   expect(result).toEqual(expected);
 });
 
-test('given an empty email, returns valid result', () => {
+test('given an empty email, returns invalid due to email', () => {
   const email = '';
 
   const result = getValidationResult(email);
 
   const expected = {
-    valid: true,
-    reason: undefined,
+    valid: false,
+    reason: ValidationErrors.INVALID_EMAIL,
+  };
+
+  expect(result).toEqual(expected);
+});
+
+test('given an empty email with privacy agreement checked, returns invalid due to email', () => {
+  const email = '';
+  const privacyAgreement = true;
+
+  const result = getValidationResult(email, privacyAgreement);
+
+  const expected = {
+    valid: false,
+    reason: ValidationErrors.INVALID_EMAIL,
   };
 
   expect(result).toEqual(expected);
