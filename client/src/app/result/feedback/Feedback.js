@@ -81,8 +81,12 @@ export default class Feedback extends React.Component {
     return (
       <div className="feedback">
         <div className={`feedback-form ${feedbackSaved ? 'collapsed' : ''}`}>
-          <h5>We&apos;d love to hear your feedback!</h5>
-          <p>Feel free to leave your feedback and email address here. Thanks!</p>
+          <h5>We&apos;d love to hear from you!</h5>
+          <p>
+            Get in touch if you&apos;d like to receive a personalised assessment based on your
+            answers, or for a more in-depth conversation on the value agile practices can bring to
+            your organisation.
+          </p>
           <form onSubmit={(ev) => this.handleSubmit(ev)}>
             {this.emailIsInvalid() && (
               <span className="validation-error">Please enter a valid email address.</span>
@@ -116,11 +120,11 @@ export default class Feedback extends React.Component {
                 onChange={(event) => this.handlePrivacyAgreementChanged(event.target.checked)}
                 disabled={feedbackSaved}
               />
-              <span>I hereby confirm that I have read the&nbsp;</span>
+              <span>I hereby confirm that I have read and accepted the&nbsp;</span>
               <a href="https://www.zuehlke.com/ch/en/privacy-policy/">privacy policy</a>
               <span>&nbsp;and&nbsp;</span>
               <a href="https://www.zuehlke.com/ch/en/terms-use">terms of use</a>
-              <span>&nbsp;and accepted them.</span>
+              <span>.</span>
             </label>
             <button type="submit" disabled={!feedback || feedbackSaved}>
               Submit
