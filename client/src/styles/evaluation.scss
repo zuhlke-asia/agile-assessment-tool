@@ -1,6 +1,6 @@
 .score-container {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto;
   grid-column-gap: 2em;
 
   div.category-label {
@@ -24,11 +24,16 @@
   height: 100%;
   background: #ff820a;
   border-radius: 2px;
-  width: 0;
-  transition: width 1s cubic-bezier(.17,.67,.19,.98);
+  animation: 1s cubic-bezier(.17, .67, .19, .98) slideout;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
   opacity: .8;
+}
+
+@keyframes slideout {
+  from {
+    width: 0%;
+  }
 }

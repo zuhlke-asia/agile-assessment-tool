@@ -42,7 +42,7 @@ class Result extends React.Component {
           <div className="result-content">
             <div className="result-left">
               <h3 className="color-primary">Thank you for participating!</h3>
-              <Evaluation evaluations={evaluations} />
+              {evaluations && <Evaluation evaluations={evaluations} />}
               <Feedback onSubmit={(feedback) => this.onSubmitFeedback(feedback)} />
               <Link />
             </div>
