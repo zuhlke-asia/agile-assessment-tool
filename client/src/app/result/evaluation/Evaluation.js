@@ -1,7 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import categoryInformation from './categoryInformation';
 
 import '../../../styles/evaluation.scss';
+
+const calculateScore = (total, max) => (100 * total) / max;
+
+const getDescriptor = (evaluation) => {
+  const score = calculateScore(evaluation.total, evaluation.max);
+
+  if (score <= 25) {
+    return categoryInformation[evaluation.name][25];
+  }
+  if (score <= 50) {
+    return categoryInformation[evaluation.name][50];
+  }
+  if (score <= 75) {
+    return categoryInformation[evaluation.name][75];
+  }
+  return categoryInformation[evaluation.name][100];
+};
 
 const Evaluation = ({ evaluations }) => (
   <div>
@@ -15,8 +33,14 @@ const Evaluation = ({ evaluations }) => (
           {evaluations.map((item) => (
             <div key={item.name} className="category-label">
               <div>{item.name}</div>
+              {item.name in categoryInformation && (
+                <div className={`${item.name} category-descriptor`}>{getDescriptor(item)}</div>
+              )}
               <div className={`${item.name} score-bar-container`}>
-                <div className="score-bar" style={{ width: `${(100 * item.total) / item.max}%` }}>
+                <div
+                  className="score-bar"
+                  style={{ width: `${calculateScore(item.total, item.max)}%` }}
+                >
                   &nbsp;
                 </div>
               </div>
