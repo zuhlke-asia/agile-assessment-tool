@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Tippy from '@tippy.js/react';
 import categoryInformation from './categoryInformation';
 
 import '../../../styles/evaluation.scss';
@@ -7,6 +8,10 @@ import '../../../styles/evaluation.scss';
 const calculateScore = (total, max) => (100 * total) / max;
 
 const getDescriptor = (evaluation) => {
+  if (!(evaluation.name in categoryInformation)) {
+    return '';
+  }
+
   const score = calculateScore(evaluation.total, evaluation.max);
 
   if (score <= 25) {
@@ -33,17 +38,19 @@ const Evaluation = ({ evaluations }) => (
           {evaluations.map((item) => (
             <div key={item.name} className="score-container">
               <div className="category-label">{item.name}</div>
-              {item.name in categoryInformation && (
-                <div className={`${item.name} category-descriptor`}>{getDescriptor(item)}</div>
-              )}
-              <div className={`${item.name} score-bar-container`}>
-                <div
-                  className="score-bar"
-                  style={{ width: `${calculateScore(item.total, item.max)}%` }}
-                >
-                  &nbsp;
+              <Tippy
+                enabled={item.name in categoryInformation && !!getDescriptor(item)}
+                content={getDescriptor(item)}
+              >
+                <div className={`${item.name} score-bar-container`}>
+                  <div
+                    className="score-bar"
+                    style={{ width: `${calculateScore(item.total, item.max)}%` }}
+                  >
+                    &nbsp;
+                  </div>
                 </div>
-              </div>
+              </Tippy>
             </div>
           ))}
         </div>
