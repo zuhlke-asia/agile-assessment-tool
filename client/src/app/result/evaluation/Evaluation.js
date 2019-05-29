@@ -29,10 +29,10 @@ const Evaluation = ({ evaluations }) => (
           Below is our assessment of how agile your organisation is across several categories, based
           on the answers you provided:
         </p>
-        <div className="score-container">
+        <div className="scores-container">
           {evaluations.map((item) => (
-            <div key={item.name} className="category-label">
-              <div>{item.name}</div>
+            <div key={item.name} className="score-container">
+              <div className="category-label">{item.name}</div>
               {item.name in categoryInformation && (
                 <div className={`${item.name} category-descriptor`}>{getDescriptor(item)}</div>
               )}
