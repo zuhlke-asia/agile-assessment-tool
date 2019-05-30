@@ -1,14 +1,4 @@
 .scores-container {
-  display: grid;
-  grid-template-columns: auto;
-  grid-column-gap: 2em;
-
-  div.score-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-
   div.category-label {
     text-transform: capitalize;
   }

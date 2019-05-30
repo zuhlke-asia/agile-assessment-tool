@@ -5,16 +5,14 @@ const profilePics = require.context('../../../assets/images/profile', true);
 
 export default () => (
   <div className="contacts">
-    <div className="sectionName">
-      <h3>
-        <span className="color-primary">&nbsp;Our experts</span>
-      </h3>
+    <div className="experts">
+      <h3 className="color-primary">Our experts</h3>
       <p>
         Find out how Zuhlke can help your organisation get to the next level. Contact one of our
         experienced consultants today.
       </p>
     </div>
-    <div className="wrapper">
+    <div className="profiles">
       {profileInformation
         .filter((p, i) => i < 2)
         .map((profileInfo, i) => {

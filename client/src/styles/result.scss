@@ -1,9 +1,7 @@
+$zuhlke_orange: #ff820a;
+
 .card {
   height: 333px !important;
-}
-
-.linkSection {
-  margin: 40px 0;
 }
 
 .result-content {
@@ -12,6 +10,10 @@
   .result-left {
     flex-grow: 2;
     flex-basis: 70%;
+
+    > div {
+      margin-bottom: 2rem;
+    }
   }
 
   .contacts {
@@ -34,20 +36,16 @@
 }
 
 .feedback {
-  margin-top: 40px;
-
   .feedback-form {
     transition: height .5s ease-out;
-    overflow: hidden;
 
-    &.collapsed  {
+    &.collapsed {
       height: 0;
     }
   }
 
-
   button[type="submit"] {
-    margin-top: 5px;
+    margin-top: 0.5em;
     padding: 10px;
   }
 }
@@ -61,7 +59,6 @@ textarea {
 }
 
 @media screen and (max-width: 962px) {
-
   .result-content {
 
     flex-direction: column;
@@ -69,98 +66,87 @@ textarea {
     .contacts {
       padding: 0;
     }
-
   }
-
 }
 
-
-
-.wrapper {
-  margin: 20px 0;
+.profiles {
+  margin-top: 3rem;
+  padding-top: 3rem;
   flex: 1;
   flex-direction: row;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  border-top: 2px solid $zuhlke_orange;
+
   @media screen and (max-width: 962px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-}
 
-.info {
-  margin: 0 20px;
-  @media screen and (max-width: 962px) {
-    height: 196px;
-  }
-}
+  .profile {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
 
+    & img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      max-width: none;
+      border-radius: 100%;
+    }
 
-.profile {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
+    @media screen and (max-width: 497px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      & p, h5 {
+        text-align: center;
+      }
+    }
 
-  & img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    max-width: none;
-    border-radius: 100%;
-  }
-
-  @media screen and (max-width: 497px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    & p, h5 {
-      text-align: center;
+    .info {
+      margin: 0 1.5rem;
     }
   }
 }
 
-
 .name {
-  margin-top: 10px;
+  margin-top: 0.5em;
   margin-bottom: 0;
-  color: #ff820a;
-  font-size: 26px;
+  color: $zuhlke_orange;
+  font-size: 1.5em;
 }
 
-
 .position {
-  font-size: 14px;
+  font-size: 0.9em;
   color: #9B9B9B;
 }
 
 .contactInfo {
   display: flex;
   align-items: center;
-  margin-bottom: 7px;
-  color: #ff820a;
+  margin-bottom: 0.5em;
+  color: $zuhlke_orange;
   font-weight: bold;
 
-  & i {
-    display: flex;
-    font-size: 21px;
-    margin-bottom: -4px;
+  i {
+    font-size: 1.25em;
   }
 
-  & span {
-    display: flex;
-    margin-left: 8px;
-    font-size: 15px;
+  span {
+    margin-left: 0.75em;
+    font-size: 0.9em;
   }
 }
 
-.sectionName {
-  padding-bottom: 20px;
-  border-bottom: solid 2px #ff820a;
+.experts {
+  margin-bottom: 3rem;
   @media screen and (max-width: 962px) {
     text-align: center;
-    margin: 3px;
+    margin: 0.5em;
   }
 }
 
