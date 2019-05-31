@@ -26,7 +26,7 @@ const getDescriptor = (evaluation) => {
   return categoryInformation[evaluation.name][100];
 };
 
-const Evaluation = ({evaluations}) => (
+const Evaluation = ({ evaluations }) => (
   <>
     {!!evaluations.length && (
       <div className="scores">
@@ -45,7 +45,7 @@ const Evaluation = ({evaluations}) => (
                 <div className={`${item.name} score-bar-container`}>
                   <div
                     className="score-bar"
-                    style={{width: `${calculateScore(item.total, item.max)}%`}}
+                    style={{ width: `${calculateScore(item.total, item.max)}%` }}
                   >
                     &nbsp;
                   </div>
