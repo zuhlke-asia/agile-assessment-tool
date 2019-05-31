@@ -27,16 +27,16 @@ const getDescriptor = (evaluation) => {
 };
 
 const Evaluation = ({ evaluations }) => (
-  <div>
+  <>
     {!!evaluations.length && (
-      <div>
+      <div className="scores">
         <p>
           Below is our assessment of how agile your organisation is across several categories, based
           on the answers you provided:
         </p>
-        <div className="scores-container">
+        <div>
           {evaluations.map((item) => (
-            <div key={item.name} className="score-container">
+            <div key={item.name} className="scores-container">
               <div className="category-label">{item.name}</div>
               <Tippy
                 enabled={item.name in categoryInformation && !!getDescriptor(item)}
@@ -56,7 +56,7 @@ const Evaluation = ({ evaluations }) => (
         </div>
       </div>
     )}
-  </div>
+  </>
 );
 
 Evaluation.propTypes = {
