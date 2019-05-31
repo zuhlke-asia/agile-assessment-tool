@@ -107,13 +107,15 @@ describe('Complete Survey', () => {
     cy.get('.linkSection ul')
       .children('.card')
       .should('have.length', 4);
-    cy.get('.contacts .wrapper')
+    cy.get('.contacts .profiles')
       .children('.profile')
       .should('have.length', 2);
   });
 
   it('display correct text on feedback submission', () => {
+    cy.get('input[name="email"]').type('test@example.com');
     cy.get('textarea[name="feedback"]').type('This was a great survey!');
+    cy.get('#privacy-agreement').click();
     cy.get('button[type="submit"]').click();
     cy.contains('Thank you for your feedback!');
   });
