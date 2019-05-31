@@ -1,4 +1,4 @@
-export default [
+const agileProfiles = [
   {
     name: 'Dhanaraj Jayapalan',
     position: 'Product Owner',
@@ -21,9 +21,11 @@ export default [
     position: 'Principal Consultant',
     department: 'Singapore',
     email: 'jochen.reber@zuhlke.com',
-    phone: '+65 84593220',
+    phone: '+65 8459 3220',
     pic: './jochen.jpg',
-  }, {
+    linkedin: 'https://www.linkedin.com/in/jochen-reber-7576a3181/',
+  },
+  {
     name: 'Michael Schnyder',
     position: 'Agile Coach / Lead Software Architect',
     department: 'Singapore',
@@ -33,3 +35,19 @@ export default [
     linkedin: 'https://www.linkedin.com/in/mschnyder/',
   },
 ];
+
+const salesProfiles = [
+  {
+    name: 'Kiky Shannon',
+    position: 'Business Development Manager',
+    department: 'Singapore',
+    email: 'kiky.shannon@zuhlke.com',
+    phone: '+65 8268 8116',
+    pic: './kiky.jpeg',
+    linkedin: 'https://www.linkedin.com/in/kikyshannon/',
+  },
+];
+
+const displayedProfiles = [agileProfiles[2], salesProfiles[0]];
+
+export default displayedProfiles;
