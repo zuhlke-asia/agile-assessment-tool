@@ -6,7 +6,7 @@
   "dependencies": {
     "@tippy.js/react": "^2.2.0",
     "axios": "0.18.0",
-    "bootstrap": "3.4.0",
+    "bootstrap": "3.4.1",
     "jquery": "^3.4.1",
     "node-sass": "4.11.0",
     "prop-types": "^15.7.2",
